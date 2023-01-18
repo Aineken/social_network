@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin, FaTelegram } from "react-icons/fa";
-import { SocialIcons } from "../Header/HeaderStyled";
+
 import {
   BottonLine,
   Container,
@@ -29,18 +29,11 @@ function Footer() {
       <BottonLine>
         <ListTitle regular>Please Contact me any time!</ListTitle>
         <LogoContainer>
-          <SocialIcons href="https://github.com/Aineken" target="_blank">
-            <FaGithub size="3rem" />
-          </SocialIcons>
-          <SocialIcons
-            href="https://www.linkedin.com/in/andrzul/"
-            target="_blank"
-          >
-            <FaLinkedin size="3rem" />
-          </SocialIcons>
-          <SocialIcons href="https://t.me/andrzul" target="_blank">
-            <FaTelegram size="3rem" />
-          </SocialIcons>
+          <FaGithub size="3rem" />
+
+          <FaLinkedin size="3rem" />
+
+          <FaTelegram size="3rem" />
         </LogoContainer>
       </BottonLine>
     </Container>

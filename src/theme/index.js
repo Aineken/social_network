@@ -2,6 +2,8 @@ export default {
   // Temp fonts
   fonts: {
     title: "Source Sans Pro, sans-serif",
+    main: "Source Sans Pro, sans-serif",
+
   },
   // Colors for layout
   colors: {
