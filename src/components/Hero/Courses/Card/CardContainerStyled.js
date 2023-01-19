@@ -8,6 +8,10 @@ export const Card = styled.div`
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 100%;
   }
+  .react-simple-star-rating {
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
 `;
 
 export const CardImg = styled.img`
