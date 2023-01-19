@@ -87,9 +87,7 @@ export const SectionText = styled.p`
   font-weight: 300;
   padding-bottom: 3.6rem;
   text-align: ${(props) => (props.endText ? "end" : "start")};
-  background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #f53855;
 
   @media ${(props) => props.theme.breakpoints.md} {
     max-width: 670px;
