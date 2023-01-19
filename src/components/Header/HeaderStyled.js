@@ -1,11 +1,20 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  background-color: #fff;
+  z-index: 999;
+  border-bottom: 2px solid #f53855;
+`;
+
+export const HeaderDiv = styled.div`
   display: flex;
   grid-column-gap: 2rem;
-  padding: 1rem;
-  padding-top: 2rem;
-  justify-content: space-between;
+  padding: 1rem 3rem;
+  margin: auto;
 
   @media ${(props) => props.theme.breakpoints.md} {
     display: grid;
@@ -19,7 +28,6 @@ export const Container = styled.div`
     grid-template-columns: 160px repeat(4, 1fr);
   }
 `;
-
 export const Div1 = styled.div`
   display: flex;
 

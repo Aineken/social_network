@@ -8,9 +8,9 @@ import Footer from "./components/Footer/Footer.jsx";
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <MainContainer>
         <ToastContainer position="top-center" />
-        <Header />
         <Routes>
           <Route exact path="/" element={<Hero />} />
           {/*<Route path="/register" element={<NewUser />} />*/}

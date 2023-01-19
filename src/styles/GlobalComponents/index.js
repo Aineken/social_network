@@ -4,6 +4,7 @@ export const MainContainer = styled.div`
   width: 100%;
   margin: auto;
   padding: 2rem 1rem;
+  padding-top: 150px;
 `;
 
 const rotate360 = keyframes`

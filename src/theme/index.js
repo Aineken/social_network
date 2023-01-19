@@ -3,14 +3,15 @@ export default {
   fonts: {
     title: "Source Sans Pro, sans-serif",
     main: "Source Sans Pro, sans-serif",
-
   },
   // Colors for layout
   colors: {
     primary: "#0f141a",
     button: "#1d9bf0",
-    buttonText:"#fff",
-    hover:"#8fcdf7",
+    buttonText: "#fff",
+    accent1: "",
+    accent2: "",
+    hover: "#8fcdf7",
     background: "#fff",
   },
   // Breakpoints for responsive design

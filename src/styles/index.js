@@ -1,5 +1,5 @@
-import {createGlobalStyle} from "styled-components";
-import {normalize} from "styled-normalize";
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
 
 const GlobalStyles = createGlobalStyle`
   ${normalize}
@@ -8,6 +8,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  *:focus {
+    outline: none;
+}
+
 
   html {
     font-size: 62.5%;
@@ -36,5 +40,3 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export default GlobalStyles;
-
-

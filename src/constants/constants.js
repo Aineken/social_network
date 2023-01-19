@@ -1,5 +1,6 @@
 export const projects = [
   {
+    id: 1,
     title: "Title",
     text: "Some example of text",
     author: "Jan Kowalski",
@@ -7,6 +8,31 @@ export const projects = [
     image: "/images/mock-photo.jpg",
   },
   {
+    id: 2,
+    title: "Title",
+    text: "Some example of text",
+    author: "Jan Kowalski",
+    stars: 4,
+    image: "/images/mock-photo.jpg",
+  },
+  {
+    id: 3,
+    title: "Title",
+    text: "Some example of text",
+    author: "Jan Kowalski",
+    stars: 4,
+    image: "/images/mock-photo.jpg",
+  },
+  {
+    id: 4,
+    title: "Title",
+    text: "Some example of text",
+    author: "Jan Kowalski",
+    stars: 4,
+    image: "/images/mock-photo.jpg",
+  },
+  {
+    id: 5,
     title: "Title",
     text: "Some example of text",
     author: "Jan Kowalski",
@@ -23,9 +49,9 @@ export const TimeLineData = [
   { year: "2022/Oct", text: "Started my own platform" },
 ];
 
-export const data = [
-  { number: 390, text: "Instagram Followers" },
-  { number: 5, text: "Friends" },
-  { number: 1, text: "Lovely hobby" },
-  { number: 5000, text: "Reason to remember my Name" },
+export const datas = [
+  { id: 1, text: "Design", image: "/images/design.jpg" },
+  { id: 2, text: "Information Technologies", image: "/images/information.jpg" },
+  { id: 3, text: "Data Science", image: "/images/data-science.jpg" },
+  { id: 4, text: "Economy", image: "/images/economy.jpg" },
 ];
