@@ -6,9 +6,7 @@ function Feedback() {
   return (
     <Section>
       <Container>
-        <Div1>
-          <img src={mainSection} alt="" />
-        </Div1>
+        <Div1>{/* <img src={mainSection} alt="" /> */}</Div1>
         <Div2>
           <MainTitle>Text Title</MainTitle>
           <MainText>
