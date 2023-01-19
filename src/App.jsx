@@ -16,8 +16,8 @@ function App() {
           {/*<Route path="/register" element={<NewUser />} />*/}
           {/*<Route path="/edit/:id" element={<EditUser />} />*/}
         </Routes>
-        {/* <Footer/> */}
       </MainContainer>
+      <Footer />
     </BrowserRouter>
   );
 }

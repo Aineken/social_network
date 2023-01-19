@@ -1,22 +1,32 @@
 import styled from "styled-components";
 
-export const Container = styled.section`
-  display: block;
-  width: calc(100vw - 96px);
-  max-width: 1040px;
-  padding: 36px 48px 40px;
-  margin: 1rem auto;
-  box-sizing: content-box;
-  position: relative;
-  overflow: hidden;
+export const Container = styled.footer`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  z-index: 999;
+  background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
+`;
+
+export const FooterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  padding: 1rem 5rem 4rem;
+  margin: auto;
+
+  img {
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+  }
 `;
 
 export const LinkLists = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
-  gap: 50px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 5rem;
+  padding-top: 1rem;
   width: 100%;
   @media ${(props) => props.theme.breakpoints.md} {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -36,15 +46,16 @@ export const ListItems = styled.div`
 `;
 
 export const ListTitle = styled.p`
+  color: ${(props) => props.theme.colors.accent1};
   font-weight: ${(props) => (props.regular ? "regular" : "700")};
-  font-size: 18px;
+  font-size: 22px;
   line-height: 28px;
 `;
 
 export const ListText = styled.a`
   margin-top: 8px;
-  font-size: 16px;
-  color: white;
+  font-size: 20px;
+  color: ${(props) => props.theme.colors.accent1};
   line-height: 26px;
 
   transition: 0.3s ease;
@@ -52,26 +63,6 @@ export const ListText = styled.a`
   left: 0;
 
   &:hover {
-    color: #fff;
     left: 6px;
-  }
-`;
-
-export const BottonLine = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media ${(props) => props.theme.breakpoints.sm} {
-    align-items: center;
-    flex-direction: column;
-    row-gap: 5px;
-  }
-`;
-
-export const LogoContainer = styled.div`
-  display: flex;
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    row-gap: 5px;
   }
 `;

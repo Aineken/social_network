@@ -15,7 +15,7 @@ export const HeaderDiv = styled.div`
   grid-column-gap: 2rem;
   padding: 1rem 3rem;
   margin: auto;
-
+  max-width: 1400px;
   @media ${(props) => props.theme.breakpoints.md} {
     display: grid;
     grid-template-columns: 200px repeat(4, 1fr);

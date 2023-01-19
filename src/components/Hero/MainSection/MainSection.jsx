@@ -22,7 +22,7 @@ function MainSection() {
           <img src={mainSection} alt="" />
         </Div1>
         <Div2>
-          <MainTitle>Text Title</MainTitle>
+          <MainTitle>Find me?</MainTitle>
           <MainText>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.

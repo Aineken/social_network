@@ -9,7 +9,7 @@ export default {
     primary: "#0f141a",
     button: "#1d9bf0",
     buttonText: "#fff",
-    accent1: "",
+    accent1: "#fff",
     accent2: "",
     hover: "#8fcdf7",
     background: "#fff",
