@@ -1,6 +1,6 @@
 import React from "react";
 import Courses from "./Courses/Courses";
-import Feedback from "./Courses/Feedback/Feedback";
+import Feedback from "./Feedback/Feedback";
 import MainSection from "./MainSection/MainSection";
 import Skiils from "./Skills/Skiils";
 

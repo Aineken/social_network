@@ -129,8 +129,10 @@ export const RegisterButton = styled.button`
   border-radius: 50px;
   transition: all 0.3s;
   background-color: transparent;
-  &:hover {
-    transform: scale(1.1);
-    cursor: pointer;
+  :hover {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
   }
 `;
