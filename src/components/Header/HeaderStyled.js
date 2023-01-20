@@ -17,15 +17,13 @@ export const HeaderDiv = styled.div`
   margin: auto;
   max-width: 1400px;
   @media ${(props) => props.theme.breakpoints.md} {
-    display: grid;
-    grid-template-columns: 200px repeat(4, 1fr);
-    grid-template-rows: repeat(2, 60px);
+    display: flex;
+    flex-direction: column;
+
     grid-column-gap: 0.5rem;
-    grid-row-gap: 0.5rem;
+    grid-row-gap: 30px;
   }
   @media ${(props) => props.theme.breakpoints.sm} {
-    display: grid;
-    grid-template-columns: 160px repeat(4, 1fr);
   }
 `;
 export const Div1 = styled.div`
