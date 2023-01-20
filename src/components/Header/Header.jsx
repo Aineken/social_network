@@ -43,7 +43,7 @@ function Header() {
           <Link to="/">
             <NavLink main>Login</NavLink>
           </Link>
-          <Link to="/">
+          <Link to="/register">
             <RegisterButton>Register</RegisterButton>
           </Link>
         </Div3>

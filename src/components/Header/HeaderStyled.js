@@ -65,7 +65,7 @@ export const Div3 = styled.div`
 // Navigation Links
 export const NavLink = styled.div`
   font-size: 2.5rem;
-  font-weight: ${(props) => (props.main ? "700" : null)};
+  font-weight: ${(props) => (props.main ? "600" : null)};
   line-height: 32px;
   display: flex;
   width: 100%;
@@ -111,7 +111,7 @@ export const CategoryButton = styled.button`
   cursor: pointer;
   color: #fff;
   margin-right: 2rem;
-  font-size: 2rem;
+  font-size: 2.2rem;
 `;
 
 export const RegisterButton = styled.button`

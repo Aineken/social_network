@@ -64,10 +64,16 @@ export const CardButtons = styled.div`
 `;
 export const CardButton = styled.button`
   color: ${(props) => props.theme.colors.buttonText};
-  font-size: 1.5rem;
+  font-size: 18px;
   padding: 1rem 3rem;
   background: #f53855;
   transition: 0.5s ease;
   border-radius: 1.5rem;
   border: 0;
+  :hover {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+  }
 `;

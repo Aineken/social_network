@@ -3,6 +3,7 @@ import { normalize } from "styled-normalize";
 
 const GlobalStyles = createGlobalStyle`
   ${normalize}
+ 
   * {
     box-sizing: border-box;
     margin: 0;
@@ -11,6 +12,8 @@ const GlobalStyles = createGlobalStyle`
   *:focus {
     outline: none;
 }
+
+
 
 
   html {
