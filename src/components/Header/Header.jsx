@@ -40,7 +40,7 @@ function Header() {
           <Link to="/">
             <NavLink>Teach</NavLink>
           </Link>
-          <Link to="/">
+          <Link to="/login">
             <NavLink main>Login</NavLink>
           </Link>
           <Link to="/register">

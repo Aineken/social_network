@@ -5,6 +5,7 @@ import Header from "./components/Header/Header.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Register from "./components/Pages/Register/Register.jsx";
+import Login from "./components/Pages/Login/Login.jsx";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Hero />} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/login" element={<Login />} />
         {/* <Route path="/reply" element={<Reply />} /> */}
       </Routes>
 

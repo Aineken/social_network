@@ -61,7 +61,7 @@ const Register = () => {
   }, []);
 
   return (
-    <Container light>
+    <Container>
       <Heading1>{success ? `Welcome, ${name}` : "Create an Account"}</Heading1>
 
       <FormContainer hidden={success} animateIn={animate}>
