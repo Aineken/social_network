@@ -1,13 +1,11 @@
 import React from "react";
-import { MainContainer } from "./styles/GlobalComponents/index.js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Header from "./components/Header/Header.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import Login from "./components/Pages/Login/Login.jsx";
 import Register from "./components/Pages/Register/Register.jsx";
-import Reply from "./components/Pages/Reply/Reply.jsx";
+
 function App() {
   return (
     <BrowserRouter>

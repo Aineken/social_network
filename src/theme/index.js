@@ -14,6 +14,7 @@ export default {
     hover: "#8fcdf7",
     background: "#fff",
   },
+
   // Breakpoints for responsive design
   breakpoints: {
     sm: "screen and (max-width: 580px)",
