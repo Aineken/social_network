@@ -7,6 +7,10 @@ export const Container = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   margin-bottom: 50px;
+  @media ${(props) => props.theme.breakpoints.md} {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 export const Div1 = styled.div`
@@ -28,6 +32,12 @@ export const Div2 = styled.div`
   align-items: center;
   padding: 100px 50px;
   width: 100%;
+  @media ${(props) => props.theme.breakpoints.md} {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    row-gap: 2rem;
+  }
 `;
 
 export const MainTitle = styled.h4`

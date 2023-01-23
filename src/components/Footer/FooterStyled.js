@@ -13,9 +13,10 @@ export const FooterDiv = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 1400px;
-  padding: 1rem 5rem 4rem;
+  /* padding: 1rem 0 4rem; */
   margin: auto;
-
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
   img {
     width: 200px;
     height: 100px;
@@ -26,10 +27,13 @@ export const FooterDiv = styled.div`
 export const LinkLists = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
-  padding-top: 1rem;
+
   width: 100%;
+
   @media ${(props) => props.theme.breakpoints.md} {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+    display: flex;
+    flex-direction: column;
     gap: 10px;
   }
 `;
@@ -40,7 +44,7 @@ export const ListItems = styled.div`
   max-width: 200px;
   width: 100%;
   margin-bottom: 5rem;
-  @media ${(props) => props.theme.breakpoints.sm} {
+  @media ${(props) => props.theme.breakpoints.md} {
     margin-bottom: 3rem;
   }
 `;

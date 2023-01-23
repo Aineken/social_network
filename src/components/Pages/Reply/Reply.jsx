@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
-import { Container, FormContainer, Heading1 } from "./ReplyStyled";
-
 import {
+  Container,
+  FormContainer,
+  Heading1,
   Button,
   Field,
   Form,

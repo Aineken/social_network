@@ -19,7 +19,7 @@ function Header() {
       <HeaderDiv>
         <Div1>
           <Link to="/">
-            <NavLink>
+            <NavLink logo>
               <img src={logo} alt="Logo" />
               <span>University</span>
             </NavLink>
@@ -29,12 +29,11 @@ function Header() {
           <Link to="/">
             <CategoryButton>Category</CategoryButton>
           </Link>
-          <Link to="/">
-            <SearchWrapper>
-              <SearchIcon sx={{ fontSize: 30, color: "black" }} />
-              <SearchButton placeholder="Search" />
-            </SearchWrapper>
-          </Link>
+
+          <SearchWrapper>
+            <SearchIcon sx={{ fontSize: 30, color: "black" }} />
+            <SearchButton placeholder="Search" />
+          </SearchWrapper>
         </Div2>
         <Div3>
           <Link to="/reply">

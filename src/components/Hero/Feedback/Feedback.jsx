@@ -30,7 +30,7 @@ function Feedback() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </MainText>
-          <Link to="/">
+          <Link to="/reply">
             <CategoryButton>Contant us</CategoryButton>
           </Link>
         </Div2>

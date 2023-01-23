@@ -141,6 +141,7 @@ export const SearchWrapper = styled.div`
   justify-content: center;
   border: 1px solid transparent;
   transition: all 0.3s;
+  margin-left: 2rem;
   :hover {
     transform: scale(0.98);
     /* Scaling button to 0.98 to its original size */

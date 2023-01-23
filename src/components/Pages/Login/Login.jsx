@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Container, FormContainer, Heading1 } from "./LoginStyled";
 
 import {
+  Container,
+  FormContainer,
+  Heading1,
   Button,
   Field,
   Form,

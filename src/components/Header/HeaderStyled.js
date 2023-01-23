@@ -7,21 +7,21 @@ export const Container = styled.header`
   position: fixed;
   background-color: #fff;
   z-index: 999;
-  border-bottom: 2px solid #f53855;
+  border-bottom: 1px solid #e0e0e0;
 `;
 
 export const HeaderDiv = styled.div`
   display: flex;
-  grid-column-gap: 2rem;
-  padding: 1rem 3rem;
+  justify-content: space-between;
+  padding: 1rem;
   margin: auto;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1500px;
   @media ${(props) => props.theme.breakpoints.md} {
     display: flex;
     flex-direction: column;
 
-    grid-column-gap: 0.5rem;
-    grid-row-gap: 30px;
+    row-gap: 10px;
   }
   @media ${(props) => props.theme.breakpoints.sm} {
   }
@@ -33,6 +33,7 @@ export const Div1 = styled.div`
   align-items: center;
   margin-right: 2rem;
   @media ${(props) => props.theme.breakpoints.md} {
+    justify-content: center;
   }
   @media ${(props) => props.theme.breakpoints.sm} {
   }
@@ -62,6 +63,7 @@ export const Div3 = styled.div`
 
 // Navigation Links
 export const NavLink = styled.div`
+  position: relative;
   font-size: 2.5rem;
   font-weight: ${(props) => (props.main ? "600" : null)};
   line-height: 32px;
@@ -71,9 +73,11 @@ export const NavLink = styled.div`
   justify-content: center;
   align-items: center;
   color: ${(props) => props.theme.colors.primary};
-  transition: 0.5s ease;
+  transition: 0.3s ease;
+  left: 0;
   &:hover {
-    transform: scale(1.1);
+    transform: ${(props) => !props.logo && "scale(1.1)"};
+    left: ${(props) => props.logo && "6px"};
     cursor: pointer;
   }
   @media ${(props) => props.theme.breakpoints.sm} {
@@ -108,8 +112,12 @@ export const CategoryButton = styled.button`
   transition: all 0.3s;
   cursor: pointer;
   color: #fff;
-  margin-right: 2rem;
+
   font-size: 2.2rem;
+  @media ${(props) => props.theme.breakpoints.sm} {
+    padding: 2rem;
+    width: 100%;
+  }
 `;
 
 export const RegisterButton = styled.button`
