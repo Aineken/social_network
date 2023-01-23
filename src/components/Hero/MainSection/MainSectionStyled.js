@@ -11,7 +11,7 @@ export const Container = styled.div`
   margin-bottom: 50px;
   @media ${(props) => props.theme.breakpoints.md} {
     flex-direction: column;
-    margin-top: 300px;
+    margin-top: 240px;
     height: 100%;
   }
 `;

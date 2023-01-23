@@ -20,32 +20,26 @@ export const HeaderDiv = styled.div`
   @media ${(props) => props.theme.breakpoints.md} {
     display: flex;
     flex-direction: column;
-
     row-gap: 10px;
-  }
-  @media ${(props) => props.theme.breakpoints.sm} {
   }
 `;
 export const Div1 = styled.div`
   display: flex;
-
   flex-direction: row;
   align-items: center;
   margin-right: 2rem;
   @media ${(props) => props.theme.breakpoints.md} {
     justify-content: center;
-  }
-  @media ${(props) => props.theme.breakpoints.sm} {
+    margin-right: 0;
   }
 `;
 
 export const Div2 = styled.div`
   display: flex;
-
   justify-content: space-around;
+  gap: 10px;
   align-items: center;
-  @media ${(props) => props.theme.breakpoints.lg} {
-  }
+
   @media ${(props) => props.theme.breakpoints.md} {
   }
 `;
@@ -88,6 +82,10 @@ export const NavLink = styled.div`
     width: 200px;
     height: 100px;
     object-fit: cover;
+    @media ${(props) => props.theme.breakpoints.sm} {
+      width: 150px;
+      height: 75px;
+    }
   }
   span {
     margin-left: 1rem;
@@ -112,11 +110,11 @@ export const CategoryButton = styled.button`
   transition: all 0.3s;
   cursor: pointer;
   color: #fff;
-
   font-size: 2.2rem;
-  @media ${(props) => props.theme.breakpoints.sm} {
+  @media ${(props) => props.theme.breakpoints.md} {
     padding: 2rem;
     width: 100%;
+    height: 50px;
   }
 `;
 
@@ -140,5 +138,8 @@ export const RegisterButton = styled.button`
     /* Scaling button to 0.98 to its original size */
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
     /* Lowering the shadow */
+  }
+  @media ${(props) => props.theme.breakpoints.md} {
+    height: 50px;
   }
 `;

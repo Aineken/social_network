@@ -16,7 +16,7 @@ export const Container = styled(CenteredContainer)`
   flex-direction: column;
   justify-content: space-evenly;
   @media ${(props) => props.theme.breakpoints.md} {
-    padding-top: 250px;
+    padding-top: 210px;
   }
 `;
 
