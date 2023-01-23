@@ -6,6 +6,7 @@ import Hero from "./components/Hero/Hero.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Register from "./components/Pages/Register/Register.jsx";
 import Login from "./components/Pages/Login/Login.jsx";
+import Reply from "./components/Pages/Reply/Reply.jsx";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route exact path="/" element={<Hero />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/reply" element={<Reply />} /> */}
+        <Route path="/reply" element={<Reply />} />
       </Routes>
 
       <Footer />

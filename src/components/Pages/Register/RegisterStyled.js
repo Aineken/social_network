@@ -43,10 +43,3 @@ export const Heading1 = styled.h1`
   text-align: center;
   padding: 1rem;
 `;
-
-export const Heading2 = styled.h2`
-  font-weight: bold;
-  text-align: center;
-  font-size: 20px;
-  margin-block-start: 0;
-`;

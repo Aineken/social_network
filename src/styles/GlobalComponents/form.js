@@ -35,7 +35,7 @@ export const Input = styled.input`
   background-color: #97c6c126;
   border: 0;
   margin-top: 12px;
-  padding: 15px 10px 15px 42px;
+  padding: 15px;
   box-sizing: border-box;
   border-radius: 10px;
 
@@ -56,9 +56,4 @@ export const List = styled.ul`
   padding-inline-start: 0;
   font-size: 14px;
   color: #2b3046ab;
-`;
-export const Icon = styled.i`
-  position: absolute;
-  top: 43px;
-  left: 9px;
 `;

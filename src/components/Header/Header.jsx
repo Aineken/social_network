@@ -37,8 +37,8 @@ function Header() {
           </Link>
         </Div2>
         <Div3>
-          <Link to="/">
-            <NavLink>Teach</NavLink>
+          <Link to="/reply">
+            <NavLink>Application</NavLink>
           </Link>
           <Link to="/login">
             <NavLink main>Login</NavLink>

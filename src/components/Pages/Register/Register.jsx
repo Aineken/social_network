@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import User from "@mui/icons-material/Person";
-import Email from "@mui/icons-material/Mail";
-import Password from "@mui/icons-material/LockOpen";
-
-import { Container, FormContainer, Heading1, Heading2 } from "./RegisterStyled";
+import { Container, FormContainer, Heading1 } from "./RegisterStyled";
 import {
   Button,
   Field,
   Form,
-  Icon,
   Input,
   Label,
   List,
 } from "../../../styles/GlobalComponents/form";
-
-function encode(data) {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-}
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -27,50 +16,21 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState();
-  const [animate, setAnimate] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
-
-    const form = e.target;
-    //send form data to netlify function
-    fetch("/.netlify/functions/registration", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        name,
-        email,
-        password,
-      }),
-    })
-      .then((response) => {
-        console.log("response", response);
-      })
-      .then(() => {
-        setSuccess(true);
-      })
-      .catch((error) => alert(error))
-      .finally(() => setSubmitting(false));
+    setSuccess(true);
   };
-
-  useEffect(() => {
-    setAnimate(true);
-  }, []);
 
   return (
     <Container>
       <Heading1>{success ? `Welcome, ${name}` : "Create an Account"}</Heading1>
 
-      <FormContainer hidden={success} animateIn={animate}>
-        <Heading2>Register</Heading2>
+      <FormContainer hidden={success}>
         <Form method="POST" onSubmit={handleSubmit}>
           <Field>
-            <Icon>
-              <User sx={{ fontSize: "26px" }} />
-            </Icon>
             <Label htmlFor="name" label="name">
               Name
             </Label>
@@ -85,9 +45,6 @@ const Register = () => {
             />
           </Field>
           <Field>
-            <Icon>
-              <Email sx={{ fontSize: "26px" }} />
-            </Icon>
             <Label htmlFor="email" label="email">
               Email
             </Label>
@@ -109,9 +66,6 @@ const Register = () => {
             />
           </Field>
           <Field>
-            <Icon>
-              <Password sx={{ fontSize: "26px" }} />
-            </Icon>
             <Label htmlFor="password">Password</Label>
 
             <Input
@@ -136,9 +90,6 @@ const Register = () => {
           </Field>
 
           <Field>
-            <Icon>
-              <Password sx={{ fontSize: "26px" }} />
-            </Icon>
             <Label htmlFor="confirmPassword">Confirm password</Label>
             <Input
               name="confirmPassword"
