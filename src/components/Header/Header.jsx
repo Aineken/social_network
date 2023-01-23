@@ -12,6 +12,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import logo from "../../utils/img.png";
 import { Link } from "react-router-dom";
 import { SearchButton, SearchWrapper } from "../../styles/GlobalComponents";
+import Navbar from "./Search/Navbar";
 
 function Header() {
   return (
@@ -26,10 +27,7 @@ function Header() {
           </Link>
         </Div1>
         <Div2>
-          <Link to="/">
-            <CategoryButton>Category</CategoryButton>
-          </Link>
-
+          <Navbar />
           <SearchWrapper>
             <SearchIcon sx={{ fontSize: 30, color: "black" }} />
             <SearchButton placeholder="Search" />

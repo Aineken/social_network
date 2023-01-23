@@ -24,6 +24,9 @@ function Courses() {
           return <CardContainer key={index} {...project} />;
         })}
       </MainDiv>
+      <SectionText endText>
+        Watch all courses <ArrowForwardIosIcon sx={{ color: "#f53855" }} />
+      </SectionText>
     </Section>
   );
 }

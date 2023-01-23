@@ -41,6 +41,73 @@ export const projects = [
   },
 ];
 
+export const menuItems = [
+  {
+    title: "Category",
+    submenu: [
+      {
+        title: "Web design",
+        submenu: [
+          {
+            title: "Frontend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+        ],
+      },
+      {
+        title: "Web development",
+        submenu: [
+          {
+            title: "Frontend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+        ],
+      },
+      {
+        title: "SEO",
+        submenu: [
+          {
+            title: "Frontend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+          {
+            title: "Backend",
+          },
+        ],
+      },
+    ],
+  },
+];
 export const TimeLineData = [
   { year: "2020/Dec", text: "Started my journey" },
   { year: "2021/Mar", text: "Worked as a freelance developer" },
