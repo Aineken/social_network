@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import Dropdown from "./Dropdown";
+import { menuItems } from "./styles.module.css";
 
 const MenuItems = ({ items, depthLevel }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -31,7 +32,7 @@ const MenuItems = ({ items, depthLevel }) => {
 
   return (
     <li
-      className="menu-items"
+      className={menuItems}
       ref={ref}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

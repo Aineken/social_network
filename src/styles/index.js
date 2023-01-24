@@ -36,66 +36,6 @@ const GlobalStyles = createGlobalStyle`
   li {
     list-style: none;
   }
-
-
-
-.menu-items {
-  position: relative;
-  font-size: 2.2rem;
-  border-radius: 10px;
- 
-}
-
-.menu-items a {
-  display: block;
-  font-size: inherit;
-  color: inherit;
-  text-decoration: none;
-}
-
-.menu-items button {
-  color: inherit;
-  font-size: inherit;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  width: 100%;
-}
-
-.menu-items a,
-.menu-items button {
-  text-align: left;
-  padding: 0.7rem 1rem;
-}
-
-.menu-items a:hover,
-.menu-items button:hover {
-  background-color: #fff;
-}
-
-
-.dropdown {
-        position: absolute;
-        width: 300px; 
-        top: 0;  
-        z-index: 9999;
-        padding: 0.5rem 0;
-        list-style: none;
-        background-color: #f2f2f2;
-        color: #000;
-        display: none;
-        }
-
-.dropdown.show {
-        display: block;
-    }
-
-.dropdown.dropdown-submenu {
-        position: absolute;
-        left: 100%;
-        top:0px;
-    }
-
 `;
 
 export default GlobalStyles;
