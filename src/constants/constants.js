@@ -44,68 +44,66 @@ export const projects = [
 export const menuItems = [
   {
     title: "Category",
+    main:true,
     submenu: [
       {
-        title: "Web design",
+        title: "Cities",
         submenu: [
           {
-            title: "Frontend",
+            title: "Astana",
           },
           {
-            title: "Backend",
+            title: "Almaty",
           },
           {
-            title: "Backend",
+            title: "kokshetau",
           },
           {
-            title: "Backend",
-          },
-          {
-            title: "Backend",
+            title: "Karaganda",
           },
         ],
       },
       {
-        title: "Web development",
+        title: "Countries",
         submenu: [
           {
-            title: "Frontend",
+            title: "Kazakhstan",
           },
           {
-            title: "Backend",
+            title: "Russia",
           },
           {
-            title: "Backend",
+            title: "China",
           },
           {
-            title: "Backend",
+            title: "Germany",
           },
           {
-            title: "Backend",
+            title: "USA",
           },
         ],
       },
       {
-        title: "SEO",
+        title: "Continents",
         submenu: [
           {
-            title: "Frontend",
+            title: "Asia",
           },
           {
-            title: "Backend",
+            title: "Europe",
           },
           {
-            title: "Backend",
+            title: "Africa",
           },
           {
-            title: "Backend",
+            title: "Middle East",
           },
           {
-            title: "Backend",
+            title: "North America",
           },
         ],
       },
-      {title: "SEO"},      {title: "SEO"}
+      {title: "Plans"},      {title: "Recruitment"}
 
     ],
   },

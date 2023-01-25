@@ -9,8 +9,8 @@ export const Container = styled.div`
   background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
   margin-bottom: 50px;
   @media ${(props) => props.theme.breakpoints.md} {
+    margin-top:100px;
     flex-direction: column;
-    margin-top: 240px;
     height: 100%;
   }
 `;

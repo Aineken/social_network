@@ -1,14 +1,14 @@
 import React from "react";
-import MenuItems from "./MenuItems";
-import styles from "./styles.module.css";
+import MenuItems from "./MenuItems.jsx";
+
 
 const Dropdown = ({ submenus, dropdown, depthLevel }) => {
   depthLevel = depthLevel + 1;
-  const dropdownClass = depthLevel > 1 ? styles.dropdownSubmenu : "";
+  const dropdownClass = depthLevel > 1 ? "dropdownSubmenu" : "";
   return (
     <ul
-      className={`${styles.dropdown} ${dropdownClass} ${
-        dropdown ? styles.show : ""
+      className={`dropdown ${dropdownClass} ${
+        dropdown? "show" : null
       }`}
     >
       {submenus.map((submenu, index) => (

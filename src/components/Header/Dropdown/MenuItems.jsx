@@ -1,64 +1,69 @@
-import { useState, useEffect, useRef } from "react";
+import {useState, useEffect, useRef} from "react";
 
 import Dropdown from "./Dropdown";
-import { menuItems } from "./styles.module.css";
 import {Link} from "react-router-dom";
+import {ItemButton, Items} from "./NavbarStyled.js";
 
-const MenuItems = ({ items, depthLevel }) => {
-  const [dropdown, setDropdown] = useState(false);
+const MenuItems = ({items, depthLevel}) => {
+    const [dropdown, setDropdown] = useState(false);
 
-  let ref = useRef();
+    let ref = useRef();
 
-  useEffect(() => {
-    const handler = (event) => {
-      if (dropdown && ref.current && !ref.current.contains(event.target)) {
-        setDropdown(false);
-      }
+    useEffect(() => {
+        const handler = (event) => {
+            if (dropdown && ref.current && !ref.current.contains(event.target)) {
+                setDropdown(false);
+            }
+        };
+        document.addEventListener("mousedown", handler);
+        document.addEventListener("touchstart", handler);
+        return () => {
+            document.removeEventListener("mousedown", handler);
+            document.removeEventListener("touchstart", handler);
+        };
+    }, [dropdown]);
+
+    const onMouseEnter = () => {
+        window.innerWidth > 960 && setDropdown(true);
     };
-    document.addEventListener("mousedown", handler);
-    document.addEventListener("touchstart", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-      document.removeEventListener("touchstart", handler);
+
+    const onMouseLeave = () => {
+        window.innerWidth > 960 && setDropdown(false);
     };
-  }, [dropdown]);
 
-  const onMouseEnter = () => {
-    window.innerWidth > 960 && setDropdown(true);
-  };
+    return (
+        <Items
+            ref={ref}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
 
-  const onMouseLeave = () => {
-    window.innerWidth > 960 && setDropdown(false);
-  };
-
-  return (
-    <li
-      className={menuItems}
-      ref={ref}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      {items.submenu ? (
-        <>
-          <button
-            type="button"
-            aria-expanded={dropdown ? "true" : "false"}
-            onClick={() => setDropdown((prev) => !prev)}
-          >
-            {items.title}
-          </button>
-
-          <Dropdown
-            depthLevel={depthLevel}
-            submenus={items.submenu}
-            dropdown={dropdown}
-          />
-        </>
-      ) : (
-        <Link to={`/category/${items.title}`}>{items.title}</Link>
-      )}
-    </li>
-  );
+        >
+            {items.submenu ? (
+                <>
+                    <ItemButton
+                        main={items.main}
+                        type="button"
+                        aria-expanded={dropdown ? "true" : "false"}
+                        onClick={() => setDropdown((prev) => !prev)}
+                    >
+                        <span> {items.title}</span>
+                        <span>{!items.main&&"→"}</span>
+                    </ItemButton>
+                    <Dropdown
+                        depthLevel={depthLevel}
+                        submenus={items.submenu}
+                        dropdown={dropdown}
+                    />
+                </>
+            ) : (
+                <Link to={`/category/${items.title}`}>
+                    <ItemButton>
+                        {items.title}
+                    </ItemButton>
+                </Link>
+            )}
+        </Items>
+    );
 };
 
 export default MenuItems;
