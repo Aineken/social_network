@@ -34,7 +34,6 @@ const Reply = () => {
           ? `Thank you for your application ${name}`
           : "Send an Application"}
       </Heading1>
-
       <FormContainer hidden={success}>
         <Form method="POST" onSubmit={handleSubmit}>
           <Field>
@@ -49,7 +48,6 @@ const Reply = () => {
               required
             />
           </Field>
-
           <Field>
             <Label htmlFor="password">Name</Label>
             <Input

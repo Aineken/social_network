@@ -11,7 +11,6 @@ export const Container = styled(CenteredContainer)`
   width: 100%;
   min-height: 100%;
   margin: auto auto 50px;
-  padding-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -39,12 +38,11 @@ export const FormContainer = styled(CenteredContainer)`
 `;
 
 export const Heading1 = styled.h1`
+  margin: 2rem;
   font-size: 62px;
   letter-spacing: 0.5px;
   color: ${(props) => props.theme.colors.primary};
-  margin-bottom: 6px;
   text-align: center;
-  padding: 1rem;
   @media ${(props) => props.theme.breakpoints.md} {
     font-size: 32px;
   }

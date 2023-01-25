@@ -7,6 +7,7 @@ import {
   SectionTitle,
 } from "../../../styles/GlobalComponents";
 import { Box, Card, CardText, CardTitle } from "./SkiilsStyled";
+import {Link} from "react-router-dom";
 
 function Skiils() {
   return (
@@ -17,9 +18,12 @@ function Skiils() {
       <Box>
         {datas.map((data) => {
           return (
+              <Link to={`/skills/${data.id}`} >
+
             <Card image={data.image} key={data.id}>
               <CardTitle>{data.text}</CardTitle>
             </Card>
+              </Link>
           );
         })}
       </Box>
