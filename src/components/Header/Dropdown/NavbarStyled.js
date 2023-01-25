@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const NavbarMenus = styled.ul`
   display: flex;
-  align-items: center;
   justify-content: center;
   background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
   border-radius: 10px;
   border: 0;
+  width: 200px;
   height: 60px;
-  width: 210px;
   position: relative;
   transition: all 0.3s;
   cursor: pointer;

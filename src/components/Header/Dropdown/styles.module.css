@@ -1,8 +1,10 @@
 .menuItems {
-  position: relative;
-  font-size: 2.2rem;
-  border-radius: 10px;
+  display: flex;
+  margin: auto;
+  height: 60px;
+  display: inherit;
 }
+
 
 .menuItems a {
   display: block;
@@ -28,15 +30,15 @@
 
 .menuItems a:hover,
 .menuItems button:hover {
-  background-color: #fff;
+left: 7px;
 }
 
 .dropdown {
   position: absolute;
   width: 300px;
-  top: 0;
+  top: 60px;
   z-index: 9999;
-  padding: 0.5rem 0;
+  padding: .5rem 0;
   list-style: none;
   background-color: #f2f2f2;
   color: #000;
@@ -49,6 +51,7 @@
 
 .dropdown.dropdownSubmenu {
   position: absolute;
+  width: 100%;
   left: 100%;
   top: 0px;
 }

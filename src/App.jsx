@@ -26,6 +26,8 @@ function App() {
                         <Route path="/reply" element={<Reply/>}/>
                         <Route path="/skills/:id" element={<SkillPage/>}/>
                         <Route path="/search/:term" element={<SearchPage/>}/>
+                        <Route path="/category/:term" element={<SearchPage/>}/>
+
                     </Routes>
                 </MainContainer>
             </ScrollToTop>

@@ -105,6 +105,8 @@ export const menuItems = [
           },
         ],
       },
+      {title: "SEO"},      {title: "SEO"}
+
     ],
   },
 ];
