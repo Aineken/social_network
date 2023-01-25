@@ -6,11 +6,11 @@ import {
   Heading1,
   Button,
   Field,
-  Form,
+  FormStyled,
   Input,
   Label,
   List,
-} from "../../../styles/GlobalComponents/form";
+} from "../FormStyled.js";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -31,7 +31,7 @@ const Register = () => {
       <Heading1>{success ? `Welcome, ${name}` : "Create an Account"}</Heading1>
 
       <FormContainer hidden={success}>
-        <Form method="POST" onSubmit={handleSubmit}>
+        <FormStyled method="POST" onSubmit={handleSubmit}>
           <Field>
             <Label htmlFor="name" label="name">
               Name
@@ -125,7 +125,7 @@ const Register = () => {
           <Button type="submit" disabled={submitting}>
             Submit
           </Button>
-        </Form>
+        </FormStyled>
       </FormContainer>
     </Container>
   );

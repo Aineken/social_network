@@ -21,8 +21,8 @@ const SkillPage = () => {
 
 
     <MainDiv>
-        {projects.map((project, index) => {
-            return <CardContainer key={index} {...project} />;
+        {projects.map((project) => {
+            return <CardContainer key={project.id} {...project} />;
         })}
     </MainDiv>
 

@@ -6,10 +6,10 @@ import {
   Heading1,
   Button,
   Field,
-  Form,
+  FormStyled,
   Input,
   Label,
-} from "../../../styles/GlobalComponents/form";
+} from "../FormStyled.js";
 
 const Reply = () => {
   const [name, setName] = useState("");
@@ -35,7 +35,7 @@ const Reply = () => {
           : "Send an Application"}
       </Heading1>
       <FormContainer hidden={success}>
-        <Form method="POST" onSubmit={handleSubmit}>
+        <FormStyled method="POST" onSubmit={handleSubmit}>
           <Field>
             <Label htmlFor="password">Surname</Label>
             <Input
@@ -101,7 +101,7 @@ const Reply = () => {
           <Button type="submit" disabled={submitting}>
             Submit
           </Button>
-        </Form>
+        </FormStyled>
       </FormContainer>
     </Container>
   );

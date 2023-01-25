@@ -8,11 +8,9 @@ import {
 } from "./MainSectionStyled";
 import mainSection from "../../../utils/mainSection.jpg";
 import {
-  SearchButton,
-  SearchWrapper,
   Section,
 } from "../../../styles/GlobalComponents";
-import SearchIcon from "@mui/icons-material/Search";
+import Search from "../../../styles/GlobalComponents/Search/Search.jsx";
 
 function MainSection() {
   return (
@@ -27,10 +25,7 @@ function MainSection() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </MainText>
-          <SearchWrapper>
-            <SearchIcon sx={{ fontSize: 30, color: "black" }} />
-            <SearchButton placeholder="Search" />
-          </SearchWrapper>
+          <Search/>
         </Div2>
       </Container>
     </Section>

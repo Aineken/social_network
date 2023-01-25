@@ -93,7 +93,7 @@ export const Input = styled.input`
   }
 `;
 
-export const Form = styled.form`
+export const FormStyled = styled.form`
   width: 100%;
   margin-top: 12px;
 `;

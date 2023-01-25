@@ -6,10 +6,10 @@ import {
   Heading1,
   Button,
   Field,
-  Form,
+  FormStyled,
   Input,
   Label,
-} from "../../../styles/GlobalComponents/form";
+} from "../FormStyled.js";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ function Login() {
       <Heading1>{success ? `Welcome, ${email}` : "Login"}</Heading1>
 
       <FormContainer hidden={success}>
-        <Form method="POST" onSubmit={handleSubmit}>
+        <FormStyled method="POST" onSubmit={handleSubmit}>
           <Field>
             <Label htmlFor="email" label="email">
               Email
@@ -59,7 +59,7 @@ function Login() {
           <Button type="submit" disabled={submitting}>
             Submit
           </Button>
-        </Form>
+        </FormStyled>
       </FormContainer>
     </Container>
   );
