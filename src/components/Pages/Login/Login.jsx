@@ -9,7 +9,7 @@ import {
   FormStyled,
   Input,
   Label,
-} from "../FormStyled.js";
+} from "./FormStyled.js";
 
 function Login() {
   const [email, setEmail] = useState("");

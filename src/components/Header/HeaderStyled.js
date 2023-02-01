@@ -16,7 +16,7 @@ export const HeaderDiv = styled.div`
   padding: 1rem;
   margin: auto;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1400px;
   @media ${(props) => props.theme.breakpoints.md} {
     display: flex;
     flex-direction: column;
@@ -32,6 +32,8 @@ export const Div1 = styled.div`
     justify-content: center;
     margin-right: 0;
   }
+  padding: 1rem;
+  
 `;
 
 export const Div2 = styled.div`
@@ -39,21 +41,14 @@ export const Div2 = styled.div`
   justify-content: space-around;
   gap: 10px;
   align-items: center;
+  padding: 1rem;
+  
 
   @media ${(props) => props.theme.breakpoints.md} {
   }
 `;
-export const Div3 = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  @media ${(props) => props.theme.breakpoints.md} {
-    justify-content: space-between;
-    align-items: center;
-  }
-`;
 
-// Social Icons
+
 
 // Navigation Links
 export const NavLink = styled.div`
@@ -63,7 +58,6 @@ export const NavLink = styled.div`
   line-height: 32px;
   display: flex;
   width: 100%;
-  padding: 1rem;
   justify-content: center;
   align-items: center;
   color: ${(props) => props.theme.colors.primary};
@@ -79,8 +73,7 @@ export const NavLink = styled.div`
   }
 
   img {
-    width: 200px;
-    height: 100px;
+    height: 70px;
     object-fit: cover;
     @media ${(props) => props.theme.breakpoints.sm} {
       width: 150px;
@@ -88,37 +81,14 @@ export const NavLink = styled.div`
     }
   }
   span {
-    margin-left: 1rem;
-    font-size: 2.5rem;
-    font-weight: 500;
-  }
-  * {
-    font-size: 20px;
+    margin-left: 2rem;
+    font-size: 26px;
   }
 `;
 
-export const CategoryButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
-  border-radius: 10px;
-  border: 0;
-  height: 60px;
-  width: 210px;
-  position: relative;
-  transition: all 0.3s;
-  cursor: pointer;
-  color: #fff;
-  font-size: 2.2rem;
-  @media ${(props) => props.theme.breakpoints.md} {
-    padding: 2rem;
-    width: 100%;
-    height: 50px;
-  }
-`;
 
-export const RegisterButton = styled.button`
+
+export const LoginButton = styled.button`
   font-weight: 600;
   margin-left: 2rem;
   font-size: 2.5rem;

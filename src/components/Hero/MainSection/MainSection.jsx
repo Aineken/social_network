@@ -10,7 +10,6 @@ import mainSection from "../../../utils/mainSection.jpg";
 import {
   Section,
 } from "../../../styles/GlobalComponents";
-import Search from "../../../styles/GlobalComponents/Search/Search.jsx";
 
 function MainSection() {
   return (
@@ -25,7 +24,6 @@ function MainSection() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </MainText>
-          <Search/>
         </Div2>
       </Container>
     </Section>

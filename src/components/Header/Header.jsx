@@ -2,15 +2,12 @@ import {
     Container,
     Div1,
     Div2,
-    Div3,
     HeaderDiv,
+    LoginButton,
     NavLink,
-    RegisterButton,
 } from "./HeaderStyled";
-import logo from "../../utils/img.png";
+import logo from "../../utils/andrzul_logo.svg";
 import {Link} from "react-router-dom";
-import Navbar from "./Dropdown/Navbar";
-import Search from "../../styles/GlobalComponents/Search/Search.jsx";
 
 function Header() {
 
@@ -21,25 +18,17 @@ function Header() {
                     <Link to="/">
                         <NavLink logo>
                             <img src={logo} alt="Logo"/>
-                            <span>University</span>
+                            <span>Social Network</span>
                         </NavLink>
                     </Link>
                 </Div1>
                 <Div2>
-                    <Navbar/>
-                    <Search/>
-                </Div2>
-                <Div3>
-                    <Link to="/reply">
-                        <NavLink>Application</NavLink>
-                    </Link>
+
                     <Link to="/login">
-                        <NavLink main>Login</NavLink>
+                        <LoginButton>Login</LoginButton>
                     </Link>
-                    <Link to="/register">
-                        <RegisterButton>Register</RegisterButton>
-                    </Link>
-                </Div3>
+
+                </Div2>
             </HeaderDiv>
         </Container>
     );
