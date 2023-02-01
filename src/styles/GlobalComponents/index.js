@@ -5,6 +5,8 @@ export const MainContainer = styled.div`
   margin: auto;
   padding: 2rem 1rem;
   padding-top: 150px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
 `;
 
 const rotate360 = keyframes`
@@ -123,13 +125,7 @@ export const SectionDivider = styled.div`
   }
 `;
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #678983;
-  border-radius: 5px;
-  width: 100%;
-`;
+
 
 
 

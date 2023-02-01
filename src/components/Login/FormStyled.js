@@ -19,14 +19,13 @@ export const Container = styled(CenteredContainer)`
   }
 `;
 
-export const FormContainer = styled(CenteredContainer)`
-  display: flex;
+export const FormContainer = styled(CenteredContainer)`display: flex;
   padding: 20px 24px 20px 24px;
   text-align: left;
   width: 85%;
   height: 100%;
   background-color: white;
-  box-shadow: 1px 0px 15px -4px #000000;
+  box-shadow: 1px 0 15px -4px #000000;
   border-radius: 10px;
   display: ${(props) => (props.hidden ? "none" : "block")};
 
@@ -89,7 +88,7 @@ export const Input = styled.input`
 
   &:focus:invalid {
     outline: none;
-    box-shadow: #b00020 0px 0px 2px 2px;
+    box-shadow: #b00020 0 0 2px 2px;
   }
 `;
 
@@ -98,10 +97,4 @@ export const FormStyled = styled.form`
   margin-top: 12px;
 `;
 
-export const List = styled.ul`
-  list-style: disc;
-  list-style-position: inside;
-  padding-inline-start: 0;
-  font-size: 14px;
-  color: #2b3046ab;
-`;
+

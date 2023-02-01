@@ -4,25 +4,34 @@ import {ToastContainer} from "react-toastify";
 import Header from "./components/Header/Header.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import Login from "./components/Pages/Login/Login.jsx";
-import ScrollToTop from "./components/HOC/ScrollToTop.jsx";
+import Login from "./components/Login/Login.jsx";
 import {MainContainer} from "./styles/GlobalComponents/index.js";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Profile from "./components/Profile/Profile.jsx";
+import Messages from "./components/Messages/Messages.jsx";
+import Users from "./components/Users/Users.jsx";
 
 function App() {
     return (
         <BrowserRouter>
             <ToastContainer position="top-center"/>
             <Header/>
-            <ScrollToTop>
-                <MainContainer>
-                    <Routes>
-                        <Route exact path="/" element={<Hero/>}/>
-                        <Route path="/login" element={<Login/>}/>
 
+                <MainContainer>
+
+                    <Navbar/>
+                    <Routes>
+
+                        <Route exact path="/" element={<Hero/>}/>
+                        <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/dialogs" element={<Messages/>}/>
+                        <Route path="/users" element={<Users/>}/>
+
+                        <Route path="/users" element={<Login/>}/>
 
                     </Routes>
                 </MainContainer>
-            </ScrollToTop>
+
             <Footer/>
         </BrowserRouter>
     );
