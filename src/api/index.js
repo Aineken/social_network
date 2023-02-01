@@ -1,11 +1,48 @@
-import axios from "axios";
+import * as axios from "axios";
 
-const url = "https://my-json-server.typicode.com/aineken/json-data/data";
 
-export const getPosts = () => axios.get(url);
+const instance = axios.create({
+    withCredentials: true,
+    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+    headers:     {
+        "API-KEY": "9a32f002-dd2f-4834-a4eb-9ff4ae95b473"
+    }
+});
 
-// export const getOnePost = (id) => axios.get(`${url}/${id}`);
-// export const createPost = (newPost) => axios.post(url, newPost);
-// export const updatePost = (postToUpdate) =>
-//   axios.patch(`${url}/${postToUpdate.id}`, postToUpdate);
-// export const deletePost = (id) => axios.delete(`${url}/${id}`);
+
+export const usersAPI = {
+    getUsers(currentPage = 1, pageSize = 10) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+            .then(response => {
+                return response.data;
+            });
+    },
+    follow(userId) {
+        return instance.post(`follow/${userId}`)
+    },
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`)
+    },
+    getProfile(userId) {
+        console.warn('Obsolete method. Please profileAPI object.')
+        return profileAPI.getProfile(userId);
+    }
+}
+
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/` + userId);
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/` + userId);
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, { status: status });
+    }
+}
+
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`)
+    }
+}

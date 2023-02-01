@@ -1,10 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import posts from "./posts";
-// import loadingSlicer from "./loading";
+import {configureStore} from "@reduxjs/toolkit";
+import usersReducer from "./user-reducer"
 
 export const store = configureStore({
-  reducer: {
-    posts,
-    // loading: loadingSlicer,
-  },
+    reducer: {
+        userPage: usersReducer,
+    },
 });

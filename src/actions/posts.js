@@ -1,15 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api";
 
-const slowCode = async () => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 500);
-  });
-};
+
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   try {
-    await slowCode();
     const { data } = await api.getPosts();
     return data;
   } catch (error) {
