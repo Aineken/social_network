@@ -14,20 +14,15 @@ export const FooterDiv = styled.div`
   width: 100%;
   max-width: 1400px;
   /* padding: 1rem 0 4rem; */
-  margin: auto;
-  margin-bottom: 2rem;
+  justify-content: flex-start;
+  margin: 2rem auto;
   padding: 1rem 2rem;
-  img {
-    width: 200px;
-    height: 100px;
-    object-fit: cover;
-  }
+
 `;
 
 export const LinkLists = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr));
-
   width: 100%;
 
   @media ${(props) => props.theme.breakpoints.md} {
@@ -51,7 +46,7 @@ export const ListItems = styled.div`
 
 export const ListTitle = styled.p`
   color: ${(props) => props.theme.colors.accent1};
-  font-weight: ${(props) => (props.regular ? "regular" : "700")};
+  font-weight: ${(props) => (props.regular ? "500" : "700")};
   font-size: 22px;
   line-height: 28px;
 `;

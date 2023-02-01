@@ -12,14 +12,13 @@ export const Container = styled(CenteredContainer)`
   min-height: 100%;
   margin: auto auto 50px;
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   @media ${(props) => props.theme.breakpoints.md} {
     padding-top: 210px;
   }
 `;
 
-export const FormContainer = styled(CenteredContainer)`display: flex;
+export const FormContainer = styled(CenteredContainer)`
   padding: 20px 24px 20px 24px;
   text-align: left;
   width: 85%;
@@ -36,16 +35,6 @@ export const FormContainer = styled(CenteredContainer)`display: flex;
   }
 `;
 
-export const Heading1 = styled.h1`
-  margin: 2rem;
-  font-size: 62px;
-  letter-spacing: 0.5px;
-  color: ${(props) => props.theme.colors.primary};
-  text-align: center;
-  @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 32px;
-  }
-`;
 
 export const Button = styled.button`
   border: 0;
@@ -92,7 +81,7 @@ export const Input = styled.input`
   }
 `;
 
-export const FormStyled = styled.form`
+export const LoginStyled = styled.form`
   width: 100%;
   margin-top: 12px;
 `;

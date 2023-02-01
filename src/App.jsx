@@ -2,7 +2,6 @@ import React from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import Header from "./components/Header/Header.jsx";
-import Hero from "./components/Hero/Hero.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login.jsx";
 import {MainContainer} from "./styles/GlobalComponents/index.js";
@@ -10,6 +9,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import Messages from "./components/Messages/Messages.jsx";
 import Users from "./components/Users/Users.jsx";
+import Hero from "./components/Hero/Hero.jsx";
 
 function App() {
     return (
@@ -27,7 +27,7 @@ function App() {
                         <Route path="/dialogs" element={<Messages/>}/>
                         <Route path="/users" element={<Users/>}/>
 
-                        <Route path="/users" element={<Login/>}/>
+                        <Route path="/login" element={<Login/>}/>
 
                     </Routes>
                 </MainContainer>

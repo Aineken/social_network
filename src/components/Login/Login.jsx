@@ -3,13 +3,12 @@ import React, { useState } from "react";
 import {
   Container,
   FormContainer,
-  Heading1,
   Button,
   Field,
-  FormStyled,
+  LoginStyled,
   Input,
   Label,
-} from "./FormStyled.js";
+} from "./LoginStyled.js";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -25,10 +24,8 @@ function Login() {
 
   return (
     <Container>
-      <Heading1>{success ? `Welcome, ${email}` : "Login"}</Heading1>
-
       <FormContainer hidden={success}>
-        <FormStyled method="POST" onSubmit={handleSubmit}>
+        <LoginStyled method="POST" onSubmit={handleSubmit}>
           <Field>
             <Label htmlFor="email" label="email">
               Email
@@ -59,7 +56,7 @@ function Login() {
           <Button type="submit" disabled={submitting}>
             Submit
           </Button>
-        </FormStyled>
+        </LoginStyled>
       </FormContainer>
     </Container>
   );

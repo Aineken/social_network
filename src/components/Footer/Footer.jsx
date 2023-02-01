@@ -6,13 +6,11 @@ import {
   ListText,
   ListTitle,
 } from "./FooterStyled";
-import logo from "../../utils/img.png";
 
 function Footer() {
   return (
     <Container id="footer">
       <FooterDiv>
-        <img src={logo} alt="Logo" />
         <LinkLists>
           <ListItems>
             <ListTitle>PHONE</ListTitle>
@@ -20,17 +18,17 @@ function Footer() {
           </ListItems>
           <ListItems>
             <ListTitle>EMAIL</ListTitle>
-            <ListText href="mailto:admin@gmail.com">admin@gmail.com</ListText>
+            <ListText href="mailto:admin@andrzul.online">admin@andrzul.online</ListText>
           </ListItems>
           <ListItems>
-            <ListTitle>Instagram</ListTitle>
-            <ListText href="mailto:admin@gmail.com">@Instagram</ListText>
+            <ListTitle>Telegram</ListTitle>
+            <ListText href="https://t.me/andrzul" target="_blank">@andrzul</ListText>
           </ListItems>
         </LinkLists>
         <LinkLists>
           <ListTitle regular>Please Contact us any time!</ListTitle>
           <ListTitle regular>Regulations</ListTitle>
-          <ListTitle regular>@2022 Kazakhstan</ListTitle>
+          <ListTitle regular>@2022 Poland</ListTitle>
         </LinkLists>
       </FooterDiv>
     </Container>
