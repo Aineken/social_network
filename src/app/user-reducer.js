@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import * as api from "../api/index.js";
 import {usersAPI} from "../api/index.js";
+import * as api from "../api/index.js";
 
 
 const initialState = {
@@ -40,7 +40,9 @@ const usersSlice = createSlice({
             }
         },
         setUsers: (state, action) => {
-            return {...state, users: action.users}
+
+            state.users = [...state.users, action.payload]
+
         },
         setCurrentPage: (state, action) => {
             return {...state, currentPage: action.currentPage};
@@ -48,7 +50,9 @@ const usersSlice = createSlice({
         setTotalUsersCount: (state, action) => {
             return {...state, totalUsersCount: action.count}
         }, toggleIsFetching: (state, action) => {
-            return {...state, isFetching: action.isFetching}
+
+            state.isFetching = action.payload
+
         }, toggleFollowingProgress: (state, action) => {
             return {
                 ...state,
@@ -58,9 +62,41 @@ const usersSlice = createSlice({
             }
         },
     },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getUsers.fulfilled, (state, action) => {
+                toggleIsFetching(false);
 
+                setUsers(action.payload.items);
+                // setTotalUsersCount(action.payload.totalCount);
+            })
+            .addCase(getUsers.pending, (state, action) => {
+
+                toggleIsFetching(true);
+
+
+            })
+        // .addCase(follow.fulfilled, (state, action) => {
+        //     if (action.payload.resultCode == 0) {
+        //         followSuccess(userId)
+        //     }
+        //     toggleFollowingProgress(false, userId)
+        // })
+        // .addCase(follow.pending, (state, action) => {
+        //     toggleFollowingProgress(true, userId)
+        // })
+        // .addCase(unfollow.fulfilled, (state, action) => {
+        //
+        //     if (action.payload.resultCode == 0) {
+        //         unfollowSuccess(userId)
+        //     }
+        //     toggleFollowingProgress(false, userId)
+        // })
+        // .addCase(unfollow.pending, (state, action) => {
+        //     toggleFollowingProgress(true, userId)
+        // })
+    },
 });
-
 
 
 export const {
@@ -74,28 +110,35 @@ export const {
 } = usersSlice.actions;
 
 
-export const getUsers = createAsyncThunk("users/getUsers", async (currentPage, pageSize) => {
+export const getUsers = createAsyncThunk("users/getUsers", async ({currentPage, pageSize}) => {
     try {
-        const { data } = await usersAPI.getUsers(currentPage, pageSize);
+        const data = await usersAPI.getUsers(currentPage, pageSize);
+
+        // const data2 = await api.getUsers(currentPage, pageSize);
+
         return data;
+
     } catch (error) {
         console.log(error);
     }
 });
 
-
-
-// export const getUsers = (currentPage, pageSize) => {
-//     return (dispatch) => {
-//         dispatch(toggleIsFetching(true));
-//
-//         usersAPI.getUsers(currentPage, pageSize).then(data => {
-//             dispatch(toggleIsFetching(false));
-//             dispatch(setUsers(data.items));
-//             dispatch(setTotalUsersCount(data.totalCount));
-//         });
+// export const follow = createAsyncThunk("users/follow", async (userId) => {
+//     try {
+//         const {data} = await usersAPI.follow(userId)
+//         return data;
+//     } catch (error) {
+//         console.log(error);
 //     }
-// }
+// });
+// export const unfollow = createAsyncThunk("users/unfollow", async (userId) => {
+//     try {
+//         const {data} = await usersAPI.unfollow(userId)
+//         return data;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
 
 
 export default usersSlice.reducer;

@@ -6,3 +6,6 @@ export const store = configureStore({
         userPage: usersReducer,
     },
 });
+
+
+window.store=store.getState();

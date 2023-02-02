@@ -8,8 +8,8 @@ import {MainContainer} from "./styles/GlobalComponents/index.js";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import Messages from "./components/Messages/Messages.jsx";
-import Users from "./components/Users/Users.jsx";
 import Hero from "./components/Hero/Hero.jsx";
+import UsersContainer from "./components/Users/UsersContainer.jsx";
 
 function App() {
     return (
@@ -25,14 +25,13 @@ function App() {
                         <Route exact path="/" element={<Hero/>}/>
                         <Route path="/profile" element={<Profile/>}/>
                         <Route path="/dialogs" element={<Messages/>}/>
-                        <Route path="/users" element={<Users/>}/>
-
+                        <Route path="/users" element={<UsersContainer/>}/>
                         <Route path="/login" element={<Login/>}/>
 
                     </Routes>
                 </MainContainer>
 
-            <Footer/>
+            {/*<Footer/>*/}
         </BrowserRouter>
     );
 }
