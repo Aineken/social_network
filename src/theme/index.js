@@ -1,4 +1,6 @@
-export default {
+// eslint-disable-next-line
+
+const theme = {
   // Temp fonts
   fonts: {
     title: "Source Sans Pro, sans-serif",
@@ -23,3 +25,5 @@ export default {
     xl: "screen and (max-width: 1400px)",
   },
 };
+
+export default theme;
