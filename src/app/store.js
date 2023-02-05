@@ -4,8 +4,9 @@ import usersReducer from "./user-reducer"
 export const store = configureStore({
     reducer: {
         userPage: usersReducer,
+
     },
 });
 
 
-window.store=store.getState();
+window.store=store.getState().userPage;

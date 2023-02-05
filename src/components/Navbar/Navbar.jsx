@@ -7,22 +7,22 @@ const Navbar = () => {
 <Container>
 
     <Item>
-        <NavLink activeClassName={"active"} to="/" >
+        <NavLink activeclassname={"active"} to="/" >
            Home
         </NavLink>
     </Item>
     <Item>
-        <NavLink activeClassName={"active"} to="/profile">
+        <NavLink activeclassname={"active"} to="/profile">
             Profile
         </NavLink>
     </Item>
     <Item>
-        <NavLink activeClassName={"active"} to="/dialogs">
+        <NavLink activeclassname={"active"} to="/dialogs">
             Messages
         </NavLink>
     </Item>
     <Item>
-        <NavLink activeClassName={"active"} to="/users">
+        <NavLink activeclassname={"active"} to="/users">
             Users
         </NavLink>
     </Item>
