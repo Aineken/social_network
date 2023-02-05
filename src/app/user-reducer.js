@@ -8,6 +8,7 @@ const initialState = {
     currentPage: 1,
     isFetching: true,
     followingInProgress: [],
+
 };
 
 const usersSlice = createSlice({
