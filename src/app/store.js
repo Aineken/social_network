@@ -3,10 +3,11 @@ import usersReducer from "./user-reducer"
 
 export const store = configureStore({
     reducer: {
-        userPage: usersReducer,
+        usersPage: usersReducer,
 
     },
 });
 
 
-window.store=store.getState().userPage;
+
+window.store=store.getState().usersPage;
