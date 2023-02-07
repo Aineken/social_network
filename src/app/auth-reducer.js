@@ -7,11 +7,7 @@ let initialState = {
     userId: null,
     email: null,
     login: null,
-<<<<<<< HEAD
     isAuth: true
-=======
-    isAuth: false
->>>>>>> origin/main
 };
 
 const authReducer = (state = initialState, action) => {
@@ -28,8 +24,10 @@ const authReducer = (state = initialState, action) => {
 }
 
 
-export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload:
-        {userId, email, login, isAuth}  });
+export const setAuthUserData = (userId, email, login, isAuth) => ({
+    type: SET_USER_DATA, payload:
+        {userId, email, login, isAuth}
+});
 
 export const getAuthUserData = () => (dispatch) => {
     authAPI.me()
