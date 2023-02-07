@@ -15,11 +15,12 @@ const AddMessageForm = (props) => {
                     }
                     return errors
                 }}
-                onSubmit={async (values, {setSubmitting,resetForm}) => {
-                  await  props.onSubmit(values)
-                    setSubmitting(false);
-                    resetForm({newMessageBody: ''})
-                }
+                onSubmit={
+                    async (values, {setSubmitting, resetForm}) => {
+                        await props.onSubmit(values)
+                        setSubmitting(false);
+                        resetForm({newMessageBody: 'hello'})
+                    }
                 }
         >
 
