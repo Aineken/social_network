@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {PaginationContainer} from "./PaginationStyled";
 
 const Pagination = ({pages,currentPage, onPageChanged}) => {
