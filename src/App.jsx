@@ -14,11 +14,11 @@ import {connect} from "react-redux";
 import Preloader from "./components/common/Preloader/Preloader";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 
-function App(props) {
-
+const App=(props)=> {
 
     useEffect(() => {
-        props.initializeApp()
+        props.initializeApp();
+
     }, [props]);
 
     if (!props.initialized) {
@@ -27,8 +27,6 @@ function App(props) {
 
 
     return (
-
-
         <BrowserRouter>
             <ToastContainer position="top-center"/>
             <Header/>
@@ -37,13 +35,12 @@ function App(props) {
                 <Navbar/>
                 <Routes>
                     <Route exact path="/" element={<Hero/>}/>
-                    <Route path="/profile" element={<ProfileContainer/>}/>
+                    <Route path="/profile/:userId?" element={<ProfileContainer/>}/>
                     <Route path="/dialogs" element={<DialogsContainer/>}/>
                     <Route path="/users" element={<UsersContainer/>}/>
                     <Route path="/login" element={<Login/>}/>
                 </Routes>
             </MainContainer>
-
             {/*<Footer/>*/}
         </BrowserRouter>
     );

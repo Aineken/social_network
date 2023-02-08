@@ -14,9 +14,7 @@ const FormControl = ({meta, ...props}) => {
 }
 
 export const Textarea = ({field, ...props}) => {
-    if (field.value === "pidor") {
-        props.form.resetForm({newMeesgeBody: ""})
-    }
+
     return <FormControl {...props}>
         <textarea {...field}/>
     </FormControl>
