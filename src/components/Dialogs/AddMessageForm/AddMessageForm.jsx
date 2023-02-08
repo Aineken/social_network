@@ -1,5 +1,6 @@
 import React from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
+import {Textarea} from "../../common/FormsControls/FormsControls";
 
 
 const AddMessageForm = (props) => {
@@ -27,8 +28,13 @@ const AddMessageForm = (props) => {
 
             {({isSubmitting}) => (
                 <Form>
-                    <Field type="text" name="newMessageBody" placeholder="Enter your message"/>
-                    <ErrorMessage name="newMessageBody" component="div"/>
+                    <Field name={"newMessageBody"}>
+                        {(props) => {
+                            return (
+                              <Textarea {...props} placeholder="Enter your message" />
+                            );
+                        }}
+                    </Field>
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                     </button>
