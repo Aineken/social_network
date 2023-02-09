@@ -52,6 +52,8 @@ export const setStatus = (status) => ({type: SET_STATUS, status})
 export const getUserProfile = (userId) => (dispatch) => {
     usersAPI.getProfile(userId).then(response => {
         dispatch(setUserProfile(response.data));
+    }).catch(error=>{
+        console.log(error)
     });
 }
 
@@ -59,7 +61,9 @@ export const getStatus = (userId) => (dispatch) => {
     profileAPI.getStatus(userId)
         .then(response => {
             dispatch(setStatus(response.data));
-        });
+        }).catch(error=>{
+        console.log(error)
+    });
 }
 
 export const updateStatus = (status) => (dispatch) => {
@@ -68,7 +72,9 @@ export const updateStatus = (status) => (dispatch) => {
             if (response.data.resultCode === 0) {
                 dispatch(setStatus(status));
             }
-        });
+        }).catch(error=>{
+        console.log(error)
+    });
 }
 
 export default profileReducer;

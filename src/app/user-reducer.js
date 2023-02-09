@@ -97,7 +97,9 @@ export const follow = (userId) => {
                     dispatch(followSuccess(userId));
                 }
                 dispatch(toggleFollowingProgress(false, userId));
-            });
+            }).catch(error=>{
+            console.log(error)
+        });
     }
 }
 export const unfollow = (userId) => {
@@ -109,7 +111,9 @@ export const unfollow = (userId) => {
                     dispatch(unfollowSuccess(userId));
                 }
                 dispatch(toggleFollowingProgress(false, userId));
-            });
+            }).catch(error=>{
+            console.log(error)
+        });
     }
 }
 
