@@ -20,7 +20,7 @@ export const Textarea = ({field, ...props}) => {
     </FormControl>
 }
 
-// export const Input = (props) => {
-//     const {input, meta, child, ...restProps} = props;
-//     return <FormControl {...props}><input {...input} {...restProps} /></FormControl>
-// }
+export const Input = ({field, ...props}) => {
+
+    return <FormControl {...props}><input {...field} /></FormControl>
+}

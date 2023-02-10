@@ -1,65 +1,29 @@
-import React, { useState } from "react";
+import React from 'react';
+import AddLoginForm from "./AddLoginForm/AddLoginForm";
+import {Navigate} from "react-router-dom";
+import {login} from "../../app/auth-reducer";
+import {connect} from "react-redux";
 
-import {
-  Container,
-  FormContainer,
-  Button,
-  Field,
-  LoginStyled,
-  Input,
-  Label,
-} from "./LoginStyled.js";
 
-function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setSuccess(true);
-  };
 
-  return (
-    <Container>
-      <FormContainer hidden={success}>
-        <LoginStyled method="POST" onSubmit={handleSubmit}>
-          <Field>
-            <Label htmlFor="email" label="email">
-              Email
-            </Label>
-            <Input
-              name="Email"
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              autocomplete
-            />
-          </Field>
-          <Field>
-            <Label htmlFor="password">Password</Label>
-            <Input
-              name="password"
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autocomplete
-              required
-            />
-          </Field>
-          <br />
-          <Button type="submit" disabled={submitting}>
-            Submit
-          </Button>
-        </LoginStyled>
-      </FormContainer>
-    </Container>
-  );
+
+const Login = (props) => {
+  const onSubmit = (formData) => {
+    props.login(formData.email, formData.password, formData.rememberMe);
+  }
+
+  if (props.isAuth) {
+    return <Navigate to={"/profile"} />
+  }
+
+  return <div>
+    <h1>Login</h1>
+    <AddLoginForm onSubmit={onSubmit} />
+  </div>
 }
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth
+})
 
-export default Login;
+export default connect(mapStateToProps, {login} )(Login);
