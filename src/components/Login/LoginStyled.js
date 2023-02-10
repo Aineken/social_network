@@ -36,6 +36,11 @@ export const FormContainer = styled(CenteredContainer)`
 `;
 
 
+export const LoginStyled = styled.form`
+  width: 100%;
+  margin-top: 12px;
+`;
+
 export const Button = styled.button`
   border: 0;
   color: white;
@@ -59,6 +64,11 @@ export const Field = styled.div`
   width: 100%;
   position: relative;
   margin-top: 12px;
+  .error{
+    outline: none;
+    box-shadow: #b00020 0 0 2px 2px;
+  }
+ 
 `;
 
 export const Label = styled.label`
@@ -75,15 +85,14 @@ export const Input = styled.input`
   box-sizing: border-box;
   border-radius: 10px;
 
-  &:focus:invalid {
-    outline: none;
-    box-shadow: #b00020 0 0 2px 2px;
-  }
+  //&:focus:invalid {
+  //  outline: none;
+  //  box-shadow: #b00020 0 0 2px 2px;
+  //}
+
+  
+  
 `;
 
-export const LoginStyled = styled.form`
-  width: 100%;
-  margin-top: 12px;
-`;
 
 

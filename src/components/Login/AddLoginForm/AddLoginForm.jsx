@@ -1,6 +1,6 @@
 import React from 'react';
-import {ErrorMessage, Field, Form, Formik} from "formik";
-
+import { Formik} from "formik";
+import {Button, Field, Input, Label, LoginStyled} from "../LoginStyled";
 
 
 const AddLoginForm = (props) => {
@@ -15,29 +15,61 @@ const AddLoginForm = (props) => {
                     ) {
                         errors.email = 'Invalid email address';
                     }
+
+                    if (!values.password){
+                        errors.password="Required";
+                    }
                     return errors;
                 }}
 
-                onSubmit={async (values, { setSubmitting }) => {
-                        setSubmitting(true)
-                        await props.onSubmit(values);
-                        setSubmitting(false)
+                onSubmit={async (values, {setSubmitting}) => {
+                    setSubmitting(true)
+                    await props.onSubmit(values);
+                    setSubmitting(false)
 
                 }}
 
         >
-            {({isSubmitting}) => (
-                <Form>
-                    <Field type="email" name="email"placeholder={"Email"} />
-                    <ErrorMessage name="email" component="div" /> <br/>
-                    <Field type="password" name="password" placeholder={"Password"}  />
-                    <ErrorMessage name="password" component="div" /><br/>
-                    <Field type="checkbox" name="remember" /> <span>remember me! <br/></span>
+            {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  isSubmitting
+              }) => (
+                <LoginStyled onSubmit={handleSubmit}>
+                    <Field>
+                        <Label>
+                            Email
+                        </Label>
+                        <Input
+                            type="email"
+                            name="email"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.email}
+                            className={((errors.email && touched.email)?"error":null)}
+                        />
 
-                    <button type="submit" disabled={isSubmitting}>
-                        Login
-                    </button>
-                </Form>
+                    </Field>
+                    <Field>
+                        <Label>
+                            Password
+                        </Label>
+                        <Input
+                            type="password"
+                            name="password"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.password}
+                            className={( (errors.password && touched.password)?"error":null)}
+                        />
+
+                    </Field>
+                    <Button type="submit" disabled={isSubmitting}>Login</Button>
+                </LoginStyled>
             )}
         </Formik>
     );
