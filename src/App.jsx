@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
-import Header from "./components/Header/Header.jsx";
 // import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login.jsx";
 import {MainContainer} from "./styles/GlobalComponents/index.js";
@@ -13,6 +12,7 @@ import {initializeApp} from "./app/app-reducer";
 import {connect} from "react-redux";
 import Preloader from "./components/common/Preloader/Preloader";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App=(props)=> {
 
@@ -29,7 +29,7 @@ const App=(props)=> {
     return (
         <BrowserRouter>
             <ToastContainer position="top-center"/>
-            <Header/>
+            <HeaderContainer/>
 
             <MainContainer>
                 <Navbar/>

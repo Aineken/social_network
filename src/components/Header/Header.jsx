@@ -1,7 +1,7 @@
 import {
     Container,
     Div1,
-    Div2,
+    Div2, HeaderButton,
     HeaderDiv,
     LoginButton,
     NavLink,
@@ -9,7 +9,7 @@ import {
 import logo from "../../utils/andrzul_logo.svg";
 import {Link} from "react-router-dom";
 
-function Header() {
+function Header(props) {
 
     return (
         <Container>
@@ -24,9 +24,18 @@ function Header() {
                 </Div1>
                 <Div2>
 
-                    <Link to="/login">
-                        <LoginButton>Login</LoginButton>
-                    </Link>
+
+                    {props.isAuth
+                        ? <NavLink>
+                            <span>{props.login}</span>
+                            <HeaderButton onClick={props.logout}> Logout</HeaderButton>
+                        </NavLink>
+
+
+                        : <Link to="/login">
+                            <HeaderButton>Login</HeaderButton>
+                        </Link>}
+
 
                 </Div2>
             </HeaderDiv>

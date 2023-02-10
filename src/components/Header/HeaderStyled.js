@@ -54,7 +54,7 @@ export const Div2 = styled.div`
 export const NavLink = styled.div`
   position: relative;
   font-size: 2.5rem;
-  font-weight: ${(props) => (props.main ? "600" : null)};
+  font-weight: ${(props) => (props.logo ? "500" : null)};
   line-height: 32px;
   display: flex;
   width: 100%;
@@ -82,13 +82,13 @@ export const NavLink = styled.div`
   }
   span {
     margin-left: 2rem;
-    font-size: 26px;
+    font-size: ${(props) => (props.logo ? "26px" : "24px")};
   }
 `;
 
 
 
-export const LoginButton = styled.button`
+export const HeaderButton = styled.button`
   font-weight: 600;
   margin-left: 2rem;
   font-size: 2.5rem;
