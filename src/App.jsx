@@ -14,18 +14,18 @@ import Preloader from "./components/common/Preloader/Preloader";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 
-const App=(props)=> {
+const App = (props) => {
 
     useEffect(() => {
         props.initializeApp();
-
     }, [props]);
+
+
+    console.log(props.initialized)
 
     if (!props.initialized) {
         return <Preloader/>
     }
-
-
     return (
         <BrowserRouter>
             <ToastContainer position="top-center"/>
@@ -44,6 +44,7 @@ const App=(props)=> {
             {/*<Footer/>*/}
         </BrowserRouter>
     );
+
 }
 
 

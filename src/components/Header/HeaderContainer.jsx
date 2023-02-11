@@ -5,7 +5,6 @@ import {logout} from "../../app/auth-reducer";
 
 const HeaderContainer = (props) => {
     return <Header {...props}/>
-
 };
 
 

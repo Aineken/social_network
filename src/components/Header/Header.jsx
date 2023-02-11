@@ -3,7 +3,6 @@ import {
     Div1,
     Div2, HeaderButton,
     HeaderDiv,
-    LoginButton,
     NavLink,
 } from "./HeaderStyled";
 import logo from "../../utils/andrzul_logo.svg";
@@ -23,19 +22,14 @@ function Header(props) {
                     </Link>
                 </Div1>
                 <Div2>
-
-
                     {props.isAuth
                         ? <NavLink>
                             <span>{props.login}</span>
                             <HeaderButton onClick={props.logout}> Logout</HeaderButton>
                         </NavLink>
-
-
                         : <Link to="/login">
                             <HeaderButton>Login</HeaderButton>
                         </Link>}
-
 
                 </Div2>
             </HeaderDiv>

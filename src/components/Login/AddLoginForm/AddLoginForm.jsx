@@ -78,29 +78,3 @@ const AddLoginForm = (props) => {
 export default AddLoginForm;
 
 
-// const LoginForm = (props) => {
-//     return (
-//         <form onSubmit={props.handleSubmit}>
-//             <div>
-//                 <Field placeholder={"Email"} name={"email"}
-//                        validate={[required]}
-//                        component={Input}/>
-//             </div>
-//             <div>
-//                 <Field placeholder={"Password"} name={"password"} type={"password"}
-//                        validate={[required]}
-//                        component={Input}/>
-//             </div>
-//             <div>
-//                 <Field component={Input} name={"rememberMe"} type={"checkbox"}/> remember me
-//             </div>
-//             { props.error && <div className={style.formSummaryError}>
-//                 {props.error}
-//             </div>
-//             }
-//             <div>
-//                 <button>Login</button>
-//             </div>
-//         </form>
-//     )
-// }
