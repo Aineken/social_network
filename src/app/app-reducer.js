@@ -23,9 +23,18 @@ const appReducer = (state = initialState, action) => {
 
 export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
+
+const slowCode = async () => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, 500);
+    });
+};
+
 export const initializeApp = () => async (dispatch) => {
 
 
+
+    await slowCode();
     let promise = dispatch(getAuthUserData());
 
     Promise.all([promise])

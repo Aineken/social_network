@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import Users from "./Users.jsx";
 import {connect, useDispatch} from "react-redux";
 import {follow, getUsers, setCurrentPage, toggleFollowingProgress, unfollow} from "../../app/user-reducer.js";
-import withAuthRedirect from "../../hoc/withAuthRedirect";
 import Preloader from "../common/Preloader/Preloader";
 import {compose} from "@reduxjs/toolkit";
 
@@ -50,6 +49,5 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    withAuthRedirect,
     connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers})
 )(UsersContainer)

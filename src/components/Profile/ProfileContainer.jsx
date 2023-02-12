@@ -1,28 +1,32 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Profile from "./Profile";
-import {connect} from "react-redux";
+import {connect, useSelector} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import {getStatus, getUserProfile, updateStatus} from "../../app/profile-reducer";
-import {redirect, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 
 
 const ProfileContainer = (props) => {
+    let {profileId} = useParams();
 
+    const mainUserId= useSelector(state=>
+    {
+        debugger
 
-    let {userId} = useParams();
-    const [mainId, setMainId] = useState(userId)
+        return state.auth.userId});
 
-    if (!mainId) {
-        setMainId(props.authorizedUserId)
-        if (!mainId) {
-            redirect("/login")
+    useEffect(() => {
+        let userId = profileId;
+        if (!userId) {
+            userId = mainUserId;
+            if(!userId){
+                userId=27932;
+            }
         }
-    }
-    const {getUserProfile,getStatus}=props
-    useEffect(()=>{
-        getUserProfile(mainId);
-        getStatus(mainId);
-    },[])
+        console.log(userId)
+        props.getUserProfile(userId);
+        props.getStatus(userId);
+    }, [profileId])
 
 
     return (

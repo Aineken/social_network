@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 // import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login.jsx";
@@ -16,34 +16,36 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
 
+
     useEffect(() => {
         props.initializeApp();
     }, [props]);
 
 
-    console.log(props.initialized)
+
 
     if (!props.initialized) {
         return <Preloader/>
     }
-    return (
-        <BrowserRouter>
+    return (<>
             <ToastContainer position="top-center"/>
             <HeaderContainer/>
-
             <MainContainer>
                 <Navbar/>
                 <Routes>
-                    <Route exact path="/" element={<Hero/>}/>
-                    <Route path="/profile/:userId?" element={<ProfileContainer/>}/>
-                    <Route path="/dialogs" element={<DialogsContainer/>}/>
-                    <Route path="/users" element={<UsersContainer/>}/>
-                    <Route path="/login" element={<Login/>}/>
+
+
+                <Route exact path="/" element={<Hero/>}/>
+                <Route path="/profile/:profileId?" element={<ProfileContainer/>}/>
+                <Route path="/dialogs" element={<DialogsContainer/>}/>
+                <Route path="/users" element={<UsersContainer/>}/>
+                <Route path="/login" element={<Login/>}/>
                 </Routes>
             </MainContainer>
             {/*<Footer/>*/}
-        </BrowserRouter>
+        </>
     );
+
 
 }
 
