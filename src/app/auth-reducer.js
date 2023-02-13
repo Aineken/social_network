@@ -31,7 +31,7 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
 });
 
 export const getAuthUserData = () => (dispatch) => {
-    return authAPI.me()
+     return authAPI.me()
         .then(({data}) => {
             console.log(data)
                 if (data.resultCode === 0) {
@@ -52,6 +52,7 @@ export const getAuthUserData = () => (dispatch) => {
 export const login = (email, password, rememberMe) => (dispatch) => {
     authAPI.login(email, password, rememberMe)
         .then(({data}) => {
+            console.log(data)
             if (data.resultCode === 0) {
                 dispatch(getAuthUserData())
             }

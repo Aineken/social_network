@@ -1,30 +1,28 @@
 import React, {useEffect} from 'react';
 import Profile from "./Profile";
-import {connect, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import {getStatus, getUserProfile, updateStatus} from "../../app/profile-reducer";
-import { useParams} from "react-router-dom";
+import {Navigate, redirect, useParams} from "react-router-dom";
 
 
 const ProfileContainer = (props) => {
     let {profileId} = useParams();
 
-
-
+    let userId = profileId;
     useEffect(() => {
-        let userId = profileId;
+
         if (!userId) {
             userId = props.authorizedUserId;
-            if(!userId){
-                userId=27932;
-            }
+
         }
-        console.log(userId)
-        props.getUserProfile(userId);
-        props.getStatus(userId);
-    }, [profileId])
+            props.getUserProfile(userId);
+            props.getStatus(userId);
+    }, [profileId, props.authorizedUserId, props.getUserProfile, props.getStatus])
 
-
+    if (!userId) {
+        return <Navigate to='/login'/>
+    }
     return (
         <Profile {...props} />
     )
