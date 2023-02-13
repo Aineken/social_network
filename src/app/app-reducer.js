@@ -37,13 +37,11 @@ export const initializeApp = () => async (dispatch) => {
     await slowCode();
     let promise = dispatch(getAuthUserData());
 
-    Promise.all([promise])
-        .then(() => {
-
+    Promise.all([promise]).then(() => {
             dispatch(initializedSuccess());
         }).catch(error=>{
         console.log(error)
-    })
+    });
 }
 
 

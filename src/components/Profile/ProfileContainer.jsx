@@ -9,16 +9,12 @@ import { useParams} from "react-router-dom";
 const ProfileContainer = (props) => {
     let {profileId} = useParams();
 
-    const mainUserId= useSelector(state=>
-    {
-        debugger
 
-        return state.auth.userId});
 
     useEffect(() => {
         let userId = profileId;
         if (!userId) {
-            userId = mainUserId;
+            userId = props.authorizedUserId;
             if(!userId){
                 userId=27932;
             }
