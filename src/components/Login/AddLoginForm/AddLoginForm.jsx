@@ -1,11 +1,17 @@
 import React from 'react';
-import { Formik} from "formik";
+import {Formik} from "formik";
 import {Button, Field, Input, Label, LoginStyled} from "../LoginStyled";
 
 
 const AddLoginForm = (props) => {
+
+
+    const initialValues = {
+        email: '', password: '', remember: false, captcha: ""
+    }
+
     return (
-        <Formik initialValues={{email: '', password: '', remember: false,}}
+        <Formik initialValues={initialValues}
                 validate={values => {
                     const errors = {};
                     if (!values.email) {
@@ -15,16 +21,16 @@ const AddLoginForm = (props) => {
                     ) {
                         errors.email = 'Invalid email address';
                     }
-
-                    if (!values.password){
-                        errors.password="Required";
+                    if (!values.password) {
+                        errors.password = "Required";
                     }
                     return errors;
                 }}
 
-                onSubmit={async (values, {setSubmitting}) => {
+                onSubmit={async (values, {setSubmitting, ...rest}) => {
                     setSubmitting(true)
                     await props.onSubmit(values);
+                    rest.resetForm({initialValues})
                     setSubmitting(false)
 
                 }}
@@ -50,7 +56,7 @@ const AddLoginForm = (props) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.email}
-                            className={((errors.email && touched.email)?"error":null)}
+                            className={((errors.email && touched.email) ? "error" : null)}
                         />
 
                     </Field>
@@ -64,10 +70,24 @@ const AddLoginForm = (props) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.password}
-                            className={( (errors.password && touched.password)?"error":null)}
+                            className={((errors.password && touched.password) ? "error" : null)}
                         />
 
                     </Field>
+                    {props.captcha && <Field>
+                        <Label>
+                            Captcha
+                        </Label>
+                        <Input
+                            type="text"
+                            name="captcha"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.captcha}
+                            className={((errors.captcha && touched.captcha) ? "error" : null)}
+                        />
+
+                    </Field>}
                     <Button type="submit" disabled={isSubmitting}>Login</Button>
                 </LoginStyled>
             )}

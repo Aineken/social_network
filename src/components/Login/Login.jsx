@@ -10,17 +10,25 @@ import {Container, FormContainer} from "./LoginStyled";
 
 
 const Login = (props) => {
+
+
+  const {captcha}=props;
   const onSubmit = (formData) => {
-    props.login(formData.email, formData.password, formData.rememberMe);
+    console.log(formData)
+    props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
   }
 
   if (props.isAuth) {
     return <Navigate to={"/profile"} />
   }
 
+
+
   return <Container>
     <FormContainer>
-      <AddLoginForm onSubmit={onSubmit} />
+      <AddLoginForm captcha={captcha} onSubmit={onSubmit} />
+      {captcha&&<img src={captcha} alt="captcha img"/>}
+
     </FormContainer>
   </Container>
 
@@ -28,7 +36,8 @@ const Login = (props) => {
 
 }
 const mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth
+  isAuth: state.auth.isAuth,
+  captcha:state.auth.captcha
 })
 
 export default connect(mapStateToProps, {login} )(Login);

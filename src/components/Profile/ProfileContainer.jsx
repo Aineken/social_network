@@ -11,18 +11,17 @@ const ProfileContainer = (props) => {
 
     let userId = profileId;
     useEffect(() => {
-
         if (!userId) {
             userId = props.authorizedUserId;
-
+            if(!userId){
+                userId=1079;
+            }
         }
-            props.getUserProfile(userId);
-            props.getStatus(userId);
+        props.getUserProfile(userId);
+        props.getStatus(userId);
     }, [profileId, props.authorizedUserId, props.getUserProfile, props.getStatus])
 
-    if (!userId) {
-        return <Navigate to='/login'/>
-    }
+
     return (
         <Profile {...props} />
     )
