@@ -3,7 +3,7 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import {getStatus, getUserProfile, updateStatus} from "../../app/profile-reducer";
-import {Navigate, redirect, useParams} from "react-router-dom";
+import {Navigate, useParams} from "react-router-dom";
 
 
 const ProfileContainer = (props) => {
