@@ -16,7 +16,7 @@ function Hero() {
                     <img src={hero} alt=""/>
                 </Div1>
                 <Div2>
-                    <MainTitle>Find me?</MainTitle>
+                    <MainTitle>Welcome!!!</MainTitle>
                     <MainText>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua.

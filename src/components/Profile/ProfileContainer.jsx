@@ -3,18 +3,19 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import {getStatus, getUserProfile, updateStatus} from "../../app/profile-reducer";
-import {Navigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 
 const ProfileContainer = (props) => {
     let {profileId} = useParams();
+    const navigate=useNavigate();
 
     let userId = profileId;
     useEffect(() => {
         if (!userId) {
             userId = props.authorizedUserId;
             if(!userId){
-                userId=1079;
+                navigate("/login")
             }
         }
         props.getUserProfile(userId);

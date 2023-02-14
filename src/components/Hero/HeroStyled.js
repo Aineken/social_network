@@ -21,7 +21,9 @@ export const Div1 = styled.div`
   width: 100%;
   img {
     width: 100%;
-    object-fit: cover
+    object-fit: cover;
+    object-position: right bottom;
+    
   ;
   }
 

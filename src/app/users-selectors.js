@@ -1,6 +1,6 @@
 import {createSelector} from "@reduxjs/toolkit";
 
-const getUsersSelector = (state) => {
+export const getUsersSelector = (state) => {
     return state.usersPage.users;
 }
 

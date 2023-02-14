@@ -1,22 +1,35 @@
 import React, {useEffect} from "react";
 import Users from "./Users.jsx";
-import {connect, useDispatch} from "react-redux";
-import {follow, getUsers, setCurrentPage, toggleFollowingProgress, unfollow} from "../../app/user-reducer.js";
+import {connect} from "react-redux";
+import {
+    follow,
+    requestUsers,
+    setCurrentPage,
+    toggleFollowingProgress,
+    unfollow
+} from "../../app/user-reducer.js";
 import Preloader from "../common/Preloader/Preloader";
 import {compose} from "@reduxjs/toolkit";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsers
+} from "../../app/users-selectors";
 
 const UsersContainer = (props) => {
-    const dispatch = useDispatch();
 
-    const {currentPage, pageSize} = props;
+
+    const {currentPage, pageSize,requestUsers,setCurrentPage} = props;
 
     useEffect(() => {
-        dispatch(getUsers(currentPage, pageSize));
-    }, [dispatch, currentPage, pageSize]);
+       requestUsers(currentPage, pageSize);
+    }, [ currentPage, pageSize]);
 
     const onPageChanged = (pageNumber) => {
-        props.getUsers(pageNumber, props.pageSize);
-        props.setCurrentPage(pageNumber);
+        requestUsers(pageNumber, props.pageSize);
+        setCurrentPage(pageNumber);
     }
 
     return <>
@@ -35,19 +48,15 @@ const UsersContainer = (props) => {
 
 
 let mapStateToProps = (state) => {
-
-    const data = {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+    return {
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
     }
-    return data;
 }
-
-
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsers})
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowingProgress, requestUsers})
 )(UsersContainer)

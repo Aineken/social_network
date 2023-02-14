@@ -77,7 +77,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
     userId
 })
 
-export const getUsers = (page, pageSize) => async (dispatch) => {
+export const requestUsers = (page, pageSize) => async (dispatch) => {
     dispatch(toggleIsFetching(true));
     const {data} = await usersAPI.getUsers(page, pageSize)
     dispatch(toggleIsFetching(false));

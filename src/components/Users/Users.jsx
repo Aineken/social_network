@@ -5,30 +5,19 @@ import {MainContainer, SecContainer} from "./UsersStyled";
 
 
 let Users = (props) => {
-    let pagesCount=1 ;
-    let pagesNum = Math.ceil(props.totalUsersCount / props.pageSize);
-    if (pagesNum > 10) {
-        pagesCount = 10;
-    } else {
-        pagesCount = pagesNum;
-    }
-
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
 
 
-    const {currentPage, onPageChanged} = props
+    const {currentPage, onPageChanged, totalUsersCount, pageSize} = props
 
     return <MainContainer>
-
-        <Pagination pages={pages}
-                    currentPage={currentPage}
-                    onPageChanged={onPageChanged}/>
+        <Pagination
+            currentPage={currentPage}
+            onPageChanged={onPageChanged}
+            totalUsersCount={totalUsersCount}
+            pageSize={pageSize}
+        />
 
         <SecContainer>
-
             {
                 props.users.map(user =>
                     <User
@@ -38,8 +27,6 @@ let Users = (props) => {
                         unfollow={props.unfollow}
                         followingInProgress={props.followingInProgress}/>
                 )
-
-
             }
         </SecContainer>
     </MainContainer>
