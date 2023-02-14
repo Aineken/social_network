@@ -52,7 +52,6 @@ export const setStatus = (status) => ({type: SET_STATUS, status})
 
 export const getUserProfile = (userId) => async (dispatch) => {
     const {data} = await usersAPI.getProfile(userId);
-
     dispatch(setUserProfile(data))
 }
 

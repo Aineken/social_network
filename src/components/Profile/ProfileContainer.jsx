@@ -6,21 +6,27 @@ import {getStatus, getUserProfile, updateStatus} from "../../app/profile-reducer
 import {useNavigate, useParams} from "react-router-dom";
 
 
-const ProfileContainer = (props) => {
+const ProfileContainer = ({getUserProfile,getStatus,authorizedUserId, ...props}) => {
     let {profileId} = useParams();
     const navigate=useNavigate();
 
     let userId = profileId;
     useEffect(() => {
         if (!userId) {
-            userId = props.authorizedUserId;
+            userId = authorizedUserId;
             if(!userId){
                 navigate("/login")
+            }else{
+                getUserProfile(userId);
+                getStatus(userId);
             }
+        }else{
+            getUserProfile(userId);
+            getStatus(userId);
         }
-        props.getUserProfile(userId);
-        props.getStatus(userId);
-    }, [profileId, props.authorizedUserId, props.getUserProfile, props.getStatus])
+
+
+    }, [profileId, authorizedUserId, getUserProfile, getStatus])
 
 
     return (
