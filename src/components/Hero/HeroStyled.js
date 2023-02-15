@@ -53,4 +53,5 @@ export const MainTitle = styled.h4`
 export const MainText = styled.p`
   color: #fff;
   font-size: 28px;
+  line-height: 36px;
 `;

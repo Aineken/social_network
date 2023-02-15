@@ -73,7 +73,8 @@ export const Field = styled.div`
 
 export const Label = styled.label`
   color: ${(props) => props.theme.colors.primary};
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
 `;
 export const Input = styled.input`
   width: 100%;
@@ -84,15 +85,44 @@ export const Input = styled.input`
   padding: 15px;
   box-sizing: border-box;
   border-radius: 10px;
-
+  
   //&:focus:invalid {
   //  outline: none;
   //  box-shadow: #b00020 0 0 2px 2px;
   //}
-
-  
   
 `;
 
+export const RememberDiv = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border: 0;
+  margin-top: 12px;
+  
+  span{
+    margin-left: 1rem;
+  }
+`;
+
+export const FormInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  border: 0;
+  margin-bottom: 2rem;
+
+  p {
+    font-size: 14px;
+
+  }
+
+  .red {
+    color:red;
+    line-height: 20px;
+  }
+`;
 
 

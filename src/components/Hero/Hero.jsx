@@ -18,8 +18,8 @@ function Hero() {
                 <Div2>
                     <MainTitle>Welcome!!!</MainTitle>
                     <MainText>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                       Welcome to my Social Network Website <br/>
+                        powered by <br/> "Andrzul Web Studio"
                     </MainText>
                 </Div2>
             </Container>

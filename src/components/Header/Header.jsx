@@ -7,8 +7,15 @@ import {
 } from "./HeaderStyled";
 import logo from "../../utils/andrzul_logo.svg";
 import {Link} from "react-router-dom";
+import {toast} from "react-toastify";
 
 function Header(props) {
+
+    const setSubmit= async()=>{
+
+        await props.logout();
+        toast.success("logout");
+    }
 
     return (
         <Container>
@@ -25,7 +32,7 @@ function Header(props) {
                     {props.isAuth
                         ? <NavLink>
                             <span>{props.login}</span>
-                            <HeaderButton onClick={props.logout}> Logout</HeaderButton>
+                            <HeaderButton onClick={setSubmit}> Logout</HeaderButton>
                         </NavLink>
                         : <Link to="/login">
                             <HeaderButton>Login</HeaderButton>

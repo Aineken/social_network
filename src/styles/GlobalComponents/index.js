@@ -1,8 +1,13 @@
 import styled, { keyframes } from "styled-components";
 export const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
   max-width: 1400px;
   width: 100%;
   margin: auto;
+`;
+export const MainDiv = styled.div`
+  width: 100%;
   padding: 2rem 1rem;
   padding-top: 150px;
   display: grid;

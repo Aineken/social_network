@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
-import {Route, Routes} from "react-router-dom";
-import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 // import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login.jsx";
-import {MainContainer} from "./styles/GlobalComponents/index.js";
+import {MainContainer, MainDiv} from "./styles/GlobalComponents/index.js";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import UsersContainer from "./components/Users/UsersContainer.jsx";
@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 import Preloader from "./components/common/Preloader/Preloader";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import {ToastContainer} from "react-toastify";
 
 const App = (props) => {
 
@@ -22,29 +23,29 @@ const App = (props) => {
     }, [props]);
 
 
-
-
     if (!props.initialized) {
         return <Preloader/>
     }
-    return (<>
-            <ToastContainer position="top-center"/>
-            <HeaderContainer/>
+    return (<BrowserRouter>
+            <ToastContainer/>
             <MainContainer>
-                <Navbar/>
-                <Routes>
-
-
-                <Route exact path="/" element={<Hero/>}/>
-                <Route path="/profile/:profileId?" element={<ProfileContainer/>}/>
-                <Route path="/dialogs" element={<DialogsContainer/>}/>
-                <Route path="/users" element={<UsersContainer/>}/>
-                <Route path="/login" element={<Login/>}/>
-                </Routes>
+                <HeaderContainer/>
+                <MainDiv>
+                    <Navbar/>
+                    <Routes>
+                        <Route exact path="/" element={<Hero/>}/>
+                        <Route path="/profile/:profileId?" element={<ProfileContainer/>}/>
+                        <Route path="/dialogs" element={<DialogsContainer/>}/>
+                        <Route path="/users" element={<UsersContainer/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                    </Routes>
+                </MainDiv>
             </MainContainer>
-            {/*<Footer/>*/}
-        </>
-    );
+        </BrowserRouter>
+
+
+    )
+        ;
 
 
 }
