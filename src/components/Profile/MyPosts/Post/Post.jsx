@@ -1,17 +1,20 @@
 import React from 'react';
-import s from './Post.module.css';
 import userPhoto from "../../../../assets/images/user.png";
+import {LikeDiv, MessageDiv, PostDiv} from "./PostStyled";
+
 
 
 const Post = (props) => {
   return (
-    <div className={s.item}>
+    <PostDiv>
       <img alt='photoMain' src={userPhoto} />
-        { props.message }
-          <div>
-        <span>like</span> { props.likesCount }
-      </div>
-    </div>
+        <MessageDiv>
+            { props.message }
+        </MessageDiv>
+        <LikeDiv>
+        <span>Like</span> { props.likesCount }
+      </LikeDiv>
+    </PostDiv>
   )
 }
 
