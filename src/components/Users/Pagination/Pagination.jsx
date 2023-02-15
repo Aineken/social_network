@@ -1,7 +1,7 @@
 import React, {useMemo, useRef, useState} from 'react';
 import {PaginationContainer} from "./PaginationStyled";
 
-const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, portionSize = 10}) => {
+const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, portionSize = 5}) => {
 
     let pagesCount = 1;
     let pagesNum = Math.ceil(totalItemsCount / pageSize);
@@ -31,7 +31,7 @@ const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, port
 
             <button disabled={portionNumber === 1} onClick={() => {
                 setPortionNumber(state => state - 1)
-            }}>PREV
+            }}>◀️
             </button>
 
             {pages
@@ -47,7 +47,7 @@ const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, port
 
             <button disabled={!(portionCount > portionNumber)} onClick={() => {
                 setPortionNumber(state => state + 1)
-            }}>NEXT
+            }}>▶️
             </button>
      </PaginationContainer>
     );

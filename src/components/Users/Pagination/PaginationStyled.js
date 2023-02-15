@@ -27,4 +27,12 @@ display: flex;
     font-weight: 700;
     transform: scale(1.2);
   }
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    margin: auto;
+  overflow: auto;
+   
+    
+    
+  }
 `;

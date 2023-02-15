@@ -16,7 +16,6 @@ let Users = (props) => {
             totalItemsCount={totalUsersCount}
             pageSize={pageSize}
         />
-
         <SecContainer>
             {
                 props.users.map(user =>

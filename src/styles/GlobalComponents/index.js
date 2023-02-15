@@ -12,6 +12,14 @@ export const MainDiv = styled.div`
   padding-top: 150px;
   display: grid;
   grid-template-columns: 200px 1fr;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    grid-template-columns: 1fr;
+  }
+  @media ${(props) => props.theme.breakpoints.sm} {
+     padding-top: 150px;
+  }
+  
 `;
 
 const rotate360 = keyframes`

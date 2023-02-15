@@ -20,7 +20,7 @@ export const HeaderDiv = styled.div`
   @media ${(props) => props.theme.breakpoints.md} {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 5px;
   }
 `;
 export const Div1 = styled.div`
@@ -28,11 +28,13 @@ export const Div1 = styled.div`
   flex-direction: row;
   align-items: center;
   margin-right: 2rem;
+  padding: 1rem;
   @media ${(props) => props.theme.breakpoints.md} {
     justify-content: center;
     margin-right: 0;
+    padding: 0.5rem;
   }
-  padding: 1rem;
+  
   
 `;
 
@@ -42,9 +44,8 @@ export const Div2 = styled.div`
   gap: 10px;
   align-items: center;
   padding: 1rem;
-  
-
   @media ${(props) => props.theme.breakpoints.md} {
+    padding: 0.5rem;
   }
 `;
 
@@ -68,21 +69,20 @@ export const NavLink = styled.div`
     left: ${(props) => props.logo && "6px"};
     cursor: pointer;
   }
-  @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 0.5rem;
-  }
-
   img {
     height: 70px;
     object-fit: cover;
-    @media ${(props) => props.theme.breakpoints.sm} {
-      width: 150px;
-      height: 75px;
+    @media ${(props) => props.theme.breakpoints.md} {
+      height: 50px;
     }
   }
   span {
     margin-left: 2rem;
     font-size: ${(props) => (props.logo ? "26px" : "24px")};
+    @media ${(props) => props.theme.breakpoints.md} {
+      font-size: ${(props) => (props.logo ? "20px" : "18px")};
+     
+    }
   }
 `;
 
@@ -110,6 +110,9 @@ export const HeaderButton = styled.button`
     /* Lowering the shadow */
   }
   @media ${(props) => props.theme.breakpoints.md} {
-    height: 50px;
+    height: 40px;
+    font-size: 2rem;
+    
+    
   }
 `;
