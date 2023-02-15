@@ -10,9 +10,14 @@ export const Container = styled.div`
   background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
   margin-bottom: 50px;
   @media ${(props) => props.theme.breakpoints.md} {
-    margin-top:100px;
     flex-direction: column;
     height: 100%;
+  }
+  @media ${(props) => props.theme.breakpoints.sm} {
+   display: flex;
+    flex-direction:column-reverse;
+    margin-bottom: 0;
+
   }
 `;
 
@@ -42,6 +47,14 @@ export const Div2 = styled.div`
     flex-direction: column;
     row-gap: 2rem;
     padding: 50px 30px;
+  }
+  @media ${(props) => props.theme.breakpoints.sm} {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    padding: 30px 20px;
+    gap: 1rem;
+    
   }
 `;
 
