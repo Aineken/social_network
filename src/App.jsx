@@ -35,7 +35,7 @@ const App = (props) => {
                     <Routes>
                         <Route exact path="/" element={<Hero/>}/>
                         <Route path="/profile/:profileId?" element={<ProfileContainer/>}/>
-                        <Route path="/dialogs" element={<DialogsContainer/>}/>
+                        <Route path="/dialogs/:dialogId?" element={<DialogsContainer/>}/>
                         <Route path="/users" element={<UsersContainer/>}/>
                         <Route path="/login" element={<Login/>}/>
                     </Routes>

@@ -7,7 +7,8 @@ display: flex;
     width: max-content;
   align-items: center;
   padding: 5px 10px;
-  background-color: aliceblue;
+  //background-color: aliceblue;
+  border: 1px solid #000;
   border-radius: 10px;
   margin-bottom: 2rem;
   span{
@@ -17,10 +18,9 @@ display: flex;
     
   }
   button{
-    padding: 4px 6px;
-    background-color: #fff;
-    border: 1px solid #000;
-    border-radius: 10px;
+ 
+    
+    border: 0;
     width: 100%;
   }
   .active{

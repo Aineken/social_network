@@ -22,8 +22,8 @@ const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, port
     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     let rightPortionPageNumber = portionNumber * portionSize;
 
-    // const memo = useMemo(() => portionNumber);
-    const memo = useRef(portionNumber)
+    // // const memo = useMemo(() => portionNumber);
+    // const memo = useRef(portionNumber)
 
 
     return (
@@ -31,8 +31,7 @@ const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, port
 
             <button disabled={portionNumber === 1} onClick={() => {
                 setPortionNumber(state => state - 1)
-            }}>◀️
-            </button>
+            }}>◀️</button>
 
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -47,8 +46,7 @@ const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, port
 
             <button disabled={!(portionCount > portionNumber)} onClick={() => {
                 setPortionNumber(state => state + 1)
-            }}>▶️
-            </button>
+            }}>▶️</button>
      </PaginationContainer>
     );
 };

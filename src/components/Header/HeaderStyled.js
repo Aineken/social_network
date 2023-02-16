@@ -65,7 +65,6 @@ export const NavLink = styled.div`
   transition: 0.3s ease;
   left: 0;
   &:hover {
-    transform: ${(props) => !props.logo && "scale(1.1)"};
     left: ${(props) => props.logo && "6px"};
     cursor: pointer;
   }

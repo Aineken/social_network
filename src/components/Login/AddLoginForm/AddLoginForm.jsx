@@ -61,6 +61,9 @@ const AddLoginForm = (props) => {
                         <p>
                             You can also use multiple incorrect passwords to check Captcha
                         </p>
+                        <p className="red">
+                            For IOS devices might not login!!! (in proccess)
+                        </p>
                     </FormInfo>
                     <Field>
                         <Label>

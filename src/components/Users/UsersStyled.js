@@ -16,8 +16,8 @@ export const SecContainer = styled.div`
 display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 2rem;
-  
 
+  
   @media ${(props) => props.theme.breakpoints.md} {
     grid-template-columns: 1fr 1fr 1fr;
   }

@@ -1,14 +1,14 @@
 import React from 'react';
-import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
+import {DialogItemsDiv, DialogsDiv, MessageDiv, MessagesDiv} from "./DialogsStyled";
 
 const Dialogs = (props) => {
 
-    let {dialogs,messages} = props.dialogsPage;
+    let {dialogs, messages} = props.dialogsPage;
 
-    let dialogsElements = dialogs.map(dialog => <DialogItem dialog={dialog} key={dialog.id} />);
+    let dialogsElements = dialogs.map(dialog => <DialogItem dialog={dialog} key={dialog.id}/>);
     let messagesElements = messages.map(message => <Message message={message} key={message.id}/>);
 
     let addNewMessage = (values) => {
@@ -17,16 +17,17 @@ const Dialogs = (props) => {
 
 
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
+        <DialogsDiv>
+            <DialogItemsDiv>
                 {dialogsElements}
-            </div>
-            <div className={s.messages}>
-                <div>{messagesElements}</div>
+            </DialogItemsDiv>
+            <MessagesDiv>
 
-            </div>
-            <AddMessageForm onSubmit={addNewMessage}/>
-        </div>
+                <MessageDiv>{messagesElements}</MessageDiv>
+
+                <AddMessageForm onSubmit={addNewMessage}/>
+            </MessagesDiv>
+        </DialogsDiv>
     )
 }
 

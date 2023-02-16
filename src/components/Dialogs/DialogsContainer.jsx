@@ -11,11 +11,11 @@ let mapStateToProps = (state) => {
 }
 
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        sendMessage: (newMessageBody) => {
-            dispatch(sendMessageCreator(newMessageBody));
-        }
-    }
-}
-export default compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect)(Dialogs);
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         sendMessage: (newMessageBody) => {
+//             dispatch(sendMessageCreator(newMessageBody));
+//         }
+//     }
+// }
+export default compose(connect(mapStateToProps, {sendMessage:sendMessageCreator}), withAuthRedirect)(Dialogs);
