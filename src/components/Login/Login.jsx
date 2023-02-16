@@ -11,24 +11,21 @@ import {Container, FormContainer} from "./LoginStyled";
 
 const Login = (props) => {
 
-
-  const {captcha}=props;
+  const {captcha,isAuth}=props;
   const onSubmit = (formData) => {
     console.log(formData)
     props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
+
   }
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <Navigate to={"/profile"} />
   }
-
-
 
   return <Container>
     <FormContainer>
       <AddLoginForm captcha={captcha} onSubmit={onSubmit} />
       {captcha&&<img src={captcha} alt="captcha img"/>}
-
     </FormContainer>
   </Container>
 

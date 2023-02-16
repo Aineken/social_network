@@ -24,6 +24,9 @@ const AddLoginForm = (props) => {
                     if (!values.password) {
                         errors.password = "Required";
                     }
+                    if (props.captcha && !values.captcha) {
+                        errors.captcha = "Required";
+                    }
                     return errors;
                 }}
 
@@ -46,7 +49,7 @@ const AddLoginForm = (props) => {
                   isSubmitting
               }) => (
                 <LoginStyled onSubmit={handleSubmit}>
-                    <FormInfo >
+                    <FormInfo>
                         <p>
                             To login please use common test account:
                         </p>
@@ -100,7 +103,6 @@ const AddLoginForm = (props) => {
                             value={values.captcha}
                             className={((errors.captcha && touched.captcha) ? "error" : null)}
                         />
-
                     </Field>}
 
                     <RememberDiv>

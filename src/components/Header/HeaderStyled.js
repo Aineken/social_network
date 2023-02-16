@@ -100,7 +100,7 @@ export const HeaderButton = styled.button`
   justify-content: center;
   border: 1px solid #f53855;
   box-sizing: border-box;
-  border-radius: 50px;
+  border-radius: 10px;
   transition: all 0.3s;
   background-color: transparent;
   :hover {

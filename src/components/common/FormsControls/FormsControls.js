@@ -16,7 +16,7 @@ const FormControl = ({meta, ...props}) => {
 export const Textarea = ({field, ...props}) => {
 
     return <FormControl {...props}>
-        <textarea {...field}/>
+        <textarea className={styles.form} {...field}/>
     </FormControl>
 }
 

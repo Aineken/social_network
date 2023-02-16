@@ -140,6 +140,18 @@ export const SectionDivider = styled.div`
 
 
 
+export const Button = styled.button`
+  margin: 1rem 0;
+  padding: 1rem 3rem;
+  background-color: #fff;
+  border-radius: 10px;
+  width: max-content;
+  border: 0;
+  border 1px solid #000;
+  @media ${(props) => props.theme.breakpoints.md} {
+   
+  }
+`;
 
 
 

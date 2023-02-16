@@ -54,13 +54,14 @@ export const getCaptchaUrl = () => async (dispatch) => {
 export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
 
     const {data} = await authAPI.login(email, password, rememberMe, captcha);
-
     if (data.resultCode === 0) {
-        toast.success("success login!!!");
-
-        dispatch(getAuthUserData())
-    }
-    if (data.resultCode === 10) {
+        toast.success("Success login!!!");
+        return dispatch(getAuthUserData())
+    } else if (data.resultCode === 1) {
+        toast.warn(data.messages[0]);
+        // dispatch(getCaptchaUrl())
+    } else if (data.resultCode === 10) {
+        toast.warn(data.messages[0]);
         dispatch(getCaptchaUrl())
     }
 }
@@ -68,7 +69,6 @@ export const login = (email, password, rememberMe, captcha) => async (dispatch) 
 export const logout = () => async (dispatch) => {
     const {data} = await authAPI.logout();
     if (data.resultCode === 0) {
-        toast.info("success logout!!!");
         dispatch(setAuthUserData(null, null, null, false, null));
     }
 }

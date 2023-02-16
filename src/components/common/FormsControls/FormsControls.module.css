@@ -8,3 +8,17 @@
 {
     color: red;
 }
+
+.formControl{
+    border-radius: 10px;
+    width: 100%;
+}
+
+.form{
+    padding: 1rem;
+    border-radius: 10px;
+    resize: vertical;
+    width: 100%;
+    min-height: 60px ;
+    max-height: 200px;
+}

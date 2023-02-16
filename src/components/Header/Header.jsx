@@ -7,14 +7,11 @@ import {
 } from "./HeaderStyled";
 import logo from "../../utils/andrzul_logo.svg";
 import {Link} from "react-router-dom";
-import {toast} from "react-toastify";
 
 function Header(props) {
 
-    const setSubmit= async()=>{
-
-        await props.logout();
-        toast.success("logout");
+    const setSubmit= ()=>{
+        props.logout();
     }
 
     return (

@@ -10,6 +10,8 @@ export const ProfileInfoDiv = styled.div`
   max-width: 400px;
   padding: 2rem;
   gap: 2rem;
+  background-color: aliceblue;
+  border-radius: 10px;
   img{
     width: 150px;
   }
@@ -17,7 +19,7 @@ export const ProfileInfoDiv = styled.div`
     margin-top: 2rem;
     display: grid;
     padding: 2rem 1rem;
-   border: 2px solid black;
+    border: 2px solid black;
     text-align: center;
   }
   

@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import userPhoto from "../../../assets/images/user.png";
 import {UserContainer} from "./UserStyled";
+import {Button} from "../../../styles/GlobalComponents";
 
 const User = ({user,follow,unfollow, followingInProgress}) => {
 
@@ -17,16 +18,16 @@ const User = ({user,follow,unfollow, followingInProgress}) => {
 
                         {
                             user.followed
-                                ? <button disabled={followingInProgress.some(id => id === user.id)}
+                                ? <Button disabled={followingInProgress.some(id => id === user.id)}
                                           onClick={() => {
                                               unfollow(user.id)
                                           }}>
-                                    Unfollow</button>
-                                : <button disabled={followingInProgress.some(id => id === user.id)}
+                                    Unfollow</Button>
+                                : <Button disabled={followingInProgress.some(id => id === user.id)}
                                           onClick={() => {
                                               follow(user.id)
                                           }}>
-                                    Follow</button>
+                                    Follow</Button>
                         }
 
 

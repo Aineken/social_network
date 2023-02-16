@@ -23,14 +23,6 @@ align-items: center;
     font-size: 18px;
     margin-top: .5rem;
   }
-  button {
-    margin: 1rem auto;
-    padding: 1rem;
-    background-color: #fff;
-    border: 1px solid #000;
-    border-radius: 10px;
-    width: 100%;
-    
-  }
+  
 
 `;

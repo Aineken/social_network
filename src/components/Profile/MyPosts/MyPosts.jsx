@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 
 import Post from './Post/Post';
 import AddPostForm from "./AddPostForm/AddPostForm";
-import {MyPostsDiv} from "./MyPostsStyled";
+import {MyPostsDiv, PostsContainer} from "./MyPostsStyled";
 
 
 
@@ -20,9 +20,9 @@ const MyPosts = memo((props) => {
        <MyPostsDiv>
             <h3>My posts</h3>
             <AddPostForm onSubmit={onAddPost} />
-            <div>
+            <PostsContainer>
                 {postsElements}
-            </div>
+            </PostsContainer>
        </MyPostsDiv>
     )
 })

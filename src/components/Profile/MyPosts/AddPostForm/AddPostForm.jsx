@@ -1,6 +1,7 @@
 import React from 'react';
 import {Field, Form, Formik} from "formik";
 import {Textarea} from "../../../common/FormsControls/FormsControls";
+import {Button} from "../../../../styles/GlobalComponents";
 
 
 
@@ -39,9 +40,9 @@ const AddPostForm = (props) => {
                             );
                         }}
                     </Field>
-                    <button type="submit" disabled={isSubmitting}>
+                    <Button type="submit" disabled={isSubmitting}>
                         Submit
-                    </button>
+                    </Button>
                 </Form>
             )}
         </Formik>

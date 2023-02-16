@@ -4,6 +4,8 @@ import styled from "styled-components";
 export const PostDiv = styled.div`
   width: 100%;
   padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
  img{
    width: 50px;
  }
