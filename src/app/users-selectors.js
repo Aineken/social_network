@@ -28,6 +28,15 @@ export const getFollowingInProgress = (state) => {
     return state.usersPage.followingInProgress;
 }
 
+export const getCurrentPortion = (state) => {
+    return state.usersPage.currentPortion;
+}
+export const getPortionSize = (state) => {
+    return state.usersPage.portionSize;
+}
+
+
+
 export const countSomethingDifficult = (state) => {
     debugger
     //for... math... big arrays

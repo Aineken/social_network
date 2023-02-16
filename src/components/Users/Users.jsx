@@ -4,10 +4,11 @@ import User from "./User/User";
 import {MainContainer, SecContainer} from "./UsersStyled";
 
 
+
 let Users = (props) => {
 
 
-    const {currentPage, onPageChanged, totalUsersCount, pageSize} = props
+    const {currentPage, onPageChanged, totalUsersCount, pageSize,currentPortion,portionSize,setCurrentPortion} = props
 
     return <MainContainer>
         <Pagination
@@ -15,6 +16,9 @@ let Users = (props) => {
             onPageChanged={onPageChanged}
             totalItemsCount={totalUsersCount}
             pageSize={pageSize}
+            currentPortion={currentPortion}
+            portionSize={portionSize}
+            setCurrentPortion={setCurrentPortion}
         />
         <SecContainer>
             {

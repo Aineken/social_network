@@ -7,6 +7,7 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+const CURRENT_PORTION = "CURRENT_PORTION";
 
 let initialState = {
     users: [],
@@ -14,7 +15,9 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: []
+    followingInProgress: [],
+    currentPortion: 1,
+    portionSize: 7
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -59,6 +62,9 @@ const usersReducer = (state = initialState, action) => {
                     : state.followingInProgress.filter(id => id !== action.userId)
             }
         }
+        case CURRENT_PORTION: {
+            return {...state, currentPortion: action.currentPortion}
+        }
         default:
             return state;
     }
@@ -69,8 +75,11 @@ export const followSuccess = (userId) => ({type: FOLLOW, userId})
 export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
-export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})
+export const setTotalUsersCount = (count) => ({type: SET_TOTAL_USERS_COUNT, count})
+export const setCurrentPortion = (currentPortion) => ({type: CURRENT_PORTION, currentPortion})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+
+
 export const toggleFollowingProgress = (isFetching, userId) => ({
     type: TOGGLE_IS_FOLLOWING_PROGRESS,
     isFetching,
@@ -86,7 +95,7 @@ export const requestUsers = (page, pageSize) => async (dispatch) => {
 }
 
 
-const followUnfollow =async(dispatch, userId, apiMethod, actionCreator)=>{
+const followUnfollow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleFollowingProgress(true, userId));
     const {data} = await apiMethod(userId)
 
@@ -97,11 +106,11 @@ const followUnfollow =async(dispatch, userId, apiMethod, actionCreator)=>{
 
 }
 export const follow = (userId) => (dispatch) => {
-    followUnfollow(dispatch,userId,usersAPI.follow.bind(usersAPI), followSuccess);
+    followUnfollow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess);
 }
 
 export const unfollow = (userId) => (dispatch) => {
-    followUnfollow(dispatch,userId,usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
+    followUnfollow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
 }
 
 

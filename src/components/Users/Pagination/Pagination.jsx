@@ -1,7 +1,8 @@
-import React, {useMemo, useRef, useState} from 'react';
+import React from 'react';
 import {PaginationContainer} from "./PaginationStyled";
 
-const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, portionSize = 5}) => {
+
+const Pagination = ({setCurrentPortion,currentPage, onPageChanged, totalItemsCount, pageSize, portionSize = 5,currentPortion=1}) => {
 
     let pagesCount = 1;
     let pagesNum = Math.ceil(totalItemsCount / pageSize);
@@ -11,6 +12,7 @@ const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, port
         pagesCount = pagesNum;
     }
 
+
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
@@ -18,19 +20,18 @@ const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, port
 
 
     let portionCount = Math.ceil(pagesCount / portionSize);
-    let [portionNumber, setPortionNumber] = useState(1);
-    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
-    let rightPortionPageNumber = portionNumber * portionSize;
+    // let [portionNumber, setPortionNumber] = useState(currentPortion);
+    let leftPortionPageNumber = (currentPortion - 1) * portionSize + 1;
+    let rightPortionPageNumber = currentPortion * portionSize;
 
-    // // const memo = useMemo(() => portionNumber);
-    // const memo = useRef(portionNumber)
+
 
 
     return (
         <PaginationContainer>
 
-            <button disabled={portionNumber === 1} onClick={() => {
-                setPortionNumber(state => state - 1)
+            <button disabled={currentPortion === 1} onClick={() => {
+                setCurrentPortion(currentPortion - 1)
             }}>◀️</button>
 
             {pages
@@ -44,8 +45,9 @@ const Pagination = ({currentPage, onPageChanged, totalItemsCount, pageSize, port
                                  }}>{p}</span>
                 })}
 
-            <button disabled={!(portionCount > portionNumber)} onClick={() => {
-                setPortionNumber(state => state + 1)
+            <button disabled={!(portionCount > currentPortion)} onClick={() => {
+                setCurrentPortion(currentPortion + 1)
+
             }}>▶️</button>
      </PaginationContainer>
     );

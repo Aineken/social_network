@@ -4,17 +4,17 @@ import {connect} from "react-redux";
 import {
     follow,
     requestUsers,
-    setCurrentPage,
+    setCurrentPage, setCurrentPortion,
     toggleFollowingProgress,
     unfollow
 } from "../../app/user-reducer.js";
 import Preloader from "../common/Preloader/Preloader";
 import {compose} from "@reduxjs/toolkit";
 import {
-    getCurrentPage,
+    getCurrentPage, getCurrentPortion,
     getFollowingInProgress,
     getIsFetching,
-    getPageSize,
+    getPageSize, getPortionSize,
     getTotalUsersCount, getUsers
 } from "../../app/users-selectors";
 
@@ -42,9 +42,13 @@ const UsersContainer = (props) => {
                follow={props.follow}
                unfollow={props.unfollow}
                followingInProgress={props.followingInProgress}
+               portionSize={props.portionSize}
+               currentPortion={props.currentPortion}
+               setCurrentPortion={props.setCurrentPortion}
         />}
     </>;
 };
+
 
 
 let mapStateToProps = (state) => {
@@ -54,9 +58,11 @@ let mapStateToProps = (state) => {
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
-        followingInProgress: getFollowingInProgress(state)
+        followingInProgress: getFollowingInProgress(state),
+        portionSize: getPortionSize(state) ,
+        currentPortion: getCurrentPortion(state)
     }
 }
 export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, toggleFollowingProgress, requestUsers})
+    connect(mapStateToProps, {follow, unfollow,setCurrentPortion, setCurrentPage, toggleFollowingProgress, requestUsers})
 )(UsersContainer)
