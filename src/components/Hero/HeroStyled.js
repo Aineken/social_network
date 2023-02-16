@@ -8,7 +8,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 0;
   background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
-  margin-bottom: 50px;
+  //margin-bottom: 50px;
   @media ${(props) => props.theme.breakpoints.md} {
     flex-direction: column;
     height: 100%;
@@ -17,8 +17,8 @@ export const Container = styled.div`
    display: flex;
     flex-direction:column-reverse;
     margin-bottom: 0;
-
   }
+  
 `;
 
 export const Div1 = styled.div`

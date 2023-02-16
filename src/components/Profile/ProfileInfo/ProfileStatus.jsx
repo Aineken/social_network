@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {ProfileStatusDiv} from "../ProfileStyled";
 
 const ProfileStatus = (props) => {
     const [editMode, setEditMode] = useState(false);
@@ -22,14 +23,17 @@ const ProfileStatus = (props) => {
         setStatus(e.currentTarget.value)
     }
     return (
-        <div>
+        <ProfileStatusDiv>
+            <span onDoubleClick={activateEditMode}>✏️ Double Click to edit!!!</span>
             My Status:👇 <br/>
             {!editMode ?
-                <span onDoubleClick={activateEditMode}>{status || "-------"}</span>
+                <p>{status || "-------"}</p>
                 :
                 <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode}
                        value={status}/>}
-        </div>
+
+
+        </ProfileStatusDiv>
     )
 
 }
