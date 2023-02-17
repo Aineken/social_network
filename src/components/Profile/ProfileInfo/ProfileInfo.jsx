@@ -7,14 +7,6 @@ import {ProfileInfoDiv} from "../ProfileStyled";
 
 const ProfileInfo = (props) => {
 
-
-
-
-
-
-
-
-
     if (!props.profile) {
         return <Preloader />
     }

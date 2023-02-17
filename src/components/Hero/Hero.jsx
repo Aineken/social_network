@@ -19,7 +19,8 @@ function Hero() {
                     <MainTitle>Welcome!!!</MainTitle>
                     <MainText>
                        Welcome to my Social Network Website <br/>
-                        powered by <br/> "Andrzul Web Studio"
+                      <strong>Development in Process!!!</strong>
+
                     </MainText>
                 </Div2>
             </Container>

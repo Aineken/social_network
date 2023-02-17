@@ -21,37 +21,36 @@ import {
 const UsersContainer = (props) => {
 
 
-    const {currentPage, pageSize,requestUsers,setCurrentPage} = props;
+    const {currentPage, pageSize, requestUsers, setCurrentPage} = props;
 
     useEffect(() => {
-       requestUsers(currentPage, pageSize);
-    }, [ currentPage, pageSize]);
+        requestUsers(currentPage, pageSize);
+    }, [currentPage, pageSize]);
 
     const onPageChanged = (pageNumber) => {
-        requestUsers(pageNumber, props.pageSize);
+        requestUsers(pageNumber, pageSize);
         setCurrentPage(pageNumber);
     }
 
     return <>
         {props.isFetching ? <Preloader/> :
-        <Users totalUsersCount={props.totalUsersCount}
-               pageSize={props.pageSize}
-               currentPage={props.currentPage}
-               onPageChanged={onPageChanged}
-               users={props.users}
-               follow={props.follow}
-               unfollow={props.unfollow}
-               followingInProgress={props.followingInProgress}
-               portionSize={props.portionSize}
-               currentPortion={props.currentPortion}
-               setCurrentPortion={props.setCurrentPortion}
-        />}
+            <Users totalUsersCount={props.totalUsersCount}
+                   pageSize={props.pageSize}
+                   currentPage={props.currentPage}
+                   onPageChanged={onPageChanged}
+                   users={props.users}
+                   follow={props.follow}
+                   unfollow={props.unfollow}
+                   followingInProgress={props.followingInProgress}
+                   portionSize={props.portionSize}
+                   currentPortion={props.currentPortion}
+                   setCurrentPortion={props.setCurrentPortion}
+            />}
     </>;
 };
 
 
-
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -59,10 +58,14 @@ let mapStateToProps = (state) => {
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
-        portionSize: getPortionSize(state) ,
+        portionSize: getPortionSize(state),
         currentPortion: getCurrentPortion(state)
     }
 }
+
+const mapDispatchToProps = {
+    follow, unfollow, setCurrentPortion, setCurrentPage, toggleFollowingProgress, requestUsers
+}
 export default compose(
-    connect(mapStateToProps, {follow, unfollow,setCurrentPortion, setCurrentPage, toggleFollowingProgress, requestUsers})
+    connect(mapStateToProps, mapDispatchToProps)
 )(UsersContainer)
