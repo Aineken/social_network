@@ -9,7 +9,7 @@ export const CenteredContainer = styled.div`
 
 export const Container = styled(CenteredContainer)`
   width: 100%;
-  min-height: 100%;
+  height: max-content;
   margin: auto auto 50px;
   display: flex;
   justify-content: space-evenly;
