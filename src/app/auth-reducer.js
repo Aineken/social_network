@@ -53,7 +53,8 @@ export const getCaptchaUrl = () => async (dispatch) => {
 }
 export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
 
-    const data = await authAPI.login(email, password, rememberMe, captcha);
+    const {data} = await authAPI.login(email, password, rememberMe, captcha);
+    console.log(data)
     if (data.resultCode === 0) {
         toast.success("Success login!!!");
         return dispatch(getAuthUserData())

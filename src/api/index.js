@@ -1,12 +1,13 @@
 import axios from "axios";
 
+const API_KEY="dce74158-9bce-4703-8c6c-4d14a7718dea";
 
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     headers: {
         "Accept": 'application/json',
-        "API-KEY": "8a1308bc-ae50-41a5-bdc0-607e0a18c69b"
+        "API-KEY": API_KEY
     }
 });
 
@@ -39,12 +40,25 @@ export const profileAPI = {
     }
 }
 
+
+// const newLogin = axios.create({
+//     withCredentials: true,
+//     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+//     headers: {
+//
+//         "API-KEY": API_KEY,
+//         'Authorization': `Bearer ${API_KEY}`,
+//     }
+// });
+
 export const authAPI = {
     me() {
         return instance.get(`auth/me`);
     },
     login(email, password, rememberMe = false, captcha=null) {
-        return instance.post(`auth/login`, {email, password, rememberMe,captcha}).then(response => response.data)
+        return instance.post(`auth/login`, {email, password, rememberMe,captcha}).then(response => response).catch(error=>{
+            console.log(error)
+        })
     },
     logout() {
         return instance.delete(`auth/login`);
