@@ -2,6 +2,8 @@
   "name": "social-media",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://social-network.samuraijs.com/api/1.0",
+  "homepage": "http://localhost:3000/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",
@@ -9,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.2",
     "formik": "^2.2.9",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
