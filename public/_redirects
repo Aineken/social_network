@@ -1,0 +1,3 @@
+/api/*  https://social-network.samuraijs.com/api/:splat  200
+
+/* index.html/:splat 200
