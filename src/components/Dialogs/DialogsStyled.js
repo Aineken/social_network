@@ -28,6 +28,7 @@ export const DialogItemsDiv = styled.div`
   height: max-content;
   text-decoration: none;
   color: #000;
+  
   a{
     color:#000;
     font-size: 20px;
@@ -37,6 +38,9 @@ export const DialogItemsDiv = styled.div`
     @media ${(props) => props.theme.breakpoints.sm} {
       font-size: 16px;
     }
+  }
+  .active{
+    color: gold;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
