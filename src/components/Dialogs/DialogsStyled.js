@@ -55,6 +55,7 @@ export const MessagesDiv = styled.div`
   justify-content: center;
   gap: 1rem;
   width: 100%;
+  max-width: 400px;
 `;
 export const MessageDiv = styled.div`
 display: flex;
