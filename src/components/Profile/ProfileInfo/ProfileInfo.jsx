@@ -1,23 +1,48 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus"
 import profilePhoto from "../../../assets/images/user.png"
-import {ProfileInfoDiv} from "../ProfileStyled";
+import {ProfileInfoDiv, ProfileInfos, ProfileText} from "../ProfileStyled";
 
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile, mainUser, ...props}) => {
 
-    if (!props.profile) {
-        return <Preloader />
+
+    const [canEdit, setCanEdit] = useState(false);
+
+
+    useEffect(() => {
+        if ((profile && profile.userId) === mainUser) {
+            setCanEdit(true)
+        }
+    }, [profile, mainUser])
+
+    if (!profile) {
+        return <Preloader/>
     }
 
 
-    console.log(props)
+    console.log(profile)
     return (
-            <ProfileInfoDiv>
-                <img alt='avatar' src={props.profile.photos.large || profilePhoto} />
-                <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-            </ProfileInfoDiv>
+
+        <ProfileInfoDiv>
+            <img alt='avatar' src={profile.photos.large || profilePhoto}/>
+            <ProfileInfos>
+                <ProfileText>
+                    {profile.fullName}
+                </ProfileText>
+                <ProfileText>
+                    {profile.aboutMe}
+                </ProfileText>
+                <ProfileText>
+                    Looking for a job: {profile.lookingForAJob ? "Yes" : "No"}
+                </ProfileText>
+                {profile.lookingForAJob && <ProfileText>
+                    {profile.lookingForAJobDescription}
+                </ProfileText>}
+            </ProfileInfos>
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus} canEdit={canEdit}/>
+        </ProfileInfoDiv>
     )
 }
 

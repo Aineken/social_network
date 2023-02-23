@@ -30,7 +30,7 @@ const ProfileContainer = ({getUserProfile,getStatus,authorizedUserId, ...props})
 
 
     return (
-        <Profile {...props} />
+        <Profile {...props}  mainUser={authorizedUserId} />
     )
 
 }

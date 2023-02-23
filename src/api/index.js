@@ -25,7 +25,6 @@ export const usersAPI = {
         return instanceNew.delete(`${mainUrl}/follow/${userId}`)
     },
     getProfile(userId) {
-        console.log(userId)
         return profileAPI.getProfile(userId);
     }
 };

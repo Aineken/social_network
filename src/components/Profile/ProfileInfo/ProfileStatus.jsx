@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ProfileStatusDiv} from "../ProfileStyled";
+import {toast} from "react-toastify";
 
 const ProfileStatus = (props) => {
     const [editMode, setEditMode] = useState(false);
@@ -12,6 +13,7 @@ const ProfileStatus = (props) => {
 
     const activateEditMode = () => {
         setEditMode(true)
+
     }
     const deactivateEditMode = () => {
         setEditMode(false)
@@ -23,7 +25,7 @@ const ProfileStatus = (props) => {
     }
     return (
         <ProfileStatusDiv>
-            <span onDoubleClick={activateEditMode}>✏️ Double Click to edit!!!</span>
+            {props.canEdit && <span onDoubleClick={activateEditMode}>✏️ Double Click to edit!!!</span>}
             My Status:👇 <br/>
             {!editMode ?
                 <p>{status || "-------"}</p>
