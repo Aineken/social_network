@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ProfileStatusDiv} from "../ProfileStyled";
-import {toast} from "react-toastify";
+
 
 const ProfileStatus = (props) => {
     const [editMode, setEditMode] = useState(false);
@@ -32,8 +32,6 @@ const ProfileStatus = (props) => {
                 :
                 <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode}
                        value={status}/>}
-
-
         </ProfileStatusDiv>
     )
 

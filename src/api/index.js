@@ -1,4 +1,5 @@
 import axios from "axios";
+import {toast} from "react-toastify";
 
 const API_KEY="dce74158-9bce-4703-8c6c-4d14a7718dea";
 
@@ -19,10 +20,15 @@ export const usersAPI = {
         return instanceNew.get(`${mainUrl}/users?page=${currentPage}&count=${pageSize}`);
     },
     follow(userId) {
-        return instanceNew.post(`${mainUrl}/follow/${userId}`)
+        return instanceNew.post(`${mainUrl}/follow/${userId}`).then(response => response).catch(error=>{
+            toast.warn("please Log in")
+        })
+
     },
     unfollow(userId) {
-        return instanceNew.delete(`${mainUrl}/follow/${userId}`)
+        return instanceNew.delete(`${mainUrl}/follow/${userId}`).then(response => response).catch(error=>{
+            toast.warn("please Log in")
+        })
     },
     getProfile(userId) {
         return profileAPI.getProfile(userId);
