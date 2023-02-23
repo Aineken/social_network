@@ -10,31 +10,35 @@ const instanceNew = axios.create({
     }
 });
 
+const mainUrl=`${window.location.origin}/api/1.0`;
+
+
 
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
-        return instanceNew.get(`api/1.0/users?page=${currentPage}&count=${pageSize}`);
+        return instanceNew.get(`${mainUrl}/users?page=${currentPage}&count=${pageSize}`);
     },
     follow(userId) {
-        return instanceNew.post(`api/1.0/follow/${userId}`)
+        return instanceNew.post(`${mainUrl}/follow/${userId}`)
     },
     unfollow(userId) {
-        return instanceNew.delete(`api/1.0/follow/${userId}`)
+        return instanceNew.delete(`${mainUrl}/follow/${userId}`)
     },
     getProfile(userId) {
+        console.log(userId)
         return profileAPI.getProfile(userId);
     }
 };
 
 export const profileAPI = {
     getProfile(userId) {
-        return instanceNew.get(`api/1.0/profile/` + userId);
+        return instanceNew.get(`${mainUrl}/profile/` + userId);
     },
     getStatus(userId) {
-        return instanceNew.get(`api/1.0/profile/status/` + userId);
+        return instanceNew.get(`${mainUrl}/profile/status/` + userId);
     },
     updateStatus(status) {
-        return instanceNew.put(`api/1.0/profile/status`, {status: status});
+        return instanceNew.put(`${mainUrl}/profile/status`, {status: status});
     }
 }
 
@@ -42,17 +46,17 @@ export const profileAPI = {
 
 export const authAPI = {
     me() {
-        return instanceNew.get(`api/1.0/auth/me`);
+        return instanceNew.get(`${mainUrl}/auth/me`);
     },
     login(email, password, rememberMe = false, captcha=null) {
-        return instanceNew.post(`api/1.0/auth/login`, {email, password, rememberMe,captcha}).then(response => response).catch(error=>{
+        return instanceNew.post(`${mainUrl}/auth/login`, {email, password, rememberMe,captcha}).then(response => response).catch(error=>{
             console.log(error)
         })
     },
     logout() {
-        return instanceNew.delete(`api/1.0/auth/login`);
+        return instanceNew.delete(`${mainUrl}/auth/login`);
     },
     captchaUrl() {
-        return instanceNew.get("api/1.0/security/get-captcha-url");
+        return instanceNew.get(`${mainUrl}/security/get-captcha-url`);
     }
 }

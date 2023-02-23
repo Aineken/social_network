@@ -11,6 +11,8 @@ const ProfileInfo = (props) => {
         return <Preloader />
     }
 
+
+    console.log(props)
     return (
             <ProfileInfoDiv>
                 <img alt='avatar' src={props.profile.photos.large || profilePhoto} />
