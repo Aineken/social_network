@@ -5,10 +5,10 @@ import profilePhoto from "../../../assets/images/user.png"
 import {ProfileInfoDiv, ProfileInfos, ProfileText} from "../ProfileStyled";
 
 
-const ProfileInfo = ({profile, mainUser, ...props}) => {
+const ProfileInfo = ({profile, mainUser, status, updateStatus}) => {
 
 
-    const [canEdit, setCanEdit] = useState(false);
+    const [canEdit,setCanEdit] = useState(false);
 
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const ProfileInfo = ({profile, mainUser, ...props}) => {
                     {profile.lookingForAJobDescription}
                 </ProfileText>}
             </ProfileInfos>
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus} canEdit={canEdit}/>
+            <ProfileStatus status={status} updateStatus={updateStatus} canEdit={canEdit}/>
         </ProfileInfoDiv>
     )
 }

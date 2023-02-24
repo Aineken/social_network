@@ -30,6 +30,7 @@ export const Item = styled.div`
   .active{
     color: gold;
   }
+  
 
   @media ${(props) => props.theme.breakpoints.md} {
     display: flex;

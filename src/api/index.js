@@ -13,7 +13,7 @@ const instanceNew = axios.create({
 
 const mainUrl=`${window.location.origin}/api/1.0`;
 
-
+// console.log(process.env.PUBLIC_URL || mainUrl)
 
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {

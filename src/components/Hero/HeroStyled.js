@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  height: 500px;
+  height: 100%;
+  max-height: 450px;
   border-radius: 2rem;
   overflow: hidden;
   grid-template-columns: 1fr 1fr;
@@ -11,7 +12,7 @@ export const Container = styled.div`
   //margin-bottom: 50px;
   @media ${(props) => props.theme.breakpoints.md} {
     flex-direction: column;
-    height: 100%;
+   
   }
   @media ${(props) => props.theme.breakpoints.sm} {
    display: flex;
@@ -38,9 +39,9 @@ export const Div1 = styled.div`
 `;
 export const Div2 = styled.div`
   display: grid;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 50px;
+ place-items: center;
+  place-content: center;
+  gap: 1rem;
   width: 100%;
   @media ${(props) => props.theme.breakpoints.md} {
     display: flex;
@@ -51,7 +52,7 @@ export const Div2 = styled.div`
   @media ${(props) => props.theme.breakpoints.sm} {
     display: flex;
     flex-direction: column;
-    row-gap: 2rem;
+  
     padding: 30px 20px;
     gap: 1rem;
     
@@ -61,10 +62,13 @@ export const Div2 = styled.div`
 export const MainTitle = styled.h4`
   color: #fff;
   font-size: 36px;
+  text-align: center;
 `;
 
 export const MainText = styled.p`
   color: #fff;
   font-size: 28px;
   line-height: 36px;
+  text-align: center;
+  
 `;
