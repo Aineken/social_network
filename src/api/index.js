@@ -1,17 +1,16 @@
 import axios from "axios";
 import {toast} from "react-toastify";
 
-const API_KEY="dce74158-9bce-4703-8c6c-4d14a7718dea";
+const API_KEY = "dce74158-9bce-4703-8c6c-4d14a7718dea";
 
 const instanceNew = axios.create({
     withCredentials: true,
     headers: {
-        "Accept": 'application/json',
-        "Authorization":`Bearer ${API_KEY}`,
+        "Authorization": `Bearer ${API_KEY}`,
     }
 });
 
-const mainUrl=`${window.location.origin}/api/1.0`;
+const mainUrl = `${window.location.origin}/api/1.0`;
 
 // console.log(process.env.PUBLIC_URL || mainUrl)
 
@@ -20,13 +19,13 @@ export const usersAPI = {
         return instanceNew.get(`${mainUrl}/users?page=${currentPage}&count=${pageSize}`);
     },
     follow(userId) {
-        return instanceNew.post(`${mainUrl}/follow/${userId}`).then(response => response).catch(error=>{
+        return instanceNew.post(`${mainUrl}/follow/${userId}`).then(response => response).catch(error => {
             toast.warn("please Log in")
         })
 
     },
     unfollow(userId) {
-        return instanceNew.delete(`${mainUrl}/follow/${userId}`).then(response => response).catch(error=>{
+        return instanceNew.delete(`${mainUrl}/follow/${userId}`).then(response => response).catch(error => {
             toast.warn("please Log in")
         })
     },
@@ -44,17 +43,30 @@ export const profileAPI = {
     },
     updateStatus(status) {
         return instanceNew.put(`${mainUrl}/profile/status`, {status: status});
+    },
+    updatePhoto(photo) {
+        const formData = new FormData();
+        formData.append("image", photo)
+        return instanceNew.put(`${mainUrl}/profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     }
 }
-
 
 
 export const authAPI = {
     me() {
         return instanceNew.get(`${mainUrl}/auth/me`);
     },
-    login(email, password, rememberMe = false, captcha=null) {
-        return instanceNew.post(`${mainUrl}/auth/login`, {email, password, rememberMe,captcha}).then(response => response).catch(error=>{
+    login(email, password, rememberMe = false, captcha = null) {
+        return instanceNew.post(`${mainUrl}/auth/login`, {
+            email,
+            password,
+            rememberMe,
+            captcha
+        }).then(response => response).catch(error => {
             console.log(error)
         })
     },

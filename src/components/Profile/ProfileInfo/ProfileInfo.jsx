@@ -3,9 +3,10 @@ import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus"
 import profilePhoto from "../../../assets/images/user.png"
 import {ProfileInfoDiv, ProfileInfos, ProfileText} from "../ProfileStyled";
+import InputPhoto from "./InputPhoto";
 
 
-const ProfileInfo = ({profile, mainUser, status, updateStatus}) => {
+const ProfileInfo = ({profile, mainUser, status, updateStatus,updatePhoto}) => {
 
 
     const [canEdit,setCanEdit] = useState(false);
@@ -21,12 +22,12 @@ const ProfileInfo = ({profile, mainUser, status, updateStatus}) => {
         return <Preloader/>
     }
 
-
     console.log(profile)
     return (
 
         <ProfileInfoDiv>
             <img alt='avatar' src={profile.photos.large || profilePhoto}/>
+            {canEdit&&<InputPhoto updatePhoto={updatePhoto}/>}
             <ProfileInfos>
                 <ProfileText>
                     {profile.fullName}

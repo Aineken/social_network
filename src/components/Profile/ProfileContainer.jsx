@@ -2,11 +2,12 @@ import React, {useEffect} from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
-import {getStatus, getUserProfile, updateStatus} from "../../app/profile-reducer";
+import {getStatus, getUserProfile, updatePhoto, updateStatus} from "../../app/profile-reducer";
 import {useNavigate, useParams} from "react-router-dom";
 
 
 const ProfileContainer = ({getUserProfile,getStatus,authorizedUserId, ...props}) => {
+
     let {profileId} = useParams();
     const navigate=useNavigate();
 
@@ -46,7 +47,8 @@ export default compose(
     connect(mapStateToProps, {
         getUserProfile,
         getStatus,
-        updateStatus
+        updateStatus,
+        updatePhoto
     })
 )(ProfileContainer);
 
