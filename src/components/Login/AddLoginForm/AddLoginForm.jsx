@@ -54,7 +54,7 @@ const AddLoginForm = (props) => {
                             To login please use common test account:
                         </p>
                         <p className="red">
-                            Email: free@samuraijs.com
+                            Email: andrzul98@gmail.com
                             <br/>
                             Password: free
                         </p>
