@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {updatePhoto} from "../../../app/profile-reducer";
 
 
 const InputPhoto = ({updatePhoto}) => {
@@ -25,7 +24,6 @@ const InputPhoto = ({updatePhoto}) => {
         setSelectedFile(e.target.files[0])
     }
 
-
     const handleSubmit=(e)=>{
         e.preventDefault()
         updatePhoto(selectedFile);
@@ -36,7 +34,7 @@ const InputPhoto = ({updatePhoto}) => {
     return (
         <form onSubmit={handleSubmit}>
             <input type="file" accept="image/*" onChange={onSelectFile}/>
-            {selectedFile && <img src={preview}/>} <br/>
+            {selectedFile && <img src={preview} alt="preview"/>} <br/>
             {selectedFile&&<button>Submit</button>}
         </form>
     )

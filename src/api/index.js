@@ -52,7 +52,10 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
-    }
+    },
+    updateInfo(newInfo) {
+        return instanceNew.put(`${mainUrl}/profile`,newInfo );
+    },
 }
 
 

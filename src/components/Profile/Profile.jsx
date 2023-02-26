@@ -3,7 +3,12 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {ProfileDiv} from "./ProfileStyled";
 
+
+
 const Profile = (props) => {
+
+
+
 
     return (
 
