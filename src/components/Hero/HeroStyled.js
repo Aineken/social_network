@@ -11,13 +11,15 @@ export const Container = styled.div`
   background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
   //margin-bottom: 50px;
   @media ${(props) => props.theme.breakpoints.md} {
-    flex-direction: column;
+    display: flex;
+    flex-direction:column-reverse;
+    margin-bottom: 0;
+    max-height:100%;
    
   }
   @media ${(props) => props.theme.breakpoints.sm} {
-   display: flex;
-    flex-direction:column-reverse;
-    margin-bottom: 0;
+   
+  
   }
   
 `;
@@ -29,6 +31,7 @@ export const Div1 = styled.div`
     width: 100%;
     object-fit: cover;
     object-position: right bottom;
+    max-height: 450px;
     
   ;
   }

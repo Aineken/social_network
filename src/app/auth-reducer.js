@@ -49,7 +49,7 @@ export const getAuthUserData = () => async (dispatch) => {
 }
 export const getCaptchaUrl = () => async (dispatch) => {
     const {data} = await authAPI.captchaUrl();
-    dispatch(setCaptchaData(data.url));
+    dispatch( (data.url));
 }
 export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
 

@@ -17,7 +17,7 @@ export const MainDiv = styled.div`
     grid-template-columns: 1fr;
   }
   @media ${(props) => props.theme.breakpoints.sm} {
-     padding-top: 150px;
+    
   }
   
 `;
