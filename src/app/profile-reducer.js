@@ -1,9 +1,11 @@
 import {profileAPI, usersAPI} from "../api/index";
+import {toast} from "react-toastify";
+
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
-const UPDATE_PHOTO_SUCCESS = "UPDATE_PHOTO_SUCCESS"
+const UPDATE_PHOTO_SUCCESS = "UPDATE_PHOTO_SUCCESS";
 
 let initialState = {
     posts: [
@@ -41,8 +43,8 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
-        case UPDATE_PHOTO_SUCCESS:{
-            return {...state, profile: {...state.profile, photos:action.photo}}
+        case UPDATE_PHOTO_SUCCESS: {
+            return {...state, profile: {...state.profile, photos: action.photo}}
         }
         default:
             return state;
@@ -53,9 +55,11 @@ const profileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
-export const updatePhotoSuccess = (photo) => ({type:UPDATE_PHOTO_SUCCESS,photo})
+export const updatePhotoSuccess = (photo) => ({type: UPDATE_PHOTO_SUCCESS, photo})
+
 
 export const getUserProfile = (userId) => async (dispatch) => {
+
     const {data} = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(data))
 }
@@ -79,6 +83,21 @@ export const updatePhoto = (photo) => async (dispatch) => {
 
     if (data.resultCode === 0) {
         dispatch(updatePhotoSuccess(data.data.photos));
+    }
+}
+
+export const updateInfo = (newInfo) => async (dispatch, getState) => {
+
+    const userId = getState().profilePage.profile.userId;
+    const {data} = await profileAPI.updateInfo(newInfo);
+    console.log(data)
+    if (data.resultCode === 0) {
+        dispatch(getUserProfile(userId))
+    }else if (data.resultCode === 1) {
+        toast.info(data.messages[0])
+        return Promise.reject(data.messages);
+    } else {
+        return Promise.reject("some other reason")
     }
 }
 

@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
-import {getStatus, getUserProfile, updatePhoto, updateStatus} from "../../app/profile-reducer";
+import {getStatus, getUserProfile, updateInfo, updatePhoto, updateStatus} from "../../app/profile-reducer";
 import {useNavigate, useParams} from "react-router-dom";
 
 
@@ -11,23 +11,24 @@ const ProfileContainer = ({getUserProfile,getStatus,authorizedUserId, ...props})
     let {profileId} = useParams();
     const navigate=useNavigate();
 
-    let userId = profileId;
+    let userId = useRef(profileId);
+
     useEffect(() => {
-        if (!userId) {
-            userId = authorizedUserId;
-            if(!userId){
+        if (!userId.current) {
+            userId.current = authorizedUserId;
+            if(!userId.current){
                 navigate("/login")
             }else{
-                getUserProfile(userId);
-                getStatus(userId);
+                getUserProfile(userId.current);
+                getStatus(userId.current);
             }
         }else{
-            getUserProfile(userId);
-            getStatus(userId);
+            getUserProfile(userId.current);
+            getStatus(userId.current);
         }
 
 
-    }, [profileId, authorizedUserId, getUserProfile, getStatus])
+    }, [profileId, authorizedUserId, getUserProfile, getStatus,navigate])
 
 
     return (
@@ -48,7 +49,8 @@ export default compose(
         getUserProfile,
         getStatus,
         updateStatus,
-        updatePhoto
+        updatePhoto,
+        updateInfo
     })
 )(ProfileContainer);
 

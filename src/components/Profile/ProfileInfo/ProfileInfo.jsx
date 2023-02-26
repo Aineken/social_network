@@ -2,47 +2,39 @@ import React, {useEffect, useState} from 'react';
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus"
 import profilePhoto from "../../../assets/images/user.png"
-import {ProfileInfoDiv, ProfileInfos, ProfileText} from "../ProfileStyled";
+import {ProfileInfoDiv} from "../ProfileStyled";
 import InputPhoto from "./InputPhoto";
+import ProfileInfos from "./ProfileInfoForm/ProfileInfos";
+import ProfileInfoForm from "./ProfileInfoForm/ProfileInfoForm";
 
 
-const ProfileInfo = ({profile, mainUser, status, updateStatus,updatePhoto}) => {
 
 
-    const [canEdit,setCanEdit] = useState(false);
+const ProfileInfo = ({profile, mainUser, status, updateStatus, updatePhoto,updateInfo}) => {
+    const [isOwner, setIsOnwer] = useState(false);
+    const [editInfo, setEditInfo] = useState(false);
 
 
     useEffect(() => {
         if ((profile && profile.userId) === mainUser) {
-            setCanEdit(true)
+            setIsOnwer(true)
+        }else{
+        setIsOnwer(false)
         }
     }, [profile, mainUser])
 
     if (!profile) {
         return <Preloader/>
     }
-
     console.log(profile)
     return (
 
         <ProfileInfoDiv>
             <img alt='avatar' src={profile.photos.large || profilePhoto}/>
-            {canEdit&&<InputPhoto updatePhoto={updatePhoto}/>}
-            <ProfileInfos>
-                <ProfileText>
-                    {profile.fullName}
-                </ProfileText>
-                <ProfileText>
-                    {profile.aboutMe}
-                </ProfileText>
-                <ProfileText>
-                    Looking for a job: {profile.lookingForAJob ? "Yes" : "No"}
-                </ProfileText>
-                {profile.lookingForAJob && <ProfileText>
-                    {profile.lookingForAJobDescription}
-                </ProfileText>}
-            </ProfileInfos>
-            <ProfileStatus status={status} updateStatus={updateStatus} canEdit={canEdit}/>
+            {isOwner && <InputPhoto updatePhoto={updatePhoto}  />}
+            {editInfo? <ProfileInfoForm profile={profile} updateInfo={updateInfo} setEditInfo={setEditInfo}  /> :
+                <ProfileInfos profile={profile} setEditInfo={setEditInfo} isOwner={isOwner} />}
+            <ProfileStatus status={status} updateStatus={updateStatus} isOwner={isOwner}/>
         </ProfileInfoDiv>
     )
 }
