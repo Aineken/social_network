@@ -39,7 +39,7 @@ export const ProfileStatusDiv = styled.div`
 
 `;
 
-export const ProfileInfos = styled.div`
+export const ProfileInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

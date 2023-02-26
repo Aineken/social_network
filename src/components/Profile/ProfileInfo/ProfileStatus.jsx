@@ -25,7 +25,7 @@ const ProfileStatus = (props) => {
     }
     return (
         <ProfileStatusDiv>
-            {props.canEdit && <span onDoubleClick={activateEditMode}>✏️ Double Click to edit!!!</span>}
+            {props.isOwner && <span onDoubleClick={activateEditMode}>✏️ Double Click to edit!!!</span>}
             My Status:👇 <br/>
             {!editMode ?
                 <p>{status || "-------"}</p>
