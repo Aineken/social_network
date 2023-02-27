@@ -42,7 +42,7 @@ export const profileAPI = {
         return instanceNew.get(`${mainUrl}/profile/status/` + userId);
     },
     updateStatus(status) {
-        return instanceNew.put(`${mainUrl}/profile/status`, {status: status});
+        return instanceNew.put(`${mainUrl}/profile/statuss`, {status: status});
     },
     updatePhoto(photo) {
         const formData = new FormData();

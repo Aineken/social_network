@@ -11,22 +11,22 @@ import ProfileInfoForm from "./ProfileInfoForm/ProfileInfoForm";
 
 
 const ProfileInfo = ({profile, mainUser, status, updateStatus, updatePhoto,updateInfo}) => {
-    const [isOwner, setIsOnwer] = useState(false);
+    const [isOwner, setIsOwner] = useState(false);
     const [editInfo, setEditInfo] = useState(false);
 
 
     useEffect(() => {
         if ((profile && profile.userId) === mainUser) {
-            setIsOnwer(true)
+            setIsOwner(true)
         }else{
-        setIsOnwer(false)
+        setIsOwner(false)
         }
     }, [profile, mainUser])
 
     if (!profile) {
         return <Preloader/>
     }
-    console.log(profile)
+
     return (
 
         <ProfileInfoDiv>

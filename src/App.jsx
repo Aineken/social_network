@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-// import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login.jsx";
 import {MainContainer, MainDiv} from "./styles/GlobalComponents/index.js";
 import Navbar from "./components/Navbar/Navbar.jsx";
@@ -17,10 +16,20 @@ import {ToastContainer} from "react-toastify";
 
 const App = (props) => {
 
-
+    const catchAllUnhandledErrors = (reason,promise) => {
+        alert("some error occured")
+        console.log(reason,promise)
+    }
     useEffect(() => {
         props.initializeApp();
     }, [props]);
+
+    useEffect(() => {
+        window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
+        return () => {
+            window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
+        }
+    }, []);
 
 
     if (!props.initialized) {
@@ -41,16 +50,9 @@ const App = (props) => {
                         <Route path="*" element={<div>Error 404 page</div>}/>
                     </Routes>
                 </MainDiv>
-                <Routes>
-                </Routes>
             </MainContainer>
         </BrowserRouter>
-
-
     )
-        ;
-
-
 }
 
 
