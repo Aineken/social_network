@@ -38,8 +38,11 @@ const App = (props) => {
                         <Route path="/dialogs/:dialogId?" element={<DialogsContainer/>}/>
                         <Route path="/users" element={<UsersContainer/>}/>
                         <Route path="/login" element={<Login/>}/>
+                        <Route path="*" element={<div>Error 404 page</div>}/>
                     </Routes>
                 </MainDiv>
+                <Routes>
+                </Routes>
             </MainContainer>
         </BrowserRouter>
 
