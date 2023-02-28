@@ -29,6 +29,11 @@ const Navbar = () => {
                     Users
                 </NavLink>
             </Item>
+            <Item>
+                <NavLink activeclassname={"active"} to="/dialogsbeta">
+                    Messages Beta
+                </NavLink>
+            </Item>
         </Container>
     );
 };
