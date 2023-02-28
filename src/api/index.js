@@ -42,7 +42,7 @@ export const profileAPI = {
         return instanceNew.get(`${mainUrl}/profile/status/` + userId);
     },
     updateStatus(status) {
-        return instanceNew.put(`${mainUrl}/profile/statuss`, {status: status});
+        return instanceNew.put(`${mainUrl}/profile/status`, {status: status});
     },
     updatePhoto(photo) {
         const formData = new FormData();
@@ -54,7 +54,7 @@ export const profileAPI = {
         })
     },
     updateInfo(newInfo) {
-        return instanceNew.put(`${mainUrl}/profile`,newInfo );
+        return instanceNew.put(`${mainUrl}/profile`, newInfo);
     },
 }
 
@@ -78,5 +78,21 @@ export const authAPI = {
     },
     captchaUrl() {
         return instanceNew.get(`${mainUrl}/security/get-captcha-url`);
+    }
+}
+
+
+export const messagesAPI = {
+    getAllDialogs() {
+        return instanceNew.get(`${mainUrl}/dialogs`);
+    },
+    startChatting(userId){
+        return instanceNew.put(`${mainUrl}/dialogs/${userId}`);
+    },
+    getDialogs(userId,page=1,count=10){
+        return instanceNew.get(`${mainUrl}/dialogs/${userId}/messages?page=${page}&count=${count}`);
+    },
+    sendDialog(userId){
+        return instanceNew.post(`${mainUrl}/dialogs/${userId}/messages`);
     }
 }
