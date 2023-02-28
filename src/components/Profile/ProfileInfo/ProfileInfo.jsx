@@ -36,7 +36,7 @@ const ProfileInfo = ({profile, mainUser, status, updateStatus, updatePhoto,updat
             {editInfo? <ProfileInfoForm profile={profile} updateInfo={updateInfo} setEditInfo={setEditInfo}  /> :
                 <ProfileInfos profile={profile} setEditInfo={setEditInfo} isOwner={isOwner} />}
             <ProfileStatus status={status} updateStatus={updateStatus} isOwner={isOwner}/>
-            <Button>Send Message</Button>
+            {!isOwner&&<Button>Send Message</Button>}
         </ProfileInfoDiv>
     )
 }
