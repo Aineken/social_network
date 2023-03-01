@@ -5,7 +5,7 @@ const DialogItem = ({dialog}) => {
     let path = "/dialogs/" + dialog.id;
 
     return <div>
-        <NavLink to={path} activeclassname={"active"}> {dialog.userName + " beta"}</NavLink>
+        <NavLink to={path} activeclassname={"active"}> {dialog.userName}</NavLink>
     </div>
 }
 

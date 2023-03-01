@@ -3,15 +3,15 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
-import {requestDialogs, sendMessageCreator} from "../../app/dialogs-reducer";
+import {requestAllDialogs, requestDialogs, sendMessageCreator} from "../../app/dialogs-reducer";
 import Preloader from "../common/Preloader/Preloader";
 
 
-const DialogsContainer = ({requestDialogs, isFetching, ...props}) => {
+const DialogsContainer = ({requestAllDialogs, isFetching, ...props}) => {
 
     useEffect(() => {
-        requestDialogs();
-    }, [requestDialogs])
+        requestAllDialogs();
+    }, [requestAllDialogs])
 
     return (<>
         {isFetching? <Preloader/> : <Dialogs {...props}/>}
@@ -36,7 +36,8 @@ let mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     sendMessage: sendMessageCreator,
-    requestDialogs: requestDialogs
+    requestAllDialogs: requestAllDialogs,
+    requestDialogs: requestDialogs,
 }
 
 // let mapDispatchToProps = (dispatch) => {

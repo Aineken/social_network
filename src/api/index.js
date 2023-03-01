@@ -92,7 +92,7 @@ export const messagesAPI = {
     getDialogs(userId,page=1,count=10){
         return instanceNew.get(`${mainUrl}/dialogs/${userId}/messages?page=${page}&count=${count}`);
     },
-    sendDialog(userId){
-        return instanceNew.post(`${mainUrl}/dialogs/${userId}/messages`);
+    sendMessage(userId,body){
+        return instanceNew.post(`${mainUrl}/dialogs/${userId}/messages`,body);
     }
 }

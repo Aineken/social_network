@@ -26,9 +26,7 @@ const ProfileContainer = ({getUserProfile,getStatus,authorizedUserId, ...props})
             getUserProfile(userId.current);
             getStatus(userId.current);
         }
-
-
-    }, [profileId, authorizedUserId, getUserProfile, getStatus,navigate])
+    }, [profileId, authorizedUserId, getUserProfile, getStatus, navigate])
 
 
     return (
