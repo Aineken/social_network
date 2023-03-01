@@ -10,7 +10,11 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
     dialogs: [],
-    messages: [],
+    messages: [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'Hello'},
+
+    ],
     id: 6,
     isFetching: true,
 };
@@ -30,10 +34,9 @@ const dialogsReducer = (state = initialState, action) => {
         }
         case SET_DIALOGS:{
             return{
-                ...state,messages: action.dialogs
+                ...state,messages: [...state.messages , action.dialogs]
             }
         }
-
         case TOGGLE_IS_FETCHING: {
             return {...state, isFetching: action.isFetching}
         }
@@ -63,8 +66,9 @@ export const requestAllDialogs = () => async (dispatch) => {
 }
 export const requestDialogs =(userId,page,count)=>async (dispatch)=>{
     const {data} = await messagesAPI.getDialogs(userId,page,count);
-    console.log(data);
-    dispatch(setDialogs(data));
+    if(data.items){
+        dispatch(setDialogs(data.items));
+    }
 }
 
 export default dialogsReducer;

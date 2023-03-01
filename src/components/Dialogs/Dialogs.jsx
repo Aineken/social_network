@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
 import {DialogItemsDiv, DialogsDiv, MessageDiv, MessagesDiv} from "./DialogsStyled";
+import {useParams} from "react-router-dom";
 
-const Dialogs = (props) => {
+const Dialogs = ({ requestDialogs,...props}) => {
+
+    let {dialogId} = useParams();
+    useEffect(        ()=>{
+
+        if(dialogId){
+            requestDialogs(dialogId)
+        }
+        },[dialogId,requestDialogs]
+    )
 
     let {dialogs, messages} = props.dialogsPage;
 

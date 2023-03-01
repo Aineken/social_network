@@ -28,6 +28,7 @@ let mapStateToProps = (state) => {
         }
     } = state;
 
+    console.log(restProps)
     return {
         dialogsPage: restProps,
         isFetching: isFetching
