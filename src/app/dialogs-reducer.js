@@ -1,4 +1,8 @@
+import {messagesAPI} from "../api";
+
+
 const SEND_MESSAGE = 'SEND_MESSAGE';
+const SEND_REQUEST = 'SEND_REQUEST';
 
 let initialState = {
     dialogs: [
@@ -35,5 +39,13 @@ const dialogsReducer = (state = initialState, action) => {
 
 export const sendMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody})
 
+export const sendMessageRequestSuccess = (request) => ({type:SEND_REQUEST ,request})
+
+export const sendMessageRequest =(userId)=>async (dispatch)=>{
+    console.log(userId)
+    const {data} = await messagesAPI.startChatting(userId)
+    console.log(data)
+    dispatch(sendMessageRequestSuccess(data))
+}
 
 export default dialogsReducer;

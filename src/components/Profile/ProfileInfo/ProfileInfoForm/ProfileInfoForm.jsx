@@ -1,5 +1,5 @@
 import React from 'react';
-import {Formik, ErrorMessage} from "formik";
+import {Formik} from "formik";
 import {Button, Field, Input, Label, LoginStyled} from "../../../Login/LoginStyled";
 
 
@@ -26,74 +26,86 @@ const ProfileInfoForm = ({profile, updateInfo, setEditInfo}) => {
                   handleBlur,
                   handleSubmit,
                   isSubmitting
-              }) =>  <LoginStyled onSubmit={handleSubmit}>
-                    <ErrorMessage name="name"/>
-                    <Field>
-                        <Label>
-                            Full name
-                        </Label>
-                        <Input
-                            type="text"
-                            name="fullName"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.fullName || ""}
-                        />
-                    </Field>
-                    <Field>
-                        <Label>
-                            About Me
-                        </Label>
-                        <Input
-                            type="text"
-                            name="aboutMe"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.aboutMe || ""}
-                        />
-                    </Field>
-                    <Field>
-                        <Label>
-                            Looking for a job
-                        </Label>
-                        <Input
-                            type="checkbox"
-                            name="lookingForAJob"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            checked={values.lookingForAJob}
-                        />
-                    </Field>
-                    <Field>
-                        <Label>
-                            Job Description
-                        </Label>
-                        <Input
-                            disabled={!values.lookingForAJob}
-                            type="text"
-                            name="lookingForAJobDescription"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={!values.lookingForAJob ? "" : values.lookingForAJobDescription}
-                        />
-                    </Field>
+              }) => <LoginStyled onSubmit={handleSubmit}>
+                <Field>
+                    <Label>
+                        Full name
+                    </Label>
+                    <Input
+                        type="text"
+                        name="fullName"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.fullName || ""}
+                    />
+                </Field>
+                <Field>
+                    <Label>
+                        About Me
+                    </Label>
+                    <Input
+                        type="text"
+                        name="aboutMe"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.aboutMe || ""}
+                    />
+                </Field>
+                <Field>
+                    <Label>
+                        Looking for a job
+                    </Label>
+                    <Input
+                        type="checkbox"
+                        name="lookingForAJob"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        checked={values.lookingForAJob}
+                    />
+                </Field>
+                <Field>
+                    <Label>
+                        Job Description
+                    </Label>
+                    <Input
+                        disabled={!values.lookingForAJob}
+                        type="text"
+                        name="lookingForAJobDescription"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={!values.lookingForAJob ? "" : values.lookingForAJobDescription}
+                    />
+                </Field>
+                <Field>
+                    <Label>
+                        Job Description
+                    </Label>
+                    <Input
+                        disabled={!values.lookingForAJob}
+                        type="text"
+                        name="lookingForAJobDescription"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={!values.lookingForAJob ? "" : values.lookingForAJobDescription}
+                    />
+                </Field>
 
-                    {Object.keys(profile.contacts).map((data) => (
-                        <Field key={data}>
-                            <Label>
-                                {data}
-                            </Label>
-                            <Input
-                                type="text"
-                                name={"contacts." + data}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.contacts[data] || ""}
-                            />
-                        </Field>
-                    ))}
-                    <Button type="submit" disabled={isSubmitting} >Submit</Button>
-                </LoginStyled>
+                {Object.keys(profile.contacts).map((data) => (
+                    <Field key={data}>
+                        <Label>
+                            {data}
+                        </Label>
+                        <Input
+                            type="text"
+                            name={"contacts." + data}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.contacts[data] || ""}
+                        />
+                    </Field>
+                ))}
+                <Button type="submit" disabled={isSubmitting}>Submit</Button>
+            </LoginStyled>
             }
         </Formik>
     );

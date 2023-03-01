@@ -87,6 +87,7 @@ export const updatePhoto = (photo) => async (dispatch) => {
 }
 
 export const updateInfo = (newInfo) => async (dispatch, getState) => {
+    console.log(newInfo)
 
     const userId = getState().profilePage.profile.userId;
     const {data} = await profileAPI.updateInfo(newInfo);

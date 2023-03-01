@@ -83,11 +83,11 @@ export const authAPI = {
 
 
 export const messagesAPI = {
-    getAllDialogs() {
-        return instanceNew.get(`${mainUrl}/dialogs`);
-    },
     startChatting(userId){
         return instanceNew.put(`${mainUrl}/dialogs/${userId}`);
+    },
+    getAllDialogs() {
+        return instanceNew.get(`${mainUrl}/dialogs`);
     },
     getDialogs(userId,page=1,count=10){
         return instanceNew.get(`${mainUrl}/dialogs/${userId}/messages?page=${page}&count=${count}`);
