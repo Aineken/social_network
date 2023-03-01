@@ -1,4 +1,4 @@
-import {messagesAPI, usersAPI} from "../api";
+import {messagesAPI} from "../api";
 
 
 const SEND_MESSAGE = 'SEND_MESSAGE';
@@ -10,34 +10,27 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
     dialogs: [],
-    messages: [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'Hello'},
-
-    ],
-    id: 6,
+    messages: [],
     isFetching: true,
 };
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE: {
-            let body = action.newMessageBody;
             return {
-                ...state,
-                messages: [...state.messages, {id: state.id + 1, message: body}],
-                id: state.id + 1
+                ...state, messages: [...state.messages, action.message]
             }
         }
-        case SET_ALL_DIALOGS: {
+        case
+        SET_ALL_DIALOGS: {
             return {...state, dialogs: action.dialogs}
         }
-        case SET_DIALOGS:{
-            return{
-                ...state,messages: [...state.messages , action.dialogs]
-            }
+        case
+        SET_DIALOGS: {
+            return {...state, messages: action.dialogs}
         }
-        case TOGGLE_IS_FETCHING: {
+        case
+        TOGGLE_IS_FETCHING: {
             return {...state, isFetching: action.isFetching}
         }
         default:
@@ -46,15 +39,13 @@ const dialogsReducer = (state = initialState, action) => {
 }
 
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
-export const sendMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody});
+export const sendMessageSuccess = (message) => ({type: SEND_MESSAGE, message});
 export const setAllDialogs = (dialogs) => ({type: SET_ALL_DIALOGS, dialogs});
 export const setDialogs = (dialogs) => ({type: SET_DIALOGS, dialogs});
 export const sendMessageRequestSuccess = (request) => ({type: SEND_REQUEST, request})
 
 
-
 export const sendMessageRequest = (userId) => async (dispatch) => {
-    console.log(userId)
     const {data} = await messagesAPI.startChatting(userId)
     dispatch(sendMessageRequestSuccess(data))
 }
@@ -64,11 +55,16 @@ export const requestAllDialogs = () => async (dispatch) => {
     dispatch(setAllDialogs(data));
     dispatch(toggleIsFetching(false));
 }
-export const requestDialogs =(userId,page,count)=>async (dispatch)=>{
-    const {data} = await messagesAPI.getDialogs(userId,page,count);
-    if(data.items){
-        dispatch(setDialogs(data.items));
-    }
+export const requestDialogs = (userId, page, count) => async (dispatch) => {
+    const {data} = await messagesAPI.getDialogs(userId, page, count);
+    dispatch(setDialogs(data.items));
+
+}
+export const sendMessage = (userId, body) => async (dispatch) => {
+
+    const {data} = await messagesAPI.sendMessage(userId, body)
+
+    dispatch(sendMessageSuccess(data.data.message))
 }
 
 export default dialogsReducer;

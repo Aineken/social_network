@@ -19,7 +19,8 @@ const AddMessageForm = (props) => {
                 }}
                 onSubmit={
                     async (values, {setSubmitting, resetForm}) => {
-                        await props.onSubmit(values)
+
+                        await props.onSubmit(values.newMessageBody)
                         setSubmitting(false);
                         resetForm({newMessageBody: 'hello'})
                     }
@@ -29,7 +30,7 @@ const AddMessageForm = (props) => {
 
             {({isSubmitting}) => (
                 <Form>
-                    <Field name={"newMessageBody"}>
+                    <Field name="newMessageBody">
                         {(props) => {
                             return (
                               <Textarea {...props} placeholder="Enter your message" />

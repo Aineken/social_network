@@ -3,7 +3,7 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
-import {requestAllDialogs, requestDialogs, sendMessageCreator} from "../../app/dialogs-reducer";
+import {requestAllDialogs, requestDialogs, sendMessage} from "../../app/dialogs-reducer";
 import Preloader from "../common/Preloader/Preloader";
 
 
@@ -28,7 +28,6 @@ let mapStateToProps = (state) => {
         }
     } = state;
 
-    console.log(restProps)
     return {
         dialogsPage: restProps,
         isFetching: isFetching
@@ -36,9 +35,9 @@ let mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    sendMessage: sendMessageCreator,
+    sendMessage,
     requestAllDialogs: requestAllDialogs,
-    requestDialogs: requestDialogs,
+    requestDialogs,
 }
 
 // let mapDispatchToProps = (dispatch) => {
