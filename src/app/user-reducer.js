@@ -20,6 +20,8 @@ let initialState = {
     portionSize: 7
 };
 
+
+
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:

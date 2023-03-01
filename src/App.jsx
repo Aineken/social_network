@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import UsersContainer from "./components/Users/UsersContainer.jsx";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import DialogsContainerBeta from "./components/DialogsBeta/DialogsContainer";
 
 import {initializeApp} from "./app/app-reducer";
 import {connect} from "react-redux";
@@ -47,7 +46,6 @@ const App = (props) => {
                         <Route exact path="/" element={<Hero/>}/>
                         <Route path="/profile/:profileId?" element={<ProfileContainer/>}/>
                         <Route path="/dialogs/:dialogId?" element={<DialogsContainer/>}/>
-                        <Route path="/dialogsbeta/:dialogId?" element={<DialogsContainerBeta/>}/>
                         <Route path="/users" element={<UsersContainer/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="*" element={<div>Error 404 page</div>}/>

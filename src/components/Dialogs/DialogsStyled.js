@@ -23,6 +23,7 @@ export const DialogItemsDiv = styled.div`
   background-color: aliceblue;
   display: flex;
   flex-direction: column;
+  
   gap: 1rem;
   padding: 1rem;
   height: max-content;
@@ -32,6 +33,8 @@ export const DialogItemsDiv = styled.div`
   a{
     color:#000;
     font-size: 20px;
+  overflow-wrap: break-word;
+
     :hover,:active{
     color: gold;
     }

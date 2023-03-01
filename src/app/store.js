@@ -17,4 +17,4 @@ export const store = configureStore({
 
 
 
-window.store=store.getState().usersPage;
+window.store=store.getState();

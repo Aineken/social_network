@@ -1,21 +1,52 @@
+import React, {useEffect} from 'react';
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
-import {sendMessageCreator} from "../../app/dialogs-reducer";
+import {requestDialogs, sendMessageCreator} from "../../app/dialogs-reducer";
+import Preloader from "../common/Preloader/Preloader";
+
+
+const DialogsContainer = ({requestDialogs, isFetching, ...props}) => {
+
+    useEffect(() => {
+        requestDialogs();
+    }, [requestDialogs])
+
+    return (<>
+        {isFetching? <Preloader/> : <Dialogs {...props}/>}
+    </>
+    );
+};
+
 
 let mapStateToProps = (state) => {
+
+    const {
+        dialogsPage: {
+            isFetching, ...restProps
+        }
+    } = state;
+
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: restProps,
+        isFetching: isFetching
     }
 }
 
+const mapDispatchToProps = {
+    sendMessage: sendMessageCreator,
+    requestDialogs: requestDialogs
+}
 
 // let mapDispatchToProps = (dispatch) => {
 //     return {
 //         sendMessage: (newMessageBody) => {
 //             dispatch(sendMessageCreator(newMessageBody));
-//         }
+//         },
+//         requestDialogs:() => {
+//             dispatch(requestDialogs());
+//         },
 //     }
 // }
-export default compose(connect(mapStateToProps, {sendMessage:sendMessageCreator}), withAuthRedirect)(Dialogs);
+export default compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect)(DialogsContainer);
