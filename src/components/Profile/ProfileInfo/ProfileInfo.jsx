@@ -36,7 +36,7 @@ const ProfileInfo = ({profile, mainUser, status, updateStatus, updatePhoto,updat
     if (!profile) {
         return <Preloader/>
     }
-    console.log(profile)
+
     return (
 
         <ProfileInfoDiv>

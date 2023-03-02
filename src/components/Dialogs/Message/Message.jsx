@@ -1,9 +1,15 @@
 import React from 'react';
+import {MessageText} from "../DialogsStyled";
 
 
-const Message = ({message}) => {
+const Message = ({message, mainUserId}) => {
 
-    return <div>{message.body}</div>
+const senderFirstLetter=message.senderName.charAt(0).toUpperCase();
+    return <MessageText main={message.senderId === mainUserId}>
+        <div>{message.body}</div>
+        <span>{senderFirstLetter}</span>
+
+    </MessageText>
 }
 
 export default Message;

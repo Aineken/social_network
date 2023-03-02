@@ -10,10 +10,8 @@ const AddMessageForm = (props) => {
         <Formik initialValues={{newMessageBody: ''}}
                 validate={values => {
                     const errors = {};
-                    if (!values.newMessageBody) {
-                        errors.newMessageBody = 'Field is required';
-                    } else if (values.newMessageBody.length > 50) {
-                        errors.newMessageBody = "Max length is 50 symbols";
+                    if (values.newMessageBody.length > 1000) {
+                        errors.newMessageBody = "Max length is 1000 symbols";
                     }
                     return errors
                 }}

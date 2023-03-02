@@ -30,7 +30,8 @@ let mapStateToProps = (state) => {
 
     return {
         dialogsPage: restProps,
-        isFetching: isFetching
+        isFetching: isFetching,
+        mainUserId: state.auth.userId,
     }
 }
 
