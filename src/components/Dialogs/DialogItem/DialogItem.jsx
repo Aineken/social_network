@@ -17,9 +17,7 @@ const DialogItem = ({dialog}) => {
 
     return (
         <DialogDiv>
-
             <DialogImg onClick={navUser} src={dialog.photos.small || userPhoto} alt="user-photo"/>
-
             <NavLink to={path} activeclassname={"active"}>
                 {dialog.userName}
             </NavLink>
