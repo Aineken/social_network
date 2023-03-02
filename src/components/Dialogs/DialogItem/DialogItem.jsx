@@ -1,21 +1,29 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {DialogDiv, DialogImg} from "../DialogsStyled";
 import userPhoto from "../../../assets/images/user.png";
 
 
 const DialogItem = ({dialog}) => {
     const path = "/dialogs/" + dialog.id;
+    const navigate=useNavigate();
 
-    const username = dialog.userName;
-    return (<NavLink to={path} activeclassname={"active"}>
+    const navUser=()=>{
+        if(dialog){
+        navigate(`/profile/${dialog.id}`)
+        }
+    }
+
+
+    return (
         <DialogDiv>
-            <DialogImg src={dialog.photos.small || userPhoto} alt="user-photo"/>
-            <span>
-             {username}
-             </span>
-        </DialogDiv>
-    </NavLink>)
+
+            <DialogImg onClick={navUser} src={dialog.photos.small || userPhoto} alt="user-photo"/>
+
+            <NavLink to={path} activeclassname={"active"}>
+                {dialog.userName}
+            </NavLink>
+        </DialogDiv>)
 }
 
 export default DialogItem;

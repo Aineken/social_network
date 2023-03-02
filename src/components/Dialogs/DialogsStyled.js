@@ -68,7 +68,7 @@ export const DialogImg = styled.img`
   float: left;
   width: 50px;
   border-radius: 100%;
-
+  cursor: pointer;
 `;
 export const DialogDiv = styled.div`
   display: flex;
@@ -78,7 +78,7 @@ export const DialogDiv = styled.div`
   align-items: center;
   align-content: center;
 
-  span {
+  a {
     overflow-wrap: anywhere;
     font-size: 16px;
   }
