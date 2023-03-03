@@ -76,20 +76,6 @@ const ProfileInfoForm = ({profile, updateInfo, setEditInfo}) => {
                         value={!values.lookingForAJob ? "" : values.lookingForAJobDescription}
                     />
                 </Field>
-                <Field>
-                    <Label>
-                        Job Description
-                    </Label>
-                    <Input
-                        disabled={!values.lookingForAJob}
-                        type="text"
-                        name="lookingForAJobDescription"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={!values.lookingForAJob ? "" : values.lookingForAJobDescription}
-                    />
-                </Field>
-
                 {Object.keys(profile.contacts).map((data) => (
                     <Field key={data}>
                         <Label>
