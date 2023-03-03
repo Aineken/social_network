@@ -24,7 +24,7 @@ const InputPhoto = ({updatePhoto}) => {
         setSelectedFile(e.target.files[0])
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault()
         updatePhoto(selectedFile);
         setSelectedFile(undefined)
@@ -32,10 +32,10 @@ const InputPhoto = ({updatePhoto}) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
             <input type="file" accept="image/*" onChange={onSelectFile}/>
             {selectedFile && <img src={preview} alt="preview"/>} <br/>
-            {selectedFile&&<button>Submit</button>}
+            {selectedFile && <button>Submit</button>}
         </form>
     )
 }

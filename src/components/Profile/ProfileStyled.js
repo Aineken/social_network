@@ -45,12 +45,20 @@ export const ProfileInfoContainer = styled.div`
   justify-content: center;
   width: 100%;
   gap: 0.5rem;
+  button{
+    width: max-content;
+    align-self: center;
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
   
 `;
 export const ProfileText = styled.p`
  color: #ff2d55;
   font-size: 16px;
-  text-align: center;
+  text-align: left;
   
 `;
 
