@@ -36,7 +36,6 @@ const Dialogs = ({requestDialogs, ...props}) => {
                 {dialogsElements}
             </DialogItemsDiv>
             <MessagesDiv>
-
                 <MessageDiv>{messagesElements}</MessageDiv>
 
                 <AddMessageForm onSubmit={addNewMessage}/>

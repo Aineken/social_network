@@ -59,7 +59,7 @@ export const MessageDiv = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+  width: 100%;
 `;
 
 
@@ -87,24 +87,28 @@ export const DialogDiv = styled.div`
 export const MessageText = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
-  gap: 1rem;
-  flex-direction: ${props => props.main ? "row" : "row-reverse"};
-  justify-content: ${props => props.main ? "flex-end" : "flex-start"};
+  align-content: start;
   
-  div{
-    text-align:  ${props => props.main ? "right" : "left"};
-    width: 100%;
+  gap: 1rem;
+  justify-content: ${props => props.main ? "end" : "start"};
+  flex-direction: ${props => props.main ? "row" : "row-reverse"};
+
+  div {
+    text-align: ${props => props.main ? "right" : "left"};
+    width: fit-content;
+    border: 1px dotted red;
+    padding: 8px;
+    border-radius: 10px;
   }
-  span{
-    color:#fff;
+
+  span {
+    color: #fff;
     display: grid;
     place-items: center;
-    border-radius: 100%;
+    border-radius: 50%;
     width: 30px;
     height: 30px;
     background-color: #f53855;
-    float: left;
   }
 `;
 

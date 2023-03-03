@@ -8,8 +8,7 @@ import {ProfileDiv} from "./ProfileStyled";
 const Profile = (props) => {
 
 
-
-
+    console.log(props)
     return (
 
        <ProfileDiv>

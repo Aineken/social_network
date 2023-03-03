@@ -36,7 +36,7 @@ const AddMessageForm = (props) => {
                         }}
                     </Field>
                     <Button type="submit" disabled={isSubmitting}>
-                        Submit
+                        Send
                     </Button>
                 </Form>
             )}
