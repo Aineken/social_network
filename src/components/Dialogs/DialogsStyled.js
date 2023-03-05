@@ -88,7 +88,7 @@ export const MessageText = styled.div`
   display: flex;
   width: 100%;
   align-content: start;
-  
+
   gap: 1rem;
   justify-content: ${props => props.main ? "end" : "start"};
   flex-direction: ${props => props.main ? "row" : "row-reverse"};
@@ -103,12 +103,24 @@ export const MessageText = styled.div`
 
   span {
     color: #fff;
-    display: grid;
+    display: flex;
+    position: relative;
     place-items: center;
-    border-radius: 50%;
-    width: 30px;
+    border-radius: 10px;
+    padding: 0 12px;
+    width: max-content;
     height: 30px;
     background-color: #f53855;
+    transition: all 1s;
+
+
+    :hover::after {
+      left: 4rem;
+      position: absolute;
+      align-self: center;
+      content: "️🗑️";
+      width: max-content;
+    }
   }
 `;
 

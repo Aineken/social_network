@@ -98,6 +98,6 @@ export const messagesAPI = {
         })
     },
     deleteMessage(messageId){
-        return instanceNew.delete(`${mainUrl}/messages/${messageId}`);
+        return instanceNew.delete(`${mainUrl}/dialogs/messages/${messageId}`);
     }
 }

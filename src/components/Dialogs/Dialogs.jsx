@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+import Dialog from "./Dialog/Dialog";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
 import {DialogItemsDiv, DialogsDiv, MessageDiv, MessagesDiv} from "./DialogsStyled";
 import {useParams} from "react-router-dom";
@@ -22,7 +22,7 @@ const Dialogs = ({requestDialogs, ...props}) => {
 
 
     let dialogsElements = dialogs.slice(0,9).map(dialog => <DialogItem dialog={dialog} key={dialog.id}/>);
-    let messagesElements = messages.slice(0,9).map(message => <Message mainUserId={props.mainUserId} message={message} key={message.id}/>);
+    let messagesElements = messages.slice(0,9).map(message => <Dialog deleteMessage={props.deleteMessage} mainUserId={props.mainUserId} message={message} key={message.id}/>);
 
     let addNewMessage = (values) => {
         if (dialogId) {

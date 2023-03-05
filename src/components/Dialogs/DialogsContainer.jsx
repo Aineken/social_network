@@ -3,7 +3,7 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
-import {requestAllDialogs, requestDialogs, sendMessage} from "../../app/dialogs-reducer";
+import {deleteMessage, requestAllDialogs, requestDialogs, sendMessage} from "../../app/dialogs-reducer";
 import Preloader from "../common/Preloader/Preloader";
 
 
@@ -37,6 +37,7 @@ let mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     sendMessage,
+    deleteMessage,
     requestAllDialogs: requestAllDialogs,
     requestDialogs,
 }
