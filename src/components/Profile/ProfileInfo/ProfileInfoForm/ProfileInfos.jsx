@@ -19,7 +19,7 @@ const ProfileInfos = ({profile,setEditInfo,isOwner}) => {
             </ProfileText>}
             {Object.keys(profile.contacts).filter(arr=>profile.contacts[arr]!==""&&profile.contacts[arr]!==null).map((data) => (
                 <ProfileText key={data}>
-                    <b>{data}</b>: <a href={profile.contacts[data]} target="_blank" > {profile.contacts[data]} </a>
+                    <b>{data}</b>: <a href={profile.contacts[data]} target="_blank" rel="noreferrer" > {profile.contacts[data]} </a>
                 </ProfileText>
             ))}
         </ProfileInfoContainer>

@@ -93,10 +93,11 @@ export const messagesAPI = {
         return instanceNew.get(`${mainUrl}/dialogs/${userId}/messages?page=${page}&count=${count}`);
     },
     sendMessage(userId,body){
-        return instanceNew.post(`${mainUrl}/dialogs/${userId}/messages`, {body:body}).then(data=>{
-            return data
-        }).catch(error=>{
+        return instanceNew.post(`${mainUrl}/dialogs/${userId}/messages`, {body:body}).catch(error=>{
             console.log(error)
         })
+    },
+    deleteMessage(messageId){
+        return instanceNew.delete(`${mainUrl}/messages/${messageId}`);
     }
 }
