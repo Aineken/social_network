@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import "./assets/tailwind.css";
 import 'react-toastify/dist/ReactToastify.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./components/Login/Login.jsx";
