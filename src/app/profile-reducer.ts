@@ -1,5 +1,6 @@
 import {profileAPI, usersAPI} from "../api/index";
 import {toast} from "react-toastify";
+import {PhotosType, ProfileType} from "../types/types";
 
 
 const ADD_POST = 'ADD-POST';
@@ -7,19 +8,29 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const UPDATE_PHOTO_SUCCESS = "UPDATE_PHOTO_SUCCESS";
 
+
+type PostsType = {
+    id: number
+    message: string
+    likesCount: number
+}
+
 let initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 12},
         {id: 2, message: 'It\'s my first post', likesCount: 11},
         {id: 3, message: 'Blabla', likesCount: 11},
         {id: 4, message: 'Dada', likesCount: 11}
-    ],
-    profile: null,
+    ] as Array<PostsType>,
+    profile: null as ProfileType | null,
     status: "",
+    newPostText: "",
     id: 5
 };
 
-const profileReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState
+
+const profileReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -44,33 +55,51 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: action.profile}
         }
         case UPDATE_PHOTO_SUCCESS: {
-            return {...state, profile: {...state.profile, photos: action.photo}}
+            return {...state, profile: {...state.profile, photos: action.photo} as ProfileType}
         }
         default:
             return state;
     }
 }
 
+type AddPostActionCreatorActionType = {
+    type: typeof ADD_POST
+    newPostText:string
+}
+export const addPostActionCreator = (newPostText:string):AddPostActionCreatorActionType => ({type: ADD_POST, newPostText})
 
-export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText})
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
-export const setStatus = (status) => ({type: SET_STATUS, status})
-export const updatePhotoSuccess = (photo) => ({type: UPDATE_PHOTO_SUCCESS, photo})
+type SetUserProfileActionType = {
+    type: typeof SET_USER_PROFILE
+    profile:ProfileType
+}
+export const setUserProfile = (profile:ProfileType):SetUserProfileActionType => ({type: SET_USER_PROFILE, profile})
+
+type SetStatusActionType = {
+    type: typeof SET_STATUS
+    status:string
+}
+export const setStatus = (status:string):SetStatusActionType => ({type: SET_STATUS, status})
+
+type UpdatePhotoSuccessActionType = {
+    type : typeof UPDATE_PHOTO_SUCCESS
+    photo:PhotosType
+}
+export const updatePhotoSuccess = (photo:PhotosType):UpdatePhotoSuccessActionType => ({type: UPDATE_PHOTO_SUCCESS, photo})
 
 
-export const getUserProfile = (userId) => async (dispatch) => {
+export const getUserProfile = (userId:number) => async (dispatch:any) => {
 
     const {data} = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(data))
 }
 
-export const getStatus = (userId) => async (dispatch) => {
+export const getStatus = (userId:number) => async (dispatch:any) => {
     const {data} = await profileAPI.getStatus(userId);
 
     dispatch(setStatus(data));
 }
 
-export const updateStatus = (status) => async (dispatch) => {
+export const updateStatus = (status:string) => async (dispatch:any) => {
     const {data} = await profileAPI.updateStatus(status);
 
     if (data.resultCode === 0) {
@@ -78,7 +107,7 @@ export const updateStatus = (status) => async (dispatch) => {
     }
 }
 
-export const updatePhoto = (photo) => async (dispatch) => {
+export const updatePhoto = (photo:PhotosType) => async (dispatch:any) => {
     const {data} = await profileAPI.updatePhoto(photo);
 
     if (data.resultCode === 0) {
@@ -86,7 +115,7 @@ export const updatePhoto = (photo) => async (dispatch) => {
     }
 }
 
-export const updateInfo = (newInfo) => async (dispatch, getState) => {
+export const updateInfo = (newInfo:ProfileType ) => async (dispatch:any, getState:any) => {
     console.log(newInfo)
 
     const userId = getState().profilePage.profile.userId;
@@ -94,7 +123,7 @@ export const updateInfo = (newInfo) => async (dispatch, getState) => {
     console.log(data)
     if (data.resultCode === 0) {
         dispatch(getUserProfile(userId))
-    }else if (data.resultCode === 1) {
+    } else if (data.resultCode === 1) {
         toast.info(data.messages[0])
         return Promise.reject(data.messages);
     } else {
