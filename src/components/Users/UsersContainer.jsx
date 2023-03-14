@@ -7,7 +7,7 @@ import {
     setCurrentPage, setCurrentPortion,
     toggleFollowingProgress,
     unfollow
-} from "../../app/user-reducer.js";
+} from "../../app/user-reducer.ts";
 import Preloader from "../common/Preloader/Preloader";
 import {compose} from "@reduxjs/toolkit";
 import {

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import tw from "twin.macro";
 
 
 export const DialogsDiv = styled.div`
@@ -54,6 +55,15 @@ export const MessagesDiv = styled.div`
   gap: 1rem;
   width: 100%;
   max-width: 400px;
+
+  ${
+      tw`
+      
+    rounded-2xl
+    bg-blue-500
+    
+    `
+  }
 `;
 export const MessageDiv = styled.div`
   display: flex;
