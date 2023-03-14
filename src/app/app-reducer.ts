@@ -6,7 +6,9 @@ let initialState = {
     initialized: false
 };
 
-const appReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState
+
+const appReducer = (state = initialState, action:any):InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {
@@ -19,7 +21,11 @@ const appReducer = (state = initialState, action) => {
 }
 
 
-export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
+
+type InitializedSuccessType = {
+    type: typeof INITIALIZED_SUCCESS
+}
+export const initializedSuccess = ():InitializedSuccessType => ({type: INITIALIZED_SUCCESS});
 
 
 const slowCode = () => {
@@ -27,7 +33,7 @@ const slowCode = () => {
         setTimeout(resolve, 500);
     });
 };
-export const initializeApp = () => async (dispatch) => {
+export const initializeApp = () => async (dispatch:any) => {
     await slowCode();
     let promise = dispatch(getAuthUserData());
     Promise.all([promise]).then(() => {
