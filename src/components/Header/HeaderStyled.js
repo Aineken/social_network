@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import tw from "twin.macro";
 
 export const Container = styled.header`
   width: 100%;
@@ -88,30 +89,21 @@ export const NavLink = styled.div`
 
 
 export const HeaderButton = styled.button`
-  font-weight: 600;
-  margin-left: 2rem;
-  font-size: 2.5rem;
-  color: #f53855;
-  height: 60px;
-  padding: 2rem 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #f53855;
-  box-sizing: border-box;
-  border-radius: 10px;
-  transition: all 0.3s;
-  background-color: transparent;
-  :hover {
-    transform: scale(0.98);
-    /* Scaling button to 0.98 to its original size */
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-    /* Lowering the shadow */
-  }
-  @media ${(props) => props.theme.breakpoints.md} {
-    height: 40px;
-    font-size: 2rem;
+  ${
+    tw`
+    font-semibold
+    ml-8
+    text-4xl
+    text-blue-500
+    border-blue-500
+    border
+    rounded-xl
+   p-6 
+  
+   hover:text-blue-700
+   
     
-    
+    `
   }
+  
 `;

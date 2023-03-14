@@ -63,14 +63,12 @@ export const authAPI = {
     me() {
         return instanceNew.get(`${mainUrl}/auth/me`);
     },
-    login(email, password, rememberMe = false, captcha = null) {
+    login(email, password, rememberMe = false, captcha) {
         return instanceNew.post(`${mainUrl}/auth/login`, {
             email,
             password,
             rememberMe,
             captcha
-        }).then(response => response).catch(error => {
-            console.log(error)
         })
     },
     logout() {
@@ -83,21 +81,19 @@ export const authAPI = {
 
 
 export const messagesAPI = {
-    startChatting(userId){
+    startChatting(userId) {
         return instanceNew.put(`${mainUrl}/dialogs/${userId}`);
     },
     getAllDialogs() {
         return instanceNew.get(`${mainUrl}/dialogs`);
     },
-    getDialogs(userId,page=1,count=10){
+    getDialogs(userId, page = 1, count = 10) {
         return instanceNew.get(`${mainUrl}/dialogs/${userId}/messages?page=${page}&count=${count}`);
     },
-    sendMessage(userId,body){
-        return instanceNew.post(`${mainUrl}/dialogs/${userId}/messages`, {body:body}).catch(error=>{
-            console.log(error)
-        })
+    sendMessage(userId, body) {
+        return instanceNew.post(`${mainUrl}/dialogs/${userId}/messages`, {body: body});
     },
-    deleteMessage(messageId){
+    deleteMessage(messageId) {
         return instanceNew.delete(`${mainUrl}/dialogs/messages/${messageId}`);
     }
 }

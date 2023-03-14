@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import tw from "twin.macro";
 
 
 export const ProfileDiv = styled.div`
@@ -12,7 +13,7 @@ export const ProfileDiv = styled.div`
 
 export const ProfileInfoDiv = styled.div`
   margin: auto;
- display: grid;
+  display: grid;
   place-items: center;
   justify-content: center;
   width: 100%;
@@ -21,10 +22,16 @@ export const ProfileInfoDiv = styled.div`
   gap: 1rem;
   background-color: aliceblue;
   border-radius: 10px;
-  img{
-    width: 150px;
+
+  img {
+    ${tw`
+w-7/12
+rounded-3xl
+
+
+`}
   }
-  
+
 `;
 export const ProfileStatusDiv = styled.div`
   display: flex;
@@ -37,29 +44,34 @@ export const ProfileStatusDiv = styled.div`
   border: 2px solid black;
   text-align: center;
 
+
 `;
 
 export const ProfileInfoContainer = styled.div`
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   gap: 0.5rem;
-  button{
-    width: max-content;
-    align-self: center;
-    padding: 8px 16px;
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 10px;
-  }
+
+  button {
+    ${tw`self-center
   
+  duration-500
+   bg-blue-400 hover:bg-blue-700 font-bold text-white w-max px-6 py-3 rounded `}
+  }
+
 `;
 export const ProfileText = styled.p`
- color: #ff2d55;
-  font-size: 16px;
-  text-align: left;
-  
+  ${tw`
+  text-yellow-300
+  hover:text-blue-400
+  border-b-green-200
+  text-left
+  leading-8
+ 
+  `}
 `;
 
 

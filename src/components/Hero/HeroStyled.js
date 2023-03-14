@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import tw from "twin.macro";
 
 export const Container = styled.div`
   display: grid;
@@ -8,32 +9,30 @@ export const Container = styled.div`
   overflow: hidden;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  background: linear-gradient(136.1deg, #ff4e50 24.18%, #1a116f 173.45%);
   //margin-bottom: 50px;
   @media ${(props) => props.theme.breakpoints.md} {
     display: flex;
-    flex-direction:column-reverse;
+    flex-direction: column-reverse;
     margin-bottom: 0;
-    max-height:100%;
-   
+    max-height: 100%;
+
   }
   @media ${(props) => props.theme.breakpoints.sm} {
-   
-  
+
+
   }
-  
+
 `;
 
 export const Div1 = styled.div`
   display: flex;
   width: 100%;
+
   img {
     width: 100%;
     object-fit: cover;
     object-position: right bottom;
-    max-height: 450px;
-    
-  ;
+    max-height: 450px;;
   }
 
   @media ${(props) => props.theme.breakpoints.md} {
@@ -41,8 +40,15 @@ export const Div1 = styled.div`
   }
 `;
 export const Div2 = styled.div`
+  ${tw`
+text-black bg-blue-400
+
+
+
+
+  `};
   display: grid;
- place-items: center;
+  place-items: center;
   place-content: center;
   gap: 1rem;
   width: 100%;
@@ -55,10 +61,10 @@ export const Div2 = styled.div`
   @media ${(props) => props.theme.breakpoints.sm} {
     display: flex;
     flex-direction: column;
-  
+
     padding: 30px 20px;
     gap: 1rem;
-    
+
   }
 `;
 
@@ -73,5 +79,5 @@ export const MainText = styled.p`
   font-size: 28px;
   line-height: 36px;
   text-align: center;
-  
+
 `;
