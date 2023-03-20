@@ -1,8 +1,25 @@
 import React from 'react';
 import {PaginationContainer} from "./PaginationStyled";
 
+type PropsType = {
+    setCurrentPortion: (currentNumber:number)=>void
+    currentPage: number
+    onPageChanged: (pageNumber:number) => void
+    totalItemsCount: number
+    pageSize: number
+    portionSize?: number
+    currentPortion?: number
+}
 
-const Pagination = ({setCurrentPortion,currentPage, onPageChanged, totalItemsCount, pageSize, portionSize = 5,currentPortion=1}) => {
+const Pagination: React.FC<PropsType> = ({
+                                             setCurrentPortion,
+                                             currentPage,
+                                             onPageChanged,
+                                             totalItemsCount,
+                                             pageSize,
+                                             portionSize = 5,
+                                             currentPortion = 1
+                                         }) => {
 
     let pagesCount = 1;
     let pagesNum = Math.ceil(totalItemsCount / pageSize);
@@ -12,12 +29,10 @@ const Pagination = ({setCurrentPortion,currentPage, onPageChanged, totalItemsCou
         pagesCount = pagesNum;
     }
 
-
-    let pages = [];
+    let pages:number[] = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-
 
     let portionCount = Math.ceil(pagesCount / portionSize);
     // let [portionNumber, setPortionNumber] = useState(currentPortion);
@@ -25,31 +40,31 @@ const Pagination = ({setCurrentPortion,currentPage, onPageChanged, totalItemsCou
     let rightPortionPageNumber = currentPortion * portionSize;
 
 
-
-
     return (
         <PaginationContainer>
 
             <button disabled={currentPortion === 1} onClick={() => {
                 setCurrentPortion(currentPortion - 1)
-            }}>◀️</button>
+            }}>◀️
+            </button>
 
             {pages
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map((p) => {
                     return <span
-                        className={ currentPage === p ? "active" :null}
+                        className={currentPage === p ? "active" : undefined}
                         key={p}
-                                 onClick={(e) => {
-                                     onPageChanged(p);
-                                 }}>{p}</span>
+                        onClick={(e) => {
+                            onPageChanged(p);
+                        }}>{p}</span>
                 })}
 
             <button disabled={!(portionCount > currentPortion)} onClick={() => {
                 setCurrentPortion(currentPortion + 1)
 
-            }}>▶️</button>
-     </PaginationContainer>
+            }}>▶️
+            </button>
+        </PaginationContainer>
     );
 };
 

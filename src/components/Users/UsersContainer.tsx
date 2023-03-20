@@ -1,13 +1,12 @@
 import React, {useEffect} from "react";
-import Users from "./Users.jsx";
+import Users from "./Users";
 import {connect} from "react-redux";
 import {
     follow,
     requestUsers,
     setCurrentPage, setCurrentPortion,
-    toggleFollowingProgress,
     unfollow
-} from "../../app/user-reducer.ts";
+} from "../../app/user-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import {compose} from "@reduxjs/toolkit";
 import {
@@ -17,8 +16,37 @@ import {
     getPageSize, getPortionSize,
     getTotalUsersCount, getUsers
 } from "../../app/users-selectors";
+import {RootStateType} from "../../app/store";
+import {UsersType} from "../../types/types";
 
-const UsersContainer = (props) => {
+
+type MapStatePropsType = {
+    currentPage: number
+    totalUsersCount: number
+    pageSize: number
+    portionSize?: number
+    currentPortion?: number
+    followingInProgress:number[]
+    users:UsersType[]
+    isFetching:boolean
+
+}
+type MapDispatchPropsType = {
+    setCurrentPortion: (currentNumber: number) => void
+    follow:(userId: number)=>void
+    unfollow:(userId: number)=>void
+    requestUsers:(pageNumber:number, pageSize:number)=>Promise<void>
+    setCurrentPage:(pageNumber:number)=>void
+}
+
+type OwnType ={
+
+}
+
+type PropsType = MapDispatchPropsType&MapStatePropsType&OwnType;
+
+
+const UsersContainer:React.FC<PropsType> = (props) => {
 
 
     const {currentPage, pageSize, requestUsers, setCurrentPage} = props;
@@ -27,7 +55,7 @@ const UsersContainer = (props) => {
         requestUsers(currentPage, pageSize);
     }, [currentPage, pageSize,requestUsers]);
 
-    const onPageChanged = (pageNumber) => {
+    const onPageChanged = (pageNumber:number) => {
         requestUsers(pageNumber, pageSize);
         setCurrentPage(pageNumber);
     }
@@ -50,7 +78,7 @@ const UsersContainer = (props) => {
 };
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state:RootStateType):MapStatePropsType => {
     return {
         users: getUsers(state),
         pageSize: getPageSize(state),
@@ -64,8 +92,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    follow, unfollow, setCurrentPortion, setCurrentPage, toggleFollowingProgress, requestUsers
+  follow, unfollow, setCurrentPortion, setCurrentPage, requestUsers
 }
-export default compose(
-    connect(mapStateToProps, mapDispatchToProps)
+export default compose<React.Component<PropsType>>(
+    //<TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>
+    connect(mapStateToProps, { follow, unfollow, setCurrentPortion, setCurrentPage, requestUsers})
 )(UsersContainer)

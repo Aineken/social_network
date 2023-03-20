@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 
+
 export const PaginationContainer = styled.div`
 display: flex;
   gap: 1rem;
@@ -30,9 +31,6 @@ display: flex;
 
   @media ${(props) => props.theme.breakpoints.md} {
     margin: auto;
-  overflow: auto;
-   
-    
-    
+    overflow: auto;
   }
 `;

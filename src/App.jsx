@@ -6,7 +6,7 @@ import Login from "./components/Login/Login.jsx";
 import {MainContainer, MainDiv} from "./styles/GlobalComponents/index.js";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Hero from "./components/Hero/Hero.jsx";
-import UsersContainer from "./components/Users/UsersContainer.jsx";
+import UsersContainer from "./components/Users/UsersContainer.tsx";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 import {initializeApp} from "./app/app-reducer";

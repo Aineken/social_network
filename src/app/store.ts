@@ -16,5 +16,10 @@ export const store = configureStore({
 });
 
 
+export type RootStateType = ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
 
+
+// @ts-ignore
 window.store=store.getState();
