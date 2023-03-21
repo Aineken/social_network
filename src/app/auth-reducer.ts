@@ -1,5 +1,7 @@
 import {authAPI} from "../api/index";
 import {toast} from "react-toastify";
+import {ThunkAction} from "@reduxjs/toolkit";
+import {RootStateType} from "./store";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_CAPTCHA = "SET_CAPTCHA"
@@ -32,6 +34,10 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
 }
 
 
+type ActionTypes = SetAuthUserDataActionType
+    | SetCaptchaDataActionType
+
+
 type SetAuthUserDataActionType = {
     type: typeof SET_USER_DATA
     payload: InitialStateType
@@ -50,7 +56,9 @@ export const setCaptchaData = (captcha: string): SetCaptchaDataActionType => ({
 });
 
 
-export const getAuthUserData = () => async (dispatch: any) => {
+export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, ActionTypes>
+
+export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const {data} = await authAPI.me();
     if (data.resultCode === 0) {
         let {id, login, email} = data.data;
@@ -60,11 +68,11 @@ export const getAuthUserData = () => async (dispatch: any) => {
     }
 
 }
-export const getCaptchaUrl = () => async (dispatch: any) => {
+export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const {data} = await authAPI.captchaUrl();
     dispatch(setCaptchaData(data.url));
 }
-export const login = (email: string, password: string, rememberMe: boolean , captcha: string) => async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => async (dispatch) => {
     const {data} = await authAPI.login(email, password, rememberMe, captcha);
 
     if (data.resultCode === 0) {
@@ -79,7 +87,7 @@ export const login = (email: string, password: string, rememberMe: boolean , cap
     }
 }
 
-export const logout = () => async (dispatch: any) => {
+export const logout = (): ThunkType => async (dispatch) => {
     const {data} = await authAPI.logout();
     if (data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false, null));

@@ -35,15 +35,15 @@ type MapDispatchPropsType = {
     setCurrentPortion: (currentNumber: number) => void
     follow:(userId: number)=>void
     unfollow:(userId: number)=>void
-    requestUsers:(pageNumber:number, pageSize:number)=>Promise<void>
+    requestUsers:(pageNumber:number, pageSize:number)=>void
     setCurrentPage:(pageNumber:number)=>void
 }
 
-type OwnType ={
-
+type OwnPropsType ={
+testName:string
 }
 
-type PropsType = MapDispatchPropsType&MapStatePropsType&OwnType;
+type PropsType = MapDispatchPropsType&MapStatePropsType&OwnPropsType;
 
 
 const UsersContainer:React.FC<PropsType> = (props) => {
@@ -92,9 +92,10 @@ const mapStateToProps = (state:RootStateType):MapStatePropsType => {
 }
 
 const mapDispatchToProps = {
-  follow, unfollow, setCurrentPortion, setCurrentPage, requestUsers
+
+  follow, unfollow, setCurrentPortion, setCurrentPage, requestUsers,
 }
-export default compose<React.Component<PropsType>>(
+export default compose<PropsType>(
     //<TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>
-    connect(mapStateToProps, { follow, unfollow, setCurrentPortion, setCurrentPage, requestUsers})
+    connect<MapStatePropsType,MapDispatchPropsType,OwnPropsType,RootStateType>(mapStateToProps,mapDispatchToProps)
 )(UsersContainer)

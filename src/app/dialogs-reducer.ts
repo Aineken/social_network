@@ -1,5 +1,7 @@
 import {messagesAPI} from "../api";
 import {DialogsType, MessagesType} from "../types/types";
+import {Dispatch, ThunkAction} from "@reduxjs/toolkit";
+import {RootStateType} from "./store";
 
 const SEND_MESSAGE = 'SEND_MESSAGE';
 const DELETE_MESSAGE = 'DELETE_MESSAGE';
@@ -7,7 +9,6 @@ const SEND_REQUEST = 'SEND_REQUEST';
 const SET_ALL_DIALOGS = 'SET_ALL_DIALOGS';
 const SET_DIALOGS = 'SET_DIALOGS';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-
 
 
 let initialState = {
@@ -45,67 +46,86 @@ const dialogsReducer = (state = initialState, action: any): InitialStateType => 
             return state;
     }
 }
+type ActionTypes = ToggleIsFetchingActionType
+    | SendMessageSuccessActionType
+    | DeleteMessageSuccessActionType
+    | SetAllDialogsActionType
+    | SetDialogsActionType
+    | SendMessageRequestSuccessActionType
 
 
-
-type ToggleIsFetchingActionType={
-    type:typeof TOGGLE_IS_FETCHING
-    isFetching:boolean
+type ToggleIsFetchingActionType = {
+    type: typeof TOGGLE_IS_FETCHING
+    isFetching: boolean
 }
-export const toggleIsFetching = (isFetching:boolean):ToggleIsFetchingActionType => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingActionType => ({
+    type: TOGGLE_IS_FETCHING,
+    isFetching
+})
 
-type SendMessageSuccessActionType={
-    type:typeof SEND_MESSAGE
-    message:string
+type SendMessageSuccessActionType = {
+    type: typeof SEND_MESSAGE
+    message: string
 }
-export const sendMessageSuccess = (message:string):SendMessageSuccessActionType => ({type: SEND_MESSAGE, message})
+export const sendMessageSuccess = (message: string): SendMessageSuccessActionType => ({type: SEND_MESSAGE, message})
 
 type DeleteMessageSuccessActionType = {
-    type:typeof DELETE_MESSAGE
-    messageId:number
+    type: typeof DELETE_MESSAGE
+    messageId: number
 }
-export const deleteMessageSuccess = (messageId:number):DeleteMessageSuccessActionType => ({type: DELETE_MESSAGE, messageId})
+export const deleteMessageSuccess = (messageId: number): DeleteMessageSuccessActionType => ({
+    type: DELETE_MESSAGE,
+    messageId
+})
 
-type SetAllDialogsActionType={
-    type:typeof SET_ALL_DIALOGS
-    dialogs:Array<DialogsType>
+type SetAllDialogsActionType = {
+    type: typeof SET_ALL_DIALOGS
+    dialogs: Array<DialogsType>
 }
-export const setAllDialogs = (dialogs:Array<DialogsType>):SetAllDialogsActionType => ({type: SET_ALL_DIALOGS, dialogs})
+export const setAllDialogs = (dialogs: Array<DialogsType>): SetAllDialogsActionType => ({
+    type: SET_ALL_DIALOGS,
+    dialogs
+})
 
-type SetDialogsActionType ={
+type SetDialogsActionType = {
     type: typeof SET_DIALOGS
-    dialogs:MessagesType
+    dialogs: MessagesType
 }
-export const setDialogs = (dialogs:MessagesType):SetDialogsActionType => ({type: SET_DIALOGS, dialogs})
+export const setDialogs = (dialogs: MessagesType): SetDialogsActionType => ({type: SET_DIALOGS, dialogs})
 
-type SendMessageRequestSuccessActionType={
-    type:typeof SEND_REQUEST
-    request:string
+type SendMessageRequestSuccessActionType = {
+    type: typeof SEND_REQUEST
+    request: string
 }
-export const sendMessageRequestSuccess = (request:string): SendMessageRequestSuccessActionType => ({type: SEND_REQUEST, request})
+export const sendMessageRequestSuccess = (request: string): SendMessageRequestSuccessActionType => ({
+    type: SEND_REQUEST,
+    request
+})
 
 
-export const sendMessageRequest = (userId:number) => async (dispatch:any) => {
+export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, ActionTypes>
+
+
+export const sendMessageRequest = (userId: number): ThunkType => async (dispatch) => {
     const {data} = await messagesAPI.startChatting(userId)
     dispatch(sendMessageRequestSuccess(data))
 }
-export const requestAllDialogs = () => async (dispatch:any) => {
+export const requestAllDialogs = (): ThunkType => async (dispatch) => {
     dispatch(toggleIsFetching(true));
     const {data} = await messagesAPI.getAllDialogs();
     dispatch(setAllDialogs(data));
     dispatch(toggleIsFetching(false));
 }
-export const requestDialogs = (userId:number, page:number, count:number) => async (dispatch:any) => {
+export const requestDialogs = (userId: number, page: number, count: number): ThunkType => async (dispatch) => {
     const {data} = await messagesAPI.getDialogs(userId, page, count);
     dispatch(setDialogs(data.items));
 
 }
-export const sendMessage = (userId:number, body:string) => async (dispatch:any) => {
+export const sendMessage = (userId: number, body: string): ThunkType => async (dispatch) => {
     const {data} = await messagesAPI.sendMessage(userId, body)
     dispatch(sendMessageSuccess(data.data.message))
 }
-
-export const deleteMessage = (messageId:number) => async (dispatch:any) => {
+export const deleteMessage = (messageId: number): ThunkType => async (dispatch) => {
     try {
         await messagesAPI.deleteMessage(messageId)
         dispatch(deleteMessageSuccess(messageId))
