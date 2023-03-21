@@ -92,7 +92,6 @@ const mapStateToProps = (state:RootStateType):MapStatePropsType => {
 }
 
 const mapDispatchToProps = {
-
   follow, unfollow, setCurrentPortion, setCurrentPage, requestUsers,
 }
 export default compose<PropsType>(
