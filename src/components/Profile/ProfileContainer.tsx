@@ -1,17 +1,17 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {compose, current} from "@reduxjs/toolkit";
+import {compose} from "@reduxjs/toolkit";
 import {getStatus, getUserProfile, updateInfo, updatePhoto, updateStatus} from "../../app/profile-reducer";
 import {useNavigate, useParams} from "react-router-dom";
-import {PhotosType, ProfileType, UsersType} from "../../types/types";
+import {PhotosType, ProfileType} from "../../types/types";
 import {RootStateType} from "../../app/store";
 
 
 type MapStatePropsType = {
-    profile: ProfileType
-    status: string
-    authorizedUserId: number
+    profile: ProfileType | null
+    status: string | null
+    authorizedUserId: number | null
     isAuth: boolean
 }
 type MapDispatchPropsType = {
@@ -28,28 +28,29 @@ type PropsType = MapDispatchPropsType & MapStatePropsType & OwnPropsType;
 const ProfileContainer: React.FC<PropsType> = ({getUserProfile, getStatus, authorizedUserId, ...props}) => {
 
     let {profileId} = useParams();
-
     const navigate = useNavigate();
 
-
-    let userId=null as number|null
-    if(profileId){let userId = parseInt(profileId)}
-
-
-
+    let checkNumber: number;
+    if (profileId) {
+        checkNumber = parseInt(profileId)
+    } else {
+        checkNumber = 0
+    }
 
     useEffect(() => {
-        if (!userId) {
-            userId = authorizedUserId;
-            if (!userId) {
-                navigate("/login")
-            } else {
-                getUserProfile(userId);
-                getStatus(userId);
-            }
-        } else {
+        let userId: number;
+        if (profileId) {
+            userId = parseInt(profileId);
             getUserProfile(userId);
             getStatus(userId);
+        } else {
+            if(authorizedUserId){
+                userId=authorizedUserId
+                getUserProfile(userId);
+                getStatus(userId);
+            }else{
+                navigate("/login")
+            }
         }
     }, [profileId, authorizedUserId, getUserProfile, getStatus, navigate])
 
@@ -67,8 +68,8 @@ let mapStateToProps = (state: RootStateType) => ({
     isAuth: state.auth.isAuth
 });
 
-export default compose(
-    connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, RootStateType>(mapStateToProps, {
+export default compose<PropsType>(
+    connect<MapStatePropsType,MapDispatchPropsType,OwnPropsType,RootStateType>(mapStateToProps, {
         getUserProfile,
         getStatus,
         updateStatus,
