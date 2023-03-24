@@ -8,18 +8,18 @@ import {useParams} from "react-router-dom";
 const Dialogs = ({requestDialogs, ...props}) => {
 
     let {dialogId} = useParams();
+    let {dialogs, messages} = props.dialogsPage;
+
+
     useEffect(() => {
             if (dialogId) {
                 requestDialogs(dialogId)
+            }else{
+                requestDialogs(dialogs[0].id)
             }
-        }, [dialogId, requestDialogs]
+
+        }, [dialogs,dialogId, requestDialogs]
     )
-
-    let {dialogs, messages} = props.dialogsPage;
-
-    console.log(dialogs)
-    console.log(messages)
-
 
     let dialogsElements = dialogs.slice(0,9).map(dialog => <DialogItem dialog={dialog} key={dialog.id}/>);
     let messagesElements = messages.slice(0,9).map(message => <Dialog deleteMessage={props.deleteMessage} mainUserId={props.mainUserId} message={message} key={message.id}/>);
