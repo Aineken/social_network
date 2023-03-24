@@ -7,18 +7,35 @@ import InputPhoto from "./InputPhoto";
 import ProfileInfos from "./ProfileInfoForm/ProfileInfos";
 import ProfileInfoForm from "./ProfileInfoForm/ProfileInfoForm";
 import {Button} from "../../Login/LoginStyled";
-import {useDispatch} from "react-redux";
 import {sendMessageRequest} from "../../../app/dialogs-reducer";
 import {useNavigate} from "react-router-dom";
+import {PhotosType, ProfileType} from "../../../types/types";
+import {useAppDispatch} from "../../../app/store";
 
 
-const ProfileInfo = ({profile, mainUser, status, updateStatus, updatePhoto, updateInfo}) => {
+type PropsType = {
+    profile: ProfileType | null
+    status: string | null
+    mainUser: number | null
+    isAuth: boolean
+    updateStatus: (status: string) => void
+    updatePhoto: (photo: PhotosType) => void
+    updateInfo: (newInfo: ProfileType) => void
+}
+type StateType = {
+
+}
+
+
+const ProfileInfo:React.FC<PropsType> = ({profile, mainUser, status, updateStatus, updatePhoto, updateInfo}) => {
     const [isOwner, setIsOwner] = useState(false);
     const [editInfo, setEditInfo] = useState(false);
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const handleSendRequest = async (userId) => {
+
+    const dispatch = useAppDispatch();
+
+    const handleSendRequest = async (userId:number) => {
         await dispatch(sendMessageRequest(userId))
         navigate(`/dialogs/${userId}`)
     }

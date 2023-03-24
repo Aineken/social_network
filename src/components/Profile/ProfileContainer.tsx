@@ -45,9 +45,8 @@ const ProfileContainer: React.FC<PropsType> = ({getUserProfile, getStatus, autho
             getStatus(userId);
         } else {
             if(authorizedUserId){
-                userId=authorizedUserId
-                getUserProfile(userId);
-                getStatus(userId);
+                getUserProfile(authorizedUserId);
+                getStatus(authorizedUserId);
             }else{
                 navigate("/login")
             }
