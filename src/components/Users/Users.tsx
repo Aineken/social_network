@@ -18,9 +18,6 @@ type PropsType = {
     unfollow:(userId: number)=>void
     users:UsersType[]
 }
-type StateType ={
-
-}
 
 
 let Users:React.FC<PropsType> = (props) => {

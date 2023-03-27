@@ -1,17 +1,27 @@
-import React from 'react';
-import {Field, Form, Formik} from "formik";
+import React, {FC} from 'react';
+import {Field, Form, Formik, FormikProps} from "formik";
 import {Textarea} from "../../../common/FormsControls/FormsControls";
 import {Button} from "../../../../styles/GlobalComponents";
 
 
+type ValuesType = {
+    newPostText:string
+}
+type ProspType = {
+    onSubmit: (values:ValuesType) => void
+}
 
 
-const AddPostForm = (props) => {
+const AddPostForm: FC<ProspType > = (props) => {
+
+    const initialState={
+        newPostText: ''
+    }
     return (
-        <Formik initialValues={{newPostText: ''}}
+        <Formik initialValues={initialState}
                 validate={
                     values => {
-                        const errors = {};
+                        const errors:Partial<FormikProps<ValuesType>['errors']> = {};
                         if (!values.newPostText) {
                             errors.newPostText = 'Field is required';
                         } else if (values.newPostText.length > 100) {
@@ -25,7 +35,7 @@ const AddPostForm = (props) => {
                     async (values, {setSubmitting, resetForm}) => {
                         await props.onSubmit(values)
                         setSubmitting(false);
-                        resetForm({newPostText: 'hello'})
+                        resetForm(initialState)
                     }
                 }
         >
@@ -34,9 +44,9 @@ const AddPostForm = (props) => {
             {({isSubmitting}) => (
                 <Form>
                     <Field name="newPostText">
-                        {(props) => {
+                        {(fieldProps:any) => {
                             return (
-                                <Textarea {...props}  placeholder="Enter your message"/>
+                                <Textarea {...fieldProps} placeholder="Enter your message"/>
                             );
                         }}
                     </Field>

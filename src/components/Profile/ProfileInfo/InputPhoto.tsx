@@ -1,9 +1,17 @@
 import React, {useEffect, useState} from 'react';
 
 
-const InputPhoto = ({updatePhoto}) => {
-    const [selectedFile, setSelectedFile] = useState()
-    const [preview, setPreview] = useState()
+type PropsType= {
+    updatePhoto: (photo: File) => void
+}
+
+type StateType={
+
+}
+
+const InputPhoto:React.FC<PropsType&StateType> = ({updatePhoto}) => {
+    const [selectedFile, setSelectedFile] = useState<null | File>()
+    const [preview, setPreview] = useState<undefined | string>()
 
     useEffect(() => {
         if (!selectedFile) {
@@ -16,18 +24,23 @@ const InputPhoto = ({updatePhoto}) => {
         return () => URL.revokeObjectURL(objectUrl)
     }, [selectedFile])
 
-    const onSelectFile = e => {
+    const onSelectFile = (e:React.ChangeEvent<HTMLInputElement>) => {
+
         if (!e.target.files || e.target.files.length === 0) {
             setSelectedFile(undefined)
-            return
         }
-        setSelectedFile(e.target.files[0])
+
+        if (e.target.files && e.target.files.length) {
+            setSelectedFile(e.target.files[0]);
+        }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault()
+        if(selectedFile){
         updatePhoto(selectedFile);
         setSelectedFile(undefined)
+        }
 
     }
 

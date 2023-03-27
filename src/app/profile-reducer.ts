@@ -10,8 +10,7 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const UPDATE_PHOTO_SUCCESS = "UPDATE_PHOTO_SUCCESS";
 
-
-type PostsType = {
+export type PostsType = {
     id: number
     message: string
     likesCount: number
@@ -32,7 +31,7 @@ let initialState = {
 
 type InitialStateType = typeof initialState
 
-const profileReducer = (state = initialState, action: any): InitialStateType => {
+const profileReducer = (state = initialState, action:any): InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -111,7 +110,7 @@ export const updateStatus = (status:string):ThunkType => async (dispatch) => {
     }
 }
 
-export const updatePhoto = (photo:PhotosType):ThunkType => async (dispatch) => {
+export const updatePhoto = (photo:File):ThunkType => async (dispatch) => {
     const {data} = await profileAPI.updatePhoto(photo);
     console.log(data)
     if (data.resultCode === 0) {

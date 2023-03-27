@@ -2,7 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {ProfileStatusDiv} from "../ProfileStyled";
 
 
-const ProfileStatus = (props) => {
+type PropsType = {
+    status: string
+    isOwner: boolean
+    updateStatus: (status: string) => void
+}
+
+const ProfileStatus: React.FC<PropsType> = (props) => {
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
 
@@ -17,12 +23,13 @@ const ProfileStatus = (props) => {
     }
     const deactivateEditMode = () => {
         setEditMode(false)
-        props.updateStatus(status);
+        if (status) props.updateStatus(status);
     }
 
-    const onStatusChange = (e) => {
+    const onStatusChange = (e: React.FormEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)
     }
+
     return (
         <ProfileStatusDiv>
             {props.isOwner && <span onDoubleClick={activateEditMode}>✏️ Double Click to edit!!!</span>}

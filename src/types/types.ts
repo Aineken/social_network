@@ -22,7 +22,8 @@ export type PhotosType = {
     small: null | string
     large: null | string
 }
-type ContactsType = {
+export type ContactsType = {
+    [key: string]: string;
     skype: string
     vk: string
     facebook: string
@@ -34,7 +35,7 @@ type ContactsType = {
     whatsApp: string
 }
 export type ProfileType = {
-    aboutMe: string | null
+    aboutMe: string
     contacts: ContactsType
     lookingForAJob: boolean
     lookingForAJobDescription: string

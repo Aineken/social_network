@@ -1,6 +1,6 @@
 import {messagesAPI} from "../api";
 import {DialogsType, MessagesType} from "../types/types";
-import {Dispatch, ThunkAction} from "@reduxjs/toolkit";
+import {ThunkAction} from "@reduxjs/toolkit";
 import {RootStateType} from "./store";
 
 const SEND_MESSAGE = 'SEND_MESSAGE';

@@ -4,13 +4,13 @@ import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import {getStatus, getUserProfile, updateInfo, updatePhoto, updateStatus} from "../../app/profile-reducer";
 import {useNavigate, useParams} from "react-router-dom";
-import {PhotosType, ProfileType} from "../../types/types";
-import {RootStateType} from "../../app/store";
+import { ProfileType} from "../../types/types";
+import {AppDispatch, RootStateType} from "../../app/store";
 
 
 type MapStatePropsType = {
     profile: ProfileType | null
-    status: string | null
+    status: string
     authorizedUserId: number | null
     isAuth: boolean
 }
@@ -18,8 +18,8 @@ type MapDispatchPropsType = {
     getUserProfile: (userId: number) => void
     getStatus: (userId: number) => void
     updateStatus: (status: string) => void
-    updatePhoto: (photo: PhotosType) => void
-    updateInfo: (newInfo: ProfileType) => void
+    updatePhoto: (photo: File) => void
+    updateInfo: (values: ProfileType) => void
 }
 
 type OwnPropsType = {}
@@ -30,12 +30,7 @@ const ProfileContainer: React.FC<PropsType> = ({getUserProfile, getStatus, autho
     let {profileId} = useParams();
     const navigate = useNavigate();
 
-    let checkNumber: number;
-    if (profileId) {
-        checkNumber = parseInt(profileId)
-    } else {
-        checkNumber = 0
-    }
+
 
     useEffect(() => {
         let userId: number;
@@ -67,14 +62,30 @@ let mapStateToProps = (state: RootStateType) => ({
     isAuth: state.auth.isAuth
 });
 
+
+
+let mapDispatchToProps = (dispatch:AppDispatch): MapDispatchPropsType => {
+    return {
+        getUserProfile: (userId: number) => {
+            dispatch(getUserProfile(userId));
+        },
+        getStatus: (userId: number) => {
+            dispatch(getStatus(userId));
+        },
+        updateStatus: (status: string) => {
+            dispatch(updateStatus(status));
+        },
+        updatePhoto: (photo: File) => {
+            dispatch(updatePhoto(photo));
+        },
+        updateInfo: (newInfo: ProfileType) => {
+            dispatch(updateInfo(newInfo));
+        }
+    }
+}
+
 export default compose<PropsType>(
-    connect<MapStatePropsType,MapDispatchPropsType,OwnPropsType,RootStateType>(mapStateToProps, {
-        getUserProfile,
-        getStatus,
-        updateStatus,
-        updatePhoto,
-        updateInfo
-    })
+    connect<MapStatePropsType,MapDispatchPropsType,OwnPropsType,RootStateType>(mapStateToProps, mapDispatchToProps)
 )(ProfileContainer);
 
 

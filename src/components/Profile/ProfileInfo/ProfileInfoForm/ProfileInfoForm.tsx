@@ -1,21 +1,26 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Formik} from "formik";
 import {Button, Field, Input, Label, LoginStyled} from "../../../Login/LoginStyled";
+import {ProfileType} from "../../../../types/types";
 
 
-const ProfileInfoForm = ({profile, updateInfo, setEditInfo}) => {
+
+type PropsType = {
+    profile : ProfileType
+    updateInfo: (values: ProfileType) => void
+    setEditInfo: (edit: boolean) => void
+}
+const ProfileInfoForm: FC<PropsType> = ({profile, updateInfo, setEditInfo}) => {
 
 
     return (
         <Formik initialValues={profile}
-                onSubmit={(values, {setSubmitting}) => {
+                onSubmit={async(values, {setSubmitting}) => {
                     setSubmitting(true)
-                    updateInfo(values).then(() => {
-                        setEditInfo(false)
-                    }).catch(error => {
-                        setSubmitting(false)
-                        console.log(error)
-                    })
+                    await updateInfo(values)
+                    setEditInfo(false)
+
+
                 }}
         >
             {({

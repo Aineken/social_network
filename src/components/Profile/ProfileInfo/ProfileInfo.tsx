@@ -9,22 +9,20 @@ import ProfileInfoForm from "./ProfileInfoForm/ProfileInfoForm";
 import {Button} from "../../Login/LoginStyled";
 import {sendMessageRequest} from "../../../app/dialogs-reducer";
 import {useNavigate} from "react-router-dom";
-import {PhotosType, ProfileType} from "../../../types/types";
+import {ProfileType} from "../../../types/types";
 import {useAppDispatch} from "../../../app/store";
 
 
 type PropsType = {
     profile: ProfileType | null
-    status: string | null
+    status: string
     mainUser: number | null
     isAuth: boolean
     updateStatus: (status: string) => void
-    updatePhoto: (photo: PhotosType) => void
-    updateInfo: (newInfo: ProfileType) => void
+    updatePhoto: (photo: File) => void
+    updateInfo: (values: ProfileType) => void
 }
-type StateType = {
 
-}
 
 
 const ProfileInfo:React.FC<PropsType> = ({profile, mainUser, status, updateStatus, updatePhoto, updateInfo}) => {
@@ -32,6 +30,7 @@ const ProfileInfo:React.FC<PropsType> = ({profile, mainUser, status, updateStatu
     const [editInfo, setEditInfo] = useState(false);
 
     const navigate = useNavigate();
+
 
     const dispatch = useAppDispatch();
 
