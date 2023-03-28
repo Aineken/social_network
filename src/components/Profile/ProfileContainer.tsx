@@ -11,7 +11,7 @@ import {AppDispatch, RootStateType} from "../../app/store";
 type MapStatePropsType = {
     profile: ProfileType | null
     status: string
-    authorizedUserId: number | null
+    authorizedUserId: number | undefined
     isAuth: boolean
 }
 type MapDispatchPropsType = {
@@ -55,7 +55,7 @@ const ProfileContainer: React.FC<PropsType> = ({getUserProfile, getStatus, autho
 
 }
 
-let mapStateToProps = (state: RootStateType) => ({
+let mapStateToProps = (state: RootStateType):MapStatePropsType => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserId: state.auth.userId,

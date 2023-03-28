@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./components/Login/Login.tsx";
 import {MainContainer, MainDiv} from "./styles/GlobalComponents/index.js";
 import Navbar from "./components/Navbar/Navbar.tsx";
-import Hero from "./components/Hero/Hero.jsx";
+import Hero from "./components/Hero/Hero.tsx";
 import UsersContainer from "./components/Users/UsersContainer.tsx";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 

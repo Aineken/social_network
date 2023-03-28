@@ -29,4 +29,7 @@ const theme = {
 export default theme;
 
 
+export type ThemeType = {theme:typeof theme}
+
+
 

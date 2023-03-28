@@ -13,7 +13,7 @@ type MapDispatchPropsType = {
 
 type OwnPropsType = {}
 
-const mapStateToProps = (state:RootStateType) => {
+const mapStateToProps = (state:RootStateType):MapStatePropsType => {
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText

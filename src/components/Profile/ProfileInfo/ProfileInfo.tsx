@@ -16,7 +16,7 @@ import {useAppDispatch} from "../../../app/store";
 type PropsType = {
     profile: ProfileType | null
     status: string
-    mainUser: number | null
+    mainUser: number | undefined
     isAuth: boolean
     updateStatus: (status: string) => void
     updatePhoto: (photo: File) => void
