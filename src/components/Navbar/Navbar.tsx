@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container, Item} from "./NavbarStyled"
-import {NavLink, NavLinkProps} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 
 
 const Navbar = () => {

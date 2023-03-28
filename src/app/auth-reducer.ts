@@ -7,11 +7,11 @@ const SET_USER_DATA = 'SET_USER_DATA';
 const SET_CAPTCHA = "SET_CAPTCHA"
 
 let initialState = {
-    userId: null as null | number,
-    email: null as null | string,
-    login: null as null | string,
+    userId: undefined as undefined | number,
+    email: undefined as undefined | string,
+    login: undefined as undefined | string,
     isAuth: false,
-    captcha: null as null | string,
+    captcha: undefined as undefined | string,
 };
 
 type InitialStateType = typeof initialState
@@ -42,7 +42,7 @@ type SetAuthUserDataActionType = {
     type: typeof SET_USER_DATA
     payload: InitialStateType
 }
-export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean, captcha: string | null): SetAuthUserDataActionType => ({
+export const setAuthUserData = (userId: number | undefined, email: string | undefined, login: string | undefined, isAuth: boolean, captcha: string | undefined): SetAuthUserDataActionType => ({
     type: SET_USER_DATA, payload:
         {userId, email, login, isAuth, captcha}
 });
@@ -62,9 +62,9 @@ export const getAuthUserData = (): ThunkType => async (dispatch) => {
     const {data} = await authAPI.me();
     if (data.resultCode === 0) {
         let {id, login, email} = data.data;
-        dispatch(setAuthUserData(id, email, login, true, null));
+        dispatch(setAuthUserData(id, email, login, true, undefined));
     } else if (data.resultCode === 1) {
-        dispatch(setAuthUserData(null, null, null, false, null));
+        dispatch(setAuthUserData(undefined, undefined, undefined, false, undefined));
     }
 
 }
@@ -72,7 +72,7 @@ export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
     const {data} = await authAPI.captchaUrl();
     dispatch(setCaptchaData(data.url));
 }
-export const login = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => async (dispatch) => {
+export const login = (email: string, password: string, rememberMe: boolean|undefined, captcha: string|undefined): ThunkType => async (dispatch) => {
     const {data} = await authAPI.login(email, password, rememberMe, captcha);
 
     if (data.resultCode === 0) {
@@ -90,7 +90,7 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
 export const logout = (): ThunkType => async (dispatch) => {
     const {data} = await authAPI.logout();
     if (data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false, null));
+        dispatch(setAuthUserData(undefined, undefined, undefined, false, undefined));
     }
 }
 

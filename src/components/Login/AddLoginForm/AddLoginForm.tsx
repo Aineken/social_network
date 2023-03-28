@@ -1,9 +1,20 @@
 import React from 'react';
-import {Formik} from "formik";
+import {Formik, FormikProps} from "formik";
 import {Button, Field, FormInfo, Input, Label, LoginStyled, RememberDiv} from "../LoginStyled";
 
 
-const AddLoginForm = (props) => {
+
+type ValuesType = {
+    email: string
+    password: string
+    remember?: boolean
+    captcha?: string
+}
+type PropsType = {
+    captcha?:string
+    onSubmit: (values:ValuesType) => void
+}
+const AddLoginForm:React.FC<PropsType> = (props) => {
 
 
     const initialValues = {
@@ -13,7 +24,7 @@ const AddLoginForm = (props) => {
     return (
         <Formik initialValues={initialValues}
                 validate={values => {
-                    const errors = {};
+                    const errors:Partial<FormikProps<ValuesType>['errors']> = {};
                     if (!values.email) {
                         errors.email = 'Required';
                     } else if (
@@ -33,7 +44,7 @@ const AddLoginForm = (props) => {
                 onSubmit={async (values, {setSubmitting, ...rest}) => {
                     setSubmitting(true)
                     await props.onSubmit(values);
-                    rest.resetForm({initialValues})
+                    rest.resetForm({values: initialValues})
                     setSubmitting(false)
 
                 }}
@@ -72,7 +83,7 @@ const AddLoginForm = (props) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.email}
-                            className={((errors.email && touched.email) ? "error" : null)}
+                            className={((errors.email && touched.email) ? "error" : undefined)}
                         />
 
                     </Field>
@@ -86,7 +97,7 @@ const AddLoginForm = (props) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.password}
-                            className={((errors.password && touched.password) ? "error" : null)}
+                            className={((errors.password && touched.password) ? "error" : undefined)}
                         />
                     </Field>
 
@@ -101,7 +112,7 @@ const AddLoginForm = (props) => {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.captcha}
-                            className={((errors.captcha && touched.captcha) ? "error" : null)}
+                            className={((errors.captcha && touched.captcha) ? "error" : undefined)}
                         />
                     </Field>}
 
@@ -111,8 +122,8 @@ const AddLoginForm = (props) => {
                             name="remember"
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values.remember}
-                        /><span styles={{display: "inlineBlock"}}> Remember me?</span>
+                            checked={values.remember}
+                        /><span style={{display: "inlineBlock"}}> Remember me?</span>
                     </RememberDiv>
                     <Button type="submit" disabled={isSubmitting}>Login</Button>
                 </LoginStyled>
