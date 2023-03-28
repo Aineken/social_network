@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+type ListTitleType = {
+    regular?: boolean
+}
+
 export const Container = styled.footer`
   display: flex;
   width: 100%;
@@ -44,7 +48,7 @@ export const ListItems = styled.div`
   }
 `;
 
-export const ListTitle = styled.p`
+export const ListTitle = styled.p<ListTitleType>`
   color: ${(props) => props.theme.colors.accent1};
   font-weight: ${(props) => (props.regular ? "500" : "700")};
   font-size: 22px;
