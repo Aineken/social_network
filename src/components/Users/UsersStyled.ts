@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {ThemeType} from "../../theme";
 
 
 export const MainContainer = styled.div`
@@ -21,7 +22,7 @@ display: grid;
   @media ${(props) => props.theme.breakpoints.md} {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  @media ${(props) => props.theme.breakpoints.sm} {
+  @media ${(props:ThemeType) => props.theme.breakpoints.sm} {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }

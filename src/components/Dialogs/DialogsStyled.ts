@@ -2,6 +2,11 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 
+
+type MessageTextType = {
+  main ?: boolean
+}
+
 export const DialogsDiv = styled.div`
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -94,7 +99,7 @@ export const DialogDiv = styled.div`
   }
 `;
 
-export const MessageText = styled.div`
+export const MessageText = styled.div<MessageTextType>`
   display: flex;
   width: 100%;
   align-content: start;
