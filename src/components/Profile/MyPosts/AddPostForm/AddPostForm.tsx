@@ -12,6 +12,7 @@ type ProspType = {
 }
 
 
+
 const AddPostForm: FC<ProspType > = (props) => {
 
     const initialState={
@@ -32,10 +33,10 @@ const AddPostForm: FC<ProspType > = (props) => {
                 }
 
                 onSubmit={
-                    async (values, {setSubmitting, resetForm}) => {
+                    async (values:ValuesType, {setSubmitting, resetForm}) => {
                         await props.onSubmit(values)
                         setSubmitting(false);
-                        resetForm(initialState)
+                        resetForm ({values: initialState})
                     }
                 }
         >
