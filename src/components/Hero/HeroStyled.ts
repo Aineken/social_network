@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import tw from "twin.macro";
+import theme, {ThemeType} from "../../theme";
 
 export const Container = styled.div`
   display: grid;
@@ -17,9 +18,7 @@ export const Container = styled.div`
     max-height: 100%;
 
   }
-  @media ${(props) => props.theme.breakpoints.sm} {
-
-
+  @media ${(props:ThemeType) => props.theme.breakpoints.sm} {
   }
 
 `;
