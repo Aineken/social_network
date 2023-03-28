@@ -1,3 +1,8 @@
+import React from 'react';
+import {connect} from "react-redux";
+import {logout} from "../../app/auth-reducer";
+import {RootStateType} from "../../app/store";
+
 import {
     Container,
     Div1,
@@ -8,7 +13,8 @@ import {
 import logo from "../../utils/andrzul_logo.svg";
 import {Link} from "react-router-dom";
 
-function Header(props) {
+
+const Header:React.FC<MapStatePropsType & MapDispatchPropsType>=(props) =>{
 
     const setSubmit= ()=>{
         props.logout();
@@ -19,7 +25,7 @@ function Header(props) {
             <HeaderDiv>
                 <Div1>
                     <Link to="/">
-                        <NavLink logo>
+                        <NavLink logo >
                             <img src={logo} alt="Logo"/>
                             <span>Social Network</span>
                         </NavLink>
@@ -41,4 +47,24 @@ function Header(props) {
     );
 }
 
-export default Header;
+
+
+
+
+type MapStatePropsType = {
+    isAuth: boolean
+    login: string |undefined
+}
+type OwnType = {
+}
+
+type MapDispatchPropsType = {
+    logout: () => void
+}
+
+
+const mapStateToProps = (state : RootStateType):MapStatePropsType => ({
+    isAuth:state.auth.isAuth,
+    login:state.auth.login
+})
+export default connect<MapStatePropsType,MapDispatchPropsType,OwnType, RootStateType>(mapStateToProps, {logout})(Header);
