@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./components/Login/Login.jsx";
 import {MainContainer, MainDiv} from "./styles/GlobalComponents/index.js";
-import Navbar from "./components/Navbar/Navbar.jsx";
+import Navbar from "./components/Navbar/Navbar.tsx";
 import Hero from "./components/Hero/Hero.jsx";
 import UsersContainer from "./components/Users/UsersContainer.tsx";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
