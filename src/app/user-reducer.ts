@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/index";
+import {usersAPI} from "../api";
 import {UsersType} from "../types/types";
 import {RootStateType} from "./store";
 import {Dispatch, ThunkAction} from "@reduxjs/toolkit";

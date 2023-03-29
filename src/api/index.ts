@@ -18,33 +18,33 @@ export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         return instanceNew.get(`${mainUrl}/users?page=${currentPage}&count=${pageSize}`);
     },
-    follow(userId) {
+    follow(userId:number) {
         return instanceNew.post(`${mainUrl}/follow/${userId}`).then(response => response).catch(error => {
             toast.warn("please Log in")
         })
 
     },
-    unfollow(userId) {
+    unfollow(userId:number) {
         return instanceNew.delete(`${mainUrl}/follow/${userId}`).then(response => response).catch(error => {
             toast.warn("please Log in")
         })
     },
-    getProfile(userId) {
+    getProfile(userId:number) {
         return profileAPI.getProfile(userId);
     }
 };
 
 export const profileAPI = {
-    getProfile(userId) {
+    getProfile(userId:number) {
         return instanceNew.get(`${mainUrl}/profile/` + userId);
     },
-    getStatus(userId) {
+    getStatus(userId:number) {
         return instanceNew.get(`${mainUrl}/profile/status/` + userId);
     },
-    updateStatus(status) {
+    updateStatus(status:string) {
         return instanceNew.put(`${mainUrl}/profile/status`, {status: status});
     },
-    updatePhoto(photo) {
+    updatePhoto(photo:File) {
         const formData = new FormData();
         formData.append("image", photo)
         return instanceNew.put(`${mainUrl}/profile/photo`, formData, {
@@ -53,7 +53,7 @@ export const profileAPI = {
             }
         })
     },
-    updateInfo(newInfo) {
+    updateInfo(newInfo:string) {
         return instanceNew.put(`${mainUrl}/profile`, newInfo);
     },
 }
@@ -63,7 +63,7 @@ export const authAPI = {
     me() {
         return instanceNew.get(`${mainUrl}/auth/me`);
     },
-    login(email, password, rememberMe = false, captcha) {
+    login(email:string, password:string, rememberMe = false, captcha:string|undefined) {
         return instanceNew.post(`${mainUrl}/auth/login`, {
             email,
             password,
@@ -81,19 +81,19 @@ export const authAPI = {
 
 
 export const messagesAPI = {
-    startChatting(userId) {
+    startChatting(userId:number) {
         return instanceNew.put(`${mainUrl}/dialogs/${userId}`);
     },
     getAllDialogs() {
         return instanceNew.get(`${mainUrl}/dialogs`);
     },
-    getDialogs(userId, page = 1, count = 10) {
+    getDialogs(userId:number, page = 1, count = 10) {
         return instanceNew.get(`${mainUrl}/dialogs/${userId}/messages?page=${page}&count=${count}`);
     },
-    sendMessage(userId, body) {
+    sendMessage(userId:number, body:string) {
         return instanceNew.post(`${mainUrl}/dialogs/${userId}/messages`, {body: body});
     },
-    deleteMessage(messageId) {
+    deleteMessage(messageId:number) {
         return instanceNew.delete(`${mainUrl}/dialogs/messages/${messageId}`);
     }
 }

@@ -1,4 +1,4 @@
-import {authAPI} from "../api/index";
+import {authAPI} from "../api";
 import {toast} from "react-toastify";
 import {ThunkAction} from "@reduxjs/toolkit";
 import {RootStateType} from "./store";

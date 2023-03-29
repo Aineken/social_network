@@ -116,7 +116,7 @@ export const requestAllDialogs = (): ThunkType => async (dispatch) => {
     dispatch(setAllDialogs(data));
     dispatch(toggleIsFetching(false));
 }
-export const requestDialogs = (userId: number, page: number, count: number): ThunkType => async (dispatch) => {
+export const requestDialogs = (userId: number, page: number | undefined, count: number| undefined): ThunkType => async (dispatch) => {
     const {data} = await messagesAPI.getDialogs(userId, page, count);
     dispatch(setDialogs(data.items));
 

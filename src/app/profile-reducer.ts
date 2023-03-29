@@ -1,4 +1,4 @@
-import {profileAPI, usersAPI} from "../api/index";
+import {profileAPI, usersAPI} from "../api";
 import {toast} from "react-toastify";
 import {PhotosType, ProfileType} from "../types/types";
 import { ThunkAction} from "@reduxjs/toolkit";
