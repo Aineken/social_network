@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Field, Form, Formik, FormikProps} from "formik";
+import {Field, FieldProps, Form, Formik, FormikProps} from "formik";
 import {Textarea} from "../../../common/FormsControls/FormsControls";
 import {Button} from "../../../../styles/GlobalComponents";
 
@@ -45,9 +45,9 @@ const AddPostForm: FC<ProspType > = (props) => {
             {({isSubmitting}) => (
                 <Form>
                     <Field name="newPostText">
-                        {(fieldProps:any) => {
+                        {(props: FieldProps<string>) => {
                             return (
-                                <Textarea {...fieldProps} placeholder="Enter your message"/>
+                                <Textarea {...props} placeholder="Enter your message"/>
                             );
                         }}
                     </Field>

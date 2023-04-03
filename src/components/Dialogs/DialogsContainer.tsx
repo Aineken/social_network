@@ -9,12 +9,13 @@ import {RootStateType} from "../../app/store";
 import {DialogsType, MessagesType} from "../../types/types";
 
 
-
 const DialogsContainer:React.FC<PropsType> = ({requestAllDialogs, isFetching, ...props}) => {
 
     useEffect(() => {
         requestAllDialogs();
-    }, [requestAllDialogs])
+    }, [])
+
+
 
     return (<>
         {isFetching? <Preloader/> : <Dialogs {...props}/>}
@@ -38,7 +39,7 @@ type MapDispatchPropsType = {
     sendMessage: (userId: number, body: string) => void
     deleteMessage: (messageId: number) => void
     requestAllDialogs: () => void
-    requestDialogs: (userId: number, page: number | undefined, count: number| undefined) => void
+    requestDialogs: (userId: number, page?: number, count?: number) => void
 }
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnType
 
@@ -57,21 +58,20 @@ let mapStateToProps = (state:RootStateType):MapStatePropsType => {
     }
 }
 
-const mapDispatchToProps = {
+const mapDispatchToProps:MapDispatchPropsType = {
     sendMessage,
     deleteMessage,
     requestAllDialogs,
     requestDialogs,
 }
 
-// let mapDispatchToProps = (dispatch) => {
+
+// let mapDispatchToProps = (dispatch:DispatchType):MapDispatchPropsType => {
 //     return {
-//         sendMessage: (newMessageBody) => {
-//             dispatch(sendMessageCreator(newMessageBody));
-//         },
-//         requestDialogs:() => {
-//             dispatch(requestDialogs());
-//         },
+//         sendMessage: (userId: number, body: string) => dispatch(sendMessage(userId, body)),
+//         deleteMessage: (messageId: number) => dispatch(deleteMessage(messageId)),
+//         requestAllDialogs: () => dispatch(requestAllDialogs()),
+//         requestDialogs: (userId: number, page: number | undefined, count: number | undefined) => dispatch(requestDialogs(userId, page, count))
 //     }
 // }
-export default compose<PropsType>(connect<MapStatePropsType,MapStatePropsType,OwnType,RootStateType>(mapStateToProps, mapDispatchToProps), withAuthRedirect)(DialogsContainer);
+export default compose(withAuthRedirect, connect<MapStatePropsType,MapDispatchPropsType,OwnType,RootStateType>(mapStateToProps, mapDispatchToProps))(DialogsContainer);

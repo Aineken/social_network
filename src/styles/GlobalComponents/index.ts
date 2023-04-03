@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import {ThemeType} from "../../theme";
 export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -8,8 +9,7 @@ export const MainContainer = styled.div`
 `;
 export const MainDiv = styled.div`
   width: 100%;
-  padding: 2rem 1rem;
-  padding-top: 150px;
+  padding: 150px 2rem 1rem;
   display: grid;
   grid-template-columns: 200px 1fr;
 
@@ -30,7 +30,7 @@ const rotate360 = keyframes`
     transform: rotate(360deg);
   }
 `;
-export const Spinner = styled.div`
+export const Spinner = styled.div<ThemeType>`
   animation: ${rotate360} 1s linear infinite;
   transform: translateZ(0);
   border-top: 2px solid grey;
@@ -43,7 +43,13 @@ export const Spinner = styled.div`
   border-radius: 50%;
 `;
 
-export const Section = styled.section`
+
+type SectionPropsType={
+    row?:boolean
+    nopadding?:boolean
+    grid?:boolean
+}
+export const Section = styled.section<SectionPropsType>`
   display: ${(props) => (props.grid ? "grid" : "flex")};
   flex-direction: ${(props) => (props.row ? "row" : "column")};
   padding: ${(props) => (props.nopadding ? "0" : "32px 48px 0")};
@@ -67,7 +73,13 @@ export const Section = styled.section`
   }
 `;
 
-export const SectionTitle = styled.h2`
+
+
+type SectionTitlePropsType={
+    main?:boolean
+}
+
+export const SectionTitle = styled.h2<SectionTitlePropsType>`
   font-weight: 800;
   font-size: ${(props) => (props.main ? "65px" : "56px")};
   line-height: ${(props) => (props.main ? "75px" : "66px")};
@@ -87,8 +99,6 @@ export const SectionTitle = styled.h2`
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 32px;
-    line-height: 40px;
     font-size: ${(props) => (props.main ? "28px" : "32px")};
     line-height: ${(props) => (props.main ? "32px" : "40px")};
     margin-bottom: 8px;
@@ -96,7 +106,11 @@ export const SectionTitle = styled.h2`
     max-width: 100%;
   }
 `;
-export const SectionText = styled.p`
+
+type SectionTextPropsType={
+    endText?:boolean
+}
+export const SectionText = styled.p<SectionTextPropsType>`
   width: 100%;
   font-size: 28px;
   line-height: 40px;
@@ -119,7 +133,12 @@ export const SectionText = styled.p`
   }
 `;
 
-export const SectionDivider = styled.div`
+
+type SectionDividerPropsType={
+    colorAlt?:boolean
+    divider?:boolean
+}
+export const SectionDivider = styled.div<SectionDividerPropsType>`
   margin-bottom: 1rem;
   width: 64px;
   height: 6px;
@@ -146,8 +165,8 @@ export const Button = styled.button`
   background-color: #fff;
   border-radius: 10px;
   width: max-content;
-  border: 0;
-  border 1px solid #000;
+  
+  border: 1px solid #000;
   @media ${(props) => props.theme.breakpoints.md} {
    
   }

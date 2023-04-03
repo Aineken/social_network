@@ -94,7 +94,7 @@ const mapStateToProps = (state:RootStateType):MapStatePropsType => {
 const mapDispatchToProps = {
   follow, unfollow, setCurrentPortion, setCurrentPage, requestUsers,
 }
-export default compose<PropsType>(
+export default compose(
     //<TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = DefaultState>
     connect<MapStatePropsType,MapDispatchPropsType,OwnPropsType,RootStateType>(mapStateToProps,mapDispatchToProps)
 )(UsersContainer)

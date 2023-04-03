@@ -3,30 +3,47 @@ import DialogItem from "./DialogItem/DialogItem";
 import Dialog from "./Dialog/Dialog";
 import AddMessageForm from "./AddMessageForm/AddMessageForm";
 import {DialogItemsDiv, DialogsDiv, MessageDiv, MessagesDiv} from "./DialogsStyled";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {DialogsType, MessagesType} from "../../types/types";
 
-const Dialogs = ({requestDialogs, ...props}) => {
+
+type PropsType = {
+    dialogsPage: {
+        dialogs: DialogsType[]
+        messages: MessagesType[]
+    }
+    sendMessage: (userId: number, newMessageBody: string) => void
+    deleteMessage: (messageId: number) => void
+    mainUserId: number | undefined
+requestDialogs: (userId: number, page?: number , count?: number) => void
+}
+
+const Dialogs:React.FC<PropsType> = ({requestDialogs, ...props}) => {
 
     let {dialogId} = useParams();
     let {dialogs, messages} = props.dialogsPage;
 
 
+    const navigate = useNavigate();
+
     useEffect(() => {
             if (dialogId) {
-                requestDialogs(dialogId)
+                requestDialogs(+dialogId)
             }else{
-                requestDialogs(dialogs[0].id)
+                // requestDialogs(dialogs[0].id)
+                navigate(`/dialogs/${dialogs[0].id}`)
             }
 
-        }, [dialogs,dialogId, requestDialogs]
+
+        }, [dialogs,dialogId, requestDialogs,navigate]
     )
 
     let dialogsElements = dialogs.slice(0,9).map(dialog => <DialogItem dialog={dialog} key={dialog.id}/>);
     let messagesElements = messages.slice(0,9).map(message => <Dialog deleteMessage={props.deleteMessage} mainUserId={props.mainUserId} message={message} key={message.id}/>);
 
-    let addNewMessage = (values) => {
+    let addNewMessage = (newMessageBody:string) => {
         if (dialogId) {
-            props.sendMessage(dialogId, values)
+            props.sendMessage(+dialogId, newMessageBody)
         }
     }
 

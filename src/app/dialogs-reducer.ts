@@ -1,6 +1,6 @@
 import {messagesAPI} from "../api";
 import {DialogsType, MessagesType} from "../types/types";
-import {ThunkAction} from "@reduxjs/toolkit";
+import {Dispatch, ThunkAction} from "@reduxjs/toolkit";
 import {RootStateType} from "./store";
 
 const SEND_MESSAGE = 'SEND_MESSAGE';
@@ -105,6 +105,7 @@ export const sendMessageRequestSuccess = (request: string): SendMessageRequestSu
 
 export type ThunkType = ThunkAction<Promise<void>, RootStateType, unknown, ActionTypes>
 
+export type DispatchType= Dispatch<ActionTypes>
 
 export const sendMessageRequest = (userId: number): ThunkType => async (dispatch) => {
     const {data} = await messagesAPI.startChatting(userId)

@@ -1,15 +1,21 @@
 import React from 'react';
-import { Field, Form, Formik} from "formik";
+import {Field, FieldProps, Form, Formik, FormikProps} from "formik";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 import {Button} from "../../../styles/GlobalComponents";
 
+type ValuesType = {
+    newMessageBody:string
+}
+type ProspType = {
+    onSubmit: (values:string) => void
+}
 
-const AddMessageForm = (props) => {
+const AddMessageForm:React.FC<ProspType> = (props) => {
     return (
 
         <Formik initialValues={{newMessageBody: ''}}
                 validate={values => {
-                    const errors = {};
+                    const errors:Partial<FormikProps<ValuesType>['errors']>  = {};
                     if (values.newMessageBody.length > 1000) {
                         errors.newMessageBody = "Max length is 1000 symbols";
                     }
@@ -20,7 +26,7 @@ const AddMessageForm = (props) => {
 
                         await props.onSubmit(values.newMessageBody)
                         setSubmitting(false);
-                        resetForm({newMessageBody: 'hello'})
+                        resetForm({values: {newMessageBody: ''}})
                     }
                 }
         >
@@ -29,7 +35,7 @@ const AddMessageForm = (props) => {
             {({isSubmitting}) => (
                 <Form>
                     <Field name="newMessageBody">
-                        {(props) => {
+                        {(props: FieldProps<string>) => {
                             return (
                               <Textarea {...props} placeholder="Enter your message" />
                             );

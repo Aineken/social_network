@@ -84,7 +84,7 @@ let mapDispatchToProps = (dispatch:AppDispatch): MapDispatchPropsType => {
     }
 }
 
-export default compose<PropsType>(
+export default compose(
     connect<MapStatePropsType,MapDispatchPropsType,OwnPropsType,RootStateType>(mapStateToProps, mapDispatchToProps)
 )(ProfileContainer);
 
